@@ -36,7 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'employee'  ,
+    'employee',
     'Master'
 ]
 
@@ -55,7 +55,7 @@ ROOT_URLCONF = 'ERP.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / "templates"],
+        'DIRS': [ Path(BASE_DIR / "ERP" / "templates")],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

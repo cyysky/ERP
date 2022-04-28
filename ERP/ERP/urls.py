@@ -18,16 +18,40 @@ from django.contrib import admin
 from django.urls import path, include
 from django.views.generic.base import TemplateView
 
-from employee import views  
+from Master import views  
+from employee import views as eviews
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("accounts/", include("django.contrib.auth.urls")),
+    
     path("", TemplateView.as_view(template_name="home.html"), name="home"),
-    path('emp', views.emp),  
-    path('show',views.show),  
-    path('edit/<int:id>', views.edit),  
-    path('update/<int:id>', views.update),  
-    path('delete/<int:id>', views.destroy),  
-    path('export_pdf/<int:id>', views.export_pdf)
+    
+    path('emp', eviews.emp),  
+    path('show',eviews.show),  
+    path('edit/<int:id>', eviews.edit),  
+    path('update/<int:id>', eviews.update),  
+    path('delete/<int:id>', eviews.destroy),  
+    path('export_pdf/<int:id>', eviews.export_pdf),
+    #path('emp', views.emp),
+    path('emp1', views.emp1),
+    path('emp2', views.emp2),
+    path('emp3', views.emp3),
+    path('sub_contract',views.sub_contract),  
+    path('supplier',views.supplier),  
+    path('customer',views.customer),
+    path('material',views.material),
+    #path('edit/<int:id>', views.edit),  
+    path('edit1/<int:id>', views.edit1),
+    path('edit2/<int:id>', views.edit2),
+    path('edit3/<int:id>', views.edit3),
+    #path('update/<int:id>', views.update),
+    path('update1/<int:id>', views.update1),  
+    path('update2/<int:id>', views.update2),
+    path('update3/<int:id>', views.update3),
+    #path('delete/<int:id>', views.destroy), 
+    path('delete1/<int:id>', views.destroy1), 
+    path('delete2/<int:id>', views.destroy2),
+    path('delete3/<int:id>', views.destroy3), 
 ]

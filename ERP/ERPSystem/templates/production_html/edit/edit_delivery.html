@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    {% load static %}
+    <!-- <link rel="stylesheet" href="{% static 'css/style.css' %}"/>  !-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+</head>
+<style>
+    p, div, h3, h4, a, h1 {
+        text-align: center;
+    }
+</style>
+<div class="header">
+    <form method="POST" class="post-form" action="/production/update_delivery/{{delivery.id}}">
+        {% csrf_token %}
+        <div class="container">
+            <h3>delivery Update Details</h3>
+            <div class="form-group row">
+                <label class="col-md-1 col-form-label"></label>
+                <div class="col-md-4">
+                </div>
+            </div>
+            <br>
+            <div class="input-group mb-3">
+                <span class="input-group-text">sales_id</span>
+                <input type="text" class="form-control" placeholder="customer_id" aria-label="Username" type="text" name="customer_id" id="id_customer_id" required maxlength="20" class="form-control" value="{{ delivery.sales_id }}">
+                <span class="input-group-text">sales_name</span>
+                <input type="text" class="form-control" placeholder="customer_name" aria-label="Server" type="text" name="customer_name" id="id_customer_name" required maxlength="100" class="form-control" value="{{ delivery.sales_name }}">
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">custiomer_id</span>
+                <input type="text" class="form-control" placeholder="bom_id" aria-label="Username" type="text" name="bom_id" id="id_bom_id" required maxlength="254" class="form-control" value="{{ delivery.custiomer_id }}">
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text">product_id</span>
+                <input type="text" class="form-control" placeholder="product_id" aria-label="Username" type="text" name="product_id" id="id_product_id" required maxlength="20" class="form-control" value="{{ delivery.product_id }}">
+                <span class="input-group-text">product_name</span>
+                <input type="text" class="form-control" placeholder="product_name" aria-label="Server" type="text" name="product_name" id="id_product_name" required maxlength="100" class="form-control" value="{{ delivery.product_name }}">
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">quantity</span>
+                <input type="text" class="form-control" placeholder="quantity" aria-label="Username" type="text" name="quantity" id="id_quantity" required maxlength="254" class="form-control" value="{{ delivery.quantity }}">
+            </div>
+            <br>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">unitprice</span>
+                <input type="text" class="form-control" placeholder="unitprice" aria-label="Username" type="text" name="unitprice" id="idunitprice" required maxlength="254" class="form-control" value="{{ delivery.unitprice }}">
+            </div>
+            <br>
+            <div class="input-group">
+                <span class="input-group-text">term</span>
+                <textarea class="form-control" aria-label="With textarea" type="text" name="term" id="id_term" required maxlength="100" class="form-control" value="{{ delivery.termo }}">{{ delivery.term }}</textarea>
+            </div>
+            <br>
+            <button type="submit" class="btn btn-primary">Update</button>
+            <button href="customer" class="btn btn-success">return</button>
+
+        </div>
+</div>
+    </form>
+</body>
+</html>  

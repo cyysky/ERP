@@ -1,0 +1,33 @@
+Step 1: Delete the db.sqlite3 file.
+
+Step 2 : $ python manage.py migrate
+
+Step 3 : $ python manage.py makemigrations
+
+Step 4: Create the super user using $ python manage.py createsuperuser
+
+new db.sqlite3 will generates automatically
+
+
+超级管理员账户
+python manage.py createsuperuser --username=admin --email=admin@163.com   lee012345
+管理Django网站地址:
+http://127.0.0.1:8000/admin
+
+对于自定义表单和数据库modes  （如果您制作了自己的表单），请使用此命令进行迁移  
+python manage.py makemigrations
+python manage.py migrate
+python manage.py migrate --run-syncdb
+python manage.py runserver  0.0.0.0:8000
+
+
+其他设备要用的路径
+0.0.0.0:8000
+网站地址:
+localhost:8000
+
+#安装必要模块
+pip install -r requirements.txt 
+
+
+

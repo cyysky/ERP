@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<style>
+    h1, div {
+        text-align: center;
+    }
+</style>
+<h1 class=" btn-dark">Master</h1>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee Records</title>
+    {% load static %}
+    <!-- <link rel="stylesheet" href="{% static 'css/style.css' %}"/>  !-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+    <nav class="navbar bg-light ">
+        <div class="container-fluid">
+            <nav class="navbar">
+                <!-- Navbar content -->
+                <ul class="nav nav-pills">
+                    <li class="nav-item">
+                        <a class="nav-link p-3  bg-secondary text-white" aria-current="page" href="{% url 'logout' %}">Log Out</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link p-3 bg-primary text-white" href="/main_page">Main page</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle p-3  bg-danger text-white " data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Marketing</a>
+                        <ul class="dropdown-menu">
+                            <li>
+                            <li><a class="dropdown-item" href="/marketing/sales">Sales</a></li>
+                            <li><a class="dropdown-item" href="/marketing/customer">Customer </a></li>
+                            <li><a class="dropdown-item" href="/marketing/project">Project </a></li>
+                            <li><a class="dropdown-item" href="/marketing/bom">BOM </a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle p-3 bg-warning text-white" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Warehouse</a>
+                        <ul class="dropdown-menu">
+                            <li>
+                            <li><a class="dropdown-item" href="/warehouse/material">Material</a></li>
+                            <li><a class="dropdown-item" href="/warehouse/material_location">Material_Location</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle p-3  bg-success text-white" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Purchasing</a>
+                        <ul class="dropdown-menu">
+                            <li>
+                            <li><a class="dropdown-item" href="/purchasing/supplier">Supplier</a></li>
+                            <li><a class="dropdown-item" href="/purchasing/material_supplier">Material Supplier</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle p-3 bg-info text-white" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Production</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/production/machine">machine</a></li>
+                            <li><a class="dropdown-item" href="/production/process">Process</a></li>
+                            <li><a class="dropdown-item" href="/production/product">Product</a></li>
+                            <li><a class="dropdown-item" href="/production/product_good">Product Good</a></li>
+                            <li><a class="dropdown-item" href="/production/product_reject">Product Reject</a></li>
+                            <li><a class="dropdown-item" href="/production/packaging">Packaging</a></li>
+                            <li><a class="dropdown-item" href="/production/delivery">Delivery</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle p-3  bg-secondary text-white" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Other functions</a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a class="dropdown-item" href="/upload_image/">Upload Image </a>
+                                <a class="dropdown-item" href="/index">pictures</a>
+                                <a class="dropdown-item" href="/calculator/calculator">calculator</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Master</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                        <li class="nav-item">
+                            <a class="nav-link active p-3 mb-2 bg-secondary text-white " href="/REP_mind_map">REP mind map</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active p-3 mb-2 bg-primary text-white" href="/main_page">Main page</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle p-3 mb-2 bg-danger text-white" href="#" id="offcanvasNavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Marketing
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
+                                <li><a class="dropdown-item" href="/marketing/sales">Sales</a></li>
+                                <li><a class="dropdown-item" href="/marketing/customer">Customer </a></li>
+                                <li><a class="dropdown-item" href="/marketing/project">Project </a></li>
+                                <li><a class="dropdown-item" href="/marketing/bom">BOM </a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle p-3 mb-2 bg-warning text-white" href="#" id="offcanvasNavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Warehouse
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
+                                <li><a class="dropdown-item" href="/warehouse/material">Material</a></li>
+                                <li><a class="dropdown-item" href="/warehouse/material_location">Material_Location</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle p-3 mb-2 bg-success text-white" href="#" id="offcanvasNavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Purchasing
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
+                                <li><a class="dropdown-item" href="/purchasing/supplier">Supplier</a></li>
+                                <li><a class="dropdown-item" href="/purchasing/material_supplier">Material Supplier</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle p-3 mb-2 bg-info text-white" href="#" id="offcanvasNavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Production
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
+                                <li><a class="dropdown-item" href="/production/machine">machine</a></li>
+                                <li><a class="dropdown-item" href="/production/process">Process</a></li>
+                                <li><a class="dropdown-item" href="/production/product">Product</a></li>
+                                <li><a class="dropdown-item" href="/production/product_good">Product Good</a></li>
+                                <li><a class="dropdown-item" href="/production/product_reject">Product Reject</a></li>
+                                <li><a class="dropdown-item" href="/production/packaging">Packaging</a></li>
+                                <li><a class="dropdown-item" href="/production/delivery">Delivery</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle p-3 mb-2 bg-secondary text-white" href="#" id="offcanvasNavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Other functions
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
+                                <li><a class="dropdown-item" href="/upload_image/">Upload Image </a></li>
+                                <li><a class="dropdown-item" href="/index">pictures</a></li>
+                                <li><a class="dropdown-item" href="/calculator/calculator">calculator</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </nav>
+    </nav>
+    {% block title %}{% endblock %}
+    {% block content %}
+    {% if user.is_authenticated %}
+    {% else %}
+    <h1 class="text-white">You are not logged in</h1>
+    <h1><a href="{% url 'login' %}">Log In</a></h1> |
+    <h1><a href="{% url 'signup' %}">Sign Up</a></h1>
+    {% endif %}
+    {% endblock %}
+    {% if user.is_authenticated %}
+</body>
+<h1 class="p-3 mb-2 bg-primary text-white">Main page</h1>
+<tbody>
+    <table class="table table-striped table-bordered table-sm">
+        <thead class="thead-dark">
+            <tr>
+                <th class="p-3 mb-2 bg-danger text-white">Sales</th>
+                <th>Sales ID</th>
+                <th>Customer ID</th>
+                <th>Customer Name</th>
+                <th>Term</th>
+                <th>Time</th>
+                <th>Time end</th>
+                <th>customer Po ID</th>
+                <th>product ID</th>
+                <th>description</th>
+                <th>quantity</th>
+                <th>Unit Price</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for sales in saless %}
+            <tr>
+                <td>{{ sales.sales_id }}</td>
+                <td>{{ sales.customer_id }}</td>
+                <td>{{ sales.customer_name }}</td>
+                <td>{{ sales.term }}</td>
+                <td>{{ sales.time }}</td>
+                <td>{{ sales.hour}}</td>
+                <td>{{ sales.customer_po_id}}</td>
+                <td>{{ sales.product_id}}</td>
+                <td>{{ sales.description}}</td>
+                <td>{{ sales.quantity}}</td>
+                <td>{{ sales.unit_price}}</td>
+                <td>
+                    <a href="/order/edit_sales/{{ sales.id }}"><span class="btn btn-success">Edit</span></a>
+                    <a href="delete_sales/{{ sales.id }}" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        <thead class="thead-dark">
+            <tr>
+                <th class="p-3 mb-2 bg-danger text-white">Customer</th>
+                <th> ID</th>
+                <th> Name</th>
+                <th> Address</th>
+                <th> Term</th>
+                <th> Email</th>
+                <th> Phone1</th>
+                <th> Phone2</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for customer in customers %}
+            <tr>
+                <td>{{ customer.customer_id }}</td>
+                <td>{{ customer.customer_name }}</td>
+                <td>{{ customer.address }}</td>
+                <td>{{ customer.term }}</td>
+                <td>{{ customer.email }}</td>
+                <td>{{ customer.phone1}}</td>
+                <td>{{ customer.phone2}}</td>
+                <td>
+                    <a href="edit_customer/{{ customer.customer_id }}"><span class="btn btn-success">Edit</span></a>
+                    <a href="delete_customer/{{ customer.customer_id }}" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        <thead class="thead-dark">
+            <tr>
+                <th class="p-3 mb-2 bg-primary text-white">Product</th>
+                <th>Product ID</th>
+                <th>Process ID </th>
+                <th>Bom ID </th>
+                <th>Date</th>
+                <th>Quantity </th>
+                <th>product_type</th>
+                <th>start_time</th>
+                <th>finish_time</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in products %}
+            <tr>
+                <td>{{ product.product_id }}</td>
+                <td>{{ product.process_id }}</td>
+                <td>{{ product.bom_id }}</td>
+                <td>{{ product.date }}</td>
+                <td>{{ product.quantity }}</td>
+                <td>{{ product.product_type }}</td>
+                <td>{{ product.start_time }}</td>
+                <td>{{ product.finish_time }}</td>
+                <td>
+                    <a href="edit_product/{{ product.product_id }}"><span class="btn btn-success">Edit</span></a>
+                    <a href="delete_product/{{ product.product_id }}" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+
+        <thead class="thead-dark">
+            <tr>
+                <th class="p-3 mb-2 bg-primary text-white">Product Material</th>
+                <th>Product ID</th>
+                <th>MateriaL ID </th>
+                <th>Usage  </th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product_material in product_materials %}
+            <tr>
+                <td>{{ product_material.product_id }}</td>
+                <td>{{ product_material.material_id }}</td>
+                <td>{{ product_material.usage }}</td>
+                <td>
+                    <a href="edit_product_material/{{ product_material.product_material_id }}"><span class="btn btn-success">Edit</span></a>
+                    <a href="delete_product_material/{{ product_material.product_material_id }}" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+
+        </tbody>
+        <thead class="thead-dark">
+            <tr>
+                <th class="p-3 mb-2 bg-warning text-white">Material</th>
+                <th>material_supplier</th>
+                <th>measure_unit</th>
+                <th>tybe</th>
+                <th>Form</th>
+                <th>thickness</th>
+                <th>usage</th>
+                <th>default_stock_locatiuon</th>
+                <th>quantity</th>
+                <th>nit_price</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for material in materials %}
+            <tr>
+                <td>{{ material.material_id }}</td>
+                <td>{{ material.material_supplier }}</td>
+                <td>{{ material.measure_unit }}</td>
+                <td>{{ material.tybe }}</td>
+                <td>{{ material.Form}}</td>
+                <td>{{ material.thickness}}</td>
+                <td>{{ material.usage}}</td>
+                <td>{{ material.default_stock_locatiuon }}</td>
+                <td>{{ material.quantity}}</td>
+                <td>{{ material.nit_price}}</td>
+                <td>
+                    <a href="edit_material/{{ material.material_id }}"><span class="btn btn-success">Edit</span></a>
+                    <a href="delete_material/{{ material.material_id }}" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        <thead class="thead-dark">
+            <tr>
+                <th class="p-3 mb-2 bg-warning text-white">Material_Location</th>
+                <th>shelf_id</th>
+                <th>material_id </th>
+                <th>quantity</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for material_location in material_locations %}
+            <tr>
+                <td>{{ material_location.shelf_id }}</td>
+                <td>{{ material_location.material_id }}</td>
+                <td>{{ material_location.quantity }}</td>
+                <td>
+                    <a href="edit_material_location/{{ material_location.id }}"><span class="btn btn-success">Edit</span></a>
+                    <a href="delete_material_location/{{ material_location.id }}" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        <thead class="thead-dark">
+            <tr>
+                <th class="p-3 mb-2 bg-success text-white">Supplier</th>
+                <th> Supplier Name</th>
+                <th> Address</th>
+                <th> Term</th>
+                <th> Email</th>
+                <th> Phone1</th>
+                <th> Phone2</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for supplier in suppliers %}
+            <tr>
+                <td>{{ supplier.supplier_id }}</td>
+                <td>{{ supplier.supplier_name }}</td>
+                <td>{{ supplier.address }}</td>
+                <td>{{ supplier.term }}</td>
+                <td>{{ supplier.email }}</td>
+                <td>{{ supplier.phone1}}</td>
+                <td>{{ supplier.phone2}}</td>
+                <td>
+                    <a href="edit_supplier/{{ supplier.supplier_id }}"><span class="btn btn-success">Edit</span></a>
+                    <a href="delete_supplier/{{ supplier.supplier_id }}" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        <thead class="thead-dark">
+            <tr>
+                <th class="p-3 mb-2 bg-success text-white">Material Supplier</th>
+                <th>Part NO</th>
+                <th>Supplier ID</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for material_location in material_locations %}
+            <tr>
+                <td>{{ material_supplier.part_no }}</td>
+                <td>{{ material_supplier.supplier_id }}</td>
+                <td>
+                    <a href="edit_material/{{ material_supplier.id }}"><span class="btn btn-success">Edit</span></a>
+                    <a href="delete_material/{{ material_supplier.id }}" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        <thead class="thead-dark">
+            <tr>
+                <th class="p-3 mb-2 bg-info text-white">Process</th>
+                <th>Process ID</th>
+                <th>Product ID </th>
+                <th>Produt Name</th>
+                <th>Type</th>
+                <th>Machine ID</th>
+                <th>Quantity</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for process in processs %}
+            <tr>
+                <td>{{ process.process_id }}</td>
+                <td>{{ process.product_id }}</td>
+                <td>{{ process.produt_name }}</td>
+                <td>{{ process.type }}</td>
+                <td>{{ process.machine_id }}</td>
+                <td>{{ process.quantity }}</td>
+                <td>{{ process.term }}</td>
+                <td>
+                    <a href="edit_process/{{ process.process_id }}"><span class="btn btn-success">Edit</span></a>
+                    <a href="delete_process/{{ process.process_id }}" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        <thead class="thead-dark">
+            <tr>
+                <th class="p-3 mb-2 bg-info text-white">Machine</th>
+                <th> Machine ID</th>
+                <th> Machine Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for machine in machines %}
+            <tr>
+                <td>{{ machine.machine_id }}</td>
+                <td>{{ machine.machine_name }}</td>
+
+                <td>
+                    <a href="edit_machine/{{ machine.machine_id }}"><span class="btn btn-success">Edit</span></a>
+                    <a href="delete_machine/{{ machine.machine_id }}" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        <thead class="thead-dark">
+            <tr>
+                <th class="p-3 mb-2 bg-secondary text-white">Product Good</th>
+                <th>Goodbatch ID</th>
+                <th>Product ID </th>
+                <th>Product Name </th>
+                <th>Customer ID</th>
+                <th>Type </th>
+                <th>Quantity</th>
+                <th>Term</th>
+                <th>Date</th>
+                <th>Material ID</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product_good in product_goods %}
+            <tr>
+                <td>{{ product_good.goodbatch_id }}</td>
+                <td>{{ product_good.product_id }}</td>
+                <td>{{ product_good.product_name }}</td>
+                <td>{{ product_good.customer_id }}</td>
+                <td>{{ product_good.type }}</td>
+                <td>{{ product_good.quantity }}</td>
+                <td>{{ product_good.term }}</td>
+                <td>{{ product_good.date }}</td>
+                <td>{{ product_good.material_id }}</td>
+                <td>
+                    <a href="edit_product_good/{{ product_good.product_good_id }}"><span class="btn btn-success">Edit</span></a>
+                    <a href="delete_product_good/{{ product_good.product_good_id }}" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        <thead class="thead-dark">
+            <tr>
+                <th class="p-3 mb-2 bg-secondary text-white">Product Reject </th>
+                <th>Rejectbatch ID</th>
+                <th>Product ID </th>
+                <th>Product Name</th>
+                <th>Type  </th>
+                <th>Quantity</th>
+                <th>Date</th>
+                <th>Material ID</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product_reject in product_rejects %}
+            <tr>
+                <td>{{ product_reject.rejectbatch_id }}</td>
+                <td>{{ product_reject.product_id }}</td>
+                <td>{{ product_reject.product_name }}</td>
+                <td>{{ product_reject.type }}</td>
+                <td>{{ product_reject.quantity }}</td>
+                <td>{{ product_reject.date }}</td>
+                <td>{{ product_reject.material_id }}</td>
+                <td>
+                    <a href="edit_product_reject/{{ product_reject.product_reject_id }}"><span class="btn btn-success">Edit</span></a>
+                    <a href="delete_product_reject/{{ product_reject.product_reject_id }}" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</tbody>
+
+</html>
+<input type="button" value="打印此页面" onclick="printpage()" />   <!-- 可保存成 pdf档案  -->
+<script>
+    function printpage() {
+        window.print()
+    }
+</script>
+<div class="progress">
+    <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+{% endif %} 

@@ -1,2 +1,6 @@
 reportlab
 django==4.0.4
+django-allauth
+django-pure-pagination
+django-widget-tweaks 
+django-debug-toolbar

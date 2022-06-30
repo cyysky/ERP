@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee Records</title>
+    {% load static %}
+    <!-- <link rel="stylesheet" href="{% static 'css/style.css' %}"/>  !-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+    <style>
+        h1, div {
+            text-align: center;
+        }
+    </style>
+    <h1>Master</h1>
+    <h1 class=" btn-dark">Master</h1>
+    <nav class="navbar bg-light fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Master</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                        <li class="nav-item">
+                            <a class="nav-link active p-3 mb-2 bg-primary text-white" href="/order/main_page">Main page</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle p-3 mb-2 bg-danger text-white" href="#" id="offcanvasNavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Order
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
+                                <li><a class="dropdown-item" href="/order/sales">Sales</a></li>
+                                <li><a class="dropdown-item" href="/order/customer">Customer </a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle p-3 mb-2 bg-warning text-white" href="#" id="offcanvasNavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Warehouse
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
+                                <li><a class="dropdown-item" href="/order/bom">BOM</a></li>
+                                <li><a class="dropdown-item" href="/order/material">Material</a></li>
+                                <li><a class="dropdown-item" href="/order/material_location">Material_Location</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle p-3 mb-2 bg-success text-white" href="#" id="offcanvasNavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Puchasing
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
+                                <li><a class="dropdown-item" href="/order/supplier">Supplier</a></li>
+                                <li><a class="dropdown-item" href="/order/material_supplier">Material Supplier</a></li>
+                                <li><a class="dropdown-item" href="/order/product_material">Product Material</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle p-3 mb-2 bg-info text-white" href="#" id="offcanvasNavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Production
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
+                                <li><a class="dropdown-item" href="/order/machine">machine</a></li>
+                                <li><a class="dropdown-item" href="/order/process">Process</a></li>
+                                <li><a class="dropdown-item" href="/order/product">Product</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle p-3 mb-2 bg-primary text-white" href="#" id="offcanvasNavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Product
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
+                                <li><a class="dropdown-item" href="/order/product_material">Product Material</a></li>
+                                <li><a class="dropdown-item" href="/order/product_good">Product Good</a></li>
+                                <li><a class="dropdown-item" href="/order/product_reject">Product Reject</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle p-3 mb-2 bg-secondary text-white" href="#" id="offcanvasNavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Other functions
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
+                                <li><a class="dropdown-item" href="/upload_image/">Upload Image </a></li>
+                                <li><a class="dropdown-item" href="/index">pictures</a></li>
+                                <li><a class="dropdown-item" href="/calculator/calculator">calculator</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </nav>
+    {% block title %}{% endblock %}
+
+    {% block content %}
+    {% if user.is_authenticated %}
+    {% else %}
+    <h1 class="text-white">You are not logged in</h1>
+    <h1><a href="{% url 'login' %}">Log In</a></h1> |
+    <h1><a href="{% url 'signup' %}">Sign Up</a></h1>
+    {% endif %}
+    {% endblock %}
+    {% if user.is_authenticated %}
+    <nav class="navbar" style="background-color: #e3f2fd;">
+        <!-- Navbar content -->
+        <ul class="nav nav-pills">
+            <li class="nav-item">
+                <a class="nav-link p-3 mb-2 bg-secondary text-white" aria-current="page" href="{% url 'logout' %}">Log Out</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link p-3 mb-2 bg-primary text-white" href="/main_page">Main page</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle p-3 mb-2 bg-danger text-white " data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Order</a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a class="dropdown-item" href="/order/sales">Sales</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="/order/customer">Customer </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle p-3 mb-2 bg-warning text-white" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Warehouse</a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a class="dropdown-item" href="/order/bom">BOM</a>
+                        <a class="dropdown-item" href="/order/material">Material</a>
+                        <a class="dropdown-item" href="/order/material_location">Material_Location</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle p-3 mb-2 bg-success text-white" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Puchasing</a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a class="dropdown-item" href="/order/supplier">Supplier</a>
+                        <a class="dropdown-item" href="/order/material_supplier">Material Supplier</a>
+                        <a class="dropdown-item" href="/order/product_material">Product Material</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle p-3 mb-2 bg-info text-white" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Production</a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a class="dropdown-item" href="/order/machine">machine</a>
+                        <a class="dropdown-item" href="/order/process">Process</a>
+                        <a class="dropdown-item" href="/order/product">Product</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle p-3 mb-2 bg-primary text-white" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Product</a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a class="dropdown-item" href="/order/product_material">Product Material</a>
+                        <a class="dropdown-item" href="/order/product_good">Product Good</a>
+                        <a class="dropdown-item" href="/order/product_reject">Product Reject</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle p-3 mb-2 bg-secondary text-white" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Other functions</a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a class="dropdown-item" href="/upload_image/">Upload Image </a>
+                        <a class="dropdown-item" href="/index">pictures</a>
+                        <a class="dropdown-item" href="/calculator/calculator">calculator</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <h1 class="p-3 mb-2 bg-secondary text-white">Hitory</h1>
+    <table class="table table-striped table-bordered table-sm">
+        <thead class="thead-dark">
+            <tr>
+                <th class=" text-white">a0</th>
+                <th class=" text-white">a1</th>
+                <th class=" text-white">a2</th>
+                <th class=" text-white">a3</th>
+                <th class=" text-white">a4</th>
+                <th class=" text-white">a5</th>
+                <th class=" text-white">a6</th>
+                <th class=" text-white">a7</th>
+                <th class=" text-white">a8</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        {% for history in historys %}
+        <tr>
+            <td>{{ history.ea0 }}</td>
+            <td>{{ history.ea1 }}</td>
+            <td>{{ history.ea2 }}</td>
+            <td>{{ history.ea3 }}</td>
+            <td>{{ history.ea4 }}</td>
+            <td>{{ history.ea5 }}</td>
+            <td>{{ history.ea6}}</td>
+            <td>{{ history.ea7}}</td>
+            <td>{{ history.ea8}}</td>
+            <td>
+                <a href="/delete4/{{ history.id }}" class="btn btn-danger">Delete</a>
+
+                <div id="demo" class="collapse">
+                    <a href="edit_history/{{ history.id }}"><span class="btn btn-success">Edit</span></a>
+                </div>
+            </td>
+        </tr>
+        {% endfor %}
+        <table class="table table-striped table-bordered table-sm">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Sub conteract</th>
+                    <th>Supplier</th>
+                    <th>Customer</th>
+                    <th>Material</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for history_type_statistics in history_type_statisticss %}
+                <tr>
+                    <td>{{ history_type_statistics.ea0 }}</td>
+                    <td>{{ history_type_statistics.ea1 }}</td>
+                    <td>{{ history_type_statistics.ea2 }}</td>
+                    <td>{{ history_type_statistics.ea3 }}</td>
+                </tr>
+                <html>
+                <head>
+                    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+                    <script type="text/javascript">
+      google.charts.load("current", {packages:["corechart"]});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Hours per Day'],
+          ['Sub conteract',{{ history_type_statistics.ea0 }}],
+          ['Supplier',{{ history_type_statistics.ea1 }}],
+          ['Customer',{{ history_type_statistics.ea2 }}],
+          ['Material',{{ history_type_statistics.ea3 }}],
+        ]);
+
+        var options = {
+          title: 'My Daily Activities',
+          is3D: true,
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
+        chart.draw(data, options);
+      }
+                    </script>
+                </head>
+                {% endfor %}
+        </tbody>
+    </table>
+
+    {% if history %}
+    <div class="col-md-12 well">
+        {% for history in historys %}
+        {% endfor %}
+        <span class="step-links pagination">
+            {% if historys.has_previous %}
+            <a href="?page1={{ historys.previous_page_number }}"> previous </a>
+            {% endif %}
+            <span class="current">
+                Page {{ historys.number }} of {{ historys.paginator.num_pages }}
+            </span>
+            {% if historys.has_next %}
+            <a href="?page1={{ historys.next_page_number }}"> next </a>
+            {% endif %}
+        </span>
+    </div>
+    <div id="piechart_3d" style="width: 900px; height: 500px;"></div>
+    {% endif %}
+</body>
+</html>
+{% endif %}
+

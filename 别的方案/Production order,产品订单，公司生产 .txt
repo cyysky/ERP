@@ -1,0 +1,39 @@
+Production order,
+   Production order ID,
+   product id,
+   product name
+   type,
+   Production equipment
+   quantity
+   term.
+   e-mail.
+   Telephone.
+ 
+ProductTable
+    product id.
+    date.
+    proeess id.
+    bom id.
+    quantity.
+    product  type
+    start time.
+    Finish time.
+    
+FailRejectTable
+    id.
+    product name
+    type,
+    quantity.
+    reject id.
+    date.
+    machine proeess id.
+    bom id.
+    
+
+RawMaterials
+    id. 
+    part no. 
+    grade.
+    size.
+    select. (,RawMaterials)
+    quantity.

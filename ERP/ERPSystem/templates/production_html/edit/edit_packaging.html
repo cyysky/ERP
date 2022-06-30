@@ -1,0 +1,89 @@
+<!DOCTYPE html><style>
+    p, div, h3, h4, a, h1 {
+        text-align: center;
+    }
+</style>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    {% load static %}
+    <!-- <link rel="stylesheet" href="{% static 'css/style.css' %}"/>  !-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+</head>
+<body>
+<div class="header">
+    <form method="POST" class="post-form" action="/production/update_packaging/{{packaging.id}}">
+        {% csrf_token %}
+        <div class="container">
+            <h3>Customer Update Details</h3>
+            <div class="form-group row">
+                <label class="col-md-1 col-form-label"></label>
+                <div class="col-md-4">
+                </div>
+            </div>
+            <br>
+            <div class="input-group mb-3">
+                <span class="input-group-text">Packaging ID </span>
+                <input type="text" class="form-control" placeholder="part_number" aria-label="Username" name="packaging_id" id="id_packaging_id" required maxlength="254" value="{{ packaging.packaging_id }}">
+                <span class="input-group-text">Packaging Name</span>
+                <input type="text" class="form-control" placeholder="packaging_unit" aria-label="Username" name="packaging_name" id="id_packaging_name" required maxlength="20" value="{{ packaging.packaging_name }}">
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text">packaging_unit</span>
+                <input type="text" class="form-control" placeholder="packaging_type" aria-label="Username" name="packaging_unit" id="id_packaging_unit" required maxlength="20" value="{{ packaging.packaging_unit }}">
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Buy Group</span>
+                <input type="text" class="form-control" placeholder="buy_group" aria-label="Username" name="packaging_type" id="id_packaging_type" required maxlength="254" value="{{ packaging.packaging_type }}">
+            </div>
+            <br>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Material Used</span>
+                <input type="text" class="form-control" placeholder="material_used" aria-label="Username" name="material_used" id="id_material_used" required maxlength="254" value="{{ packaging.material_used }}">
+            </div>
+            <br>
+            <div class="input-group mb-3">
+                <span class="input-group-text">Size</span>
+                <input type="text" class="form-control" placeholder="size" aria-label="Username" name="size" id="id_size" required maxlength="20" value="{{ packaging.size }}">
+                <span class="input-group-text">Heigh</span>
+                <input type="text" class="form-control" placeholder="heigh" aria-label="Server" name="heigh" id="id_heigh" required maxlength="100" value="{{ packaging.heigh }}">
+                <span class="input-group-text">Width</span>
+                <input type="text" class="form-control" placeholder="width" aria-label="Server" name="width" id="id_width" required maxlength="100" value="{{ packaging.width }}">
+                <span class="input-group-text">Length</span>
+                <input type="text" class="form-control" placeholder="length" aria-label="Server" name="length" id="id_length" required maxlength="100" value="{{ packaging.length }}">
+            </div>
+            <br>
+            <div class="input-group mb-3">
+                <span class="input-group-text">Color</span>
+                <input type="text" class="form-control" placeholder="customer_id" aria-label="Username" name="color" id="id_color" required maxlength="20" value="{{ packaging.color }}">
+                <span class="input-group-text">Model</span>
+                <input type="text" class="form-control" placeholder="customer_name" aria-label="Server" name="model" id="id_model" required maxlength="100" value="{{ packaging.model }}">
+            </div>
+            <br>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Packaging Location </span>
+                <input type="text" class="form-control" placeholder="level" aria-label="packaging_location" name="packaging_location" id="id_product_company" required maxlength="254" value="{{ packaging.packaging_location }}">
+                <span class="input-group-text" id="basic-addon1">Quantity </span>
+                <input type="text" class="form-control" placeholder="level" aria-label="quantity" name="quantity" id="id_quantity" required maxlength="254" value="{{ packaging.quantity }}">
+            </div>
+            <br>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Product Company</span>
+                <input type="text" class="form-control" placeholder="level" aria-label="product_company" name="product_company" id="id_product_company" required maxlength="254" value="{{ packaging.product_company }}">
+            </div>
+            <br>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Defaul Stock Location</span>
+                <input type="text" class="form-control" placeholder="level" aria-label="defaul_stock_location" name="defaul_stock_location" id="id_defaul_stock_location" required maxlength="254" value="{{ packaging.defaul_stock_location }}">
+            </div>
+            <br>
+            <button type="submit" class="btn btn-primary">Update</button>
+            <button href="customer" class="btn btn-success">return</button>
+
+
+        </div>
+    </form>
+</div>
+</body>
+</html>  

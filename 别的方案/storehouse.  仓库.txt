@@ -1,0 +1,7 @@
+storehouse.
+    Material.
+    part no. 
+    grade.
+    size.
+    select.   (product , RawMaterials  )
+    quantity.

@@ -85,6 +85,7 @@ AUTHENTICATION_BACKENDS = (
       'django.contrib.auth.backends.ModelBackend',
       # allauth 身份验证
       'allauth.account.auth_backends.AuthenticationBackend',
+
 )
 #app django.contrib.sites需要的设置
 SITE_ID = 1

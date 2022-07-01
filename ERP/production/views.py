@@ -60,7 +60,7 @@ def edit_process(request, process_id):
 
 def update_process(request, process_id):  
     process = Process.objects.get(process_id=process_id)
-    form = Process_01Form(request.POST, instance = process)  
+    form = ProcessForm(request.POST, instance = process)  
     if form.is_valid():  
         form.save()
         return redirect("/production/process")  
@@ -155,7 +155,7 @@ def edit_product(request, product_id):
 
 def update_product(request, product_id):  
     product = Product.objects.get(product_id=product_id)
-    form = Product_01Form(request.POST, instance = product)  
+    form = ProductForm(request.POST, instance = product)  
     if form.is_valid():  
         form.save()
         return redirect("/production/product")  
@@ -298,7 +298,7 @@ def edit_product_good(request, goodbatch_id):
 
 def update_product_good(request, goodbatch_id):  
     product_good = Product_Good.objects.get(goodbatch_id=goodbatch_id)
-    form = Product_Good_01Form(request.POST, instance = product_good)  
+    form = Product_GoodForm(request.POST, instance = product_good)  
     if form.is_valid():  
         form.save()
         return redirect("/production/product_good")  
@@ -339,20 +339,20 @@ def product_reject(request):
         context = {'product_rejects': product_rejects,'data' : data}                          
         return render(request,'production_html/list/product_reject.html', context)                      
 
-def edit_product_reject(request, product_reject_id):  
-    product_reject = Product_Reject.objects.get(product_reject_id=product_reject_id)
+def edit_product_reject(request, rejectbatch_id):  
+    product_reject = Product_Reject.objects.get(rejectbatch_id=rejectbatch_id)
     return render(request,'production_html/edit/edit_product_reject.html', {'product_reject':product_reject,})  
 
-def update_product_reject(request, product_reject_id):  
-    product_reject = Product_Reject.objects.get(product_reject_id=product_reject_id)
-    form = Product_Reject_01Form(request.POST, instance = product_reject)  
+def update_product_reject(request,rejectbatch_id):  
+    product_reject = Product_Reject.objects.get(rejectbatch_id=rejectbatch_id)
+    form = Product_RejectForm(request.POST, instance = product_reject)  
     if form.is_valid():  
         form.save()
         return redirect("/production/product_reject")  
     return render(request,'production_html/edit/edit_product_reject.html', {'product_reject': product_reject})  
 
-def destroy_product_reject(request, product_reject_id):  
-    product_reject = Product_Reject.objects.get(product_reject_id=product_reject_id)
+def destroy_product_reject(request, rejectbatch_id):  
+    product_reject = Product_Reject.objects.get(rejectbatch_id=rejectbatch_id)
     product_reject.delete()
     return redirect("/production/product_reject")  
 

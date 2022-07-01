@@ -53,6 +53,7 @@
                 <span class="input-group-text">type</span>
                 <textarea class="form-control" aria-label="With textarea" type="text" name="type" id="id_type" required maxlength="100" value="{{ form.type }}</textarea>
             </div>
+            <br>
             <div class="input-group mb-3">
                 <span class="input-group-text">Quantity</span>
                 {{ form.quantity |attr:"class:form-control"|attr:"cols:20" }}
@@ -69,5 +70,4 @@
         </div>
     </form>
 </div>
-
 {% endif %} 

@@ -4,7 +4,7 @@ from order.forms import BOMForm,PackagingForm
 from order.forms import DeliveryForm
 
 from order.forms import CustomerForm,SupplierForm,SalesForm,ProjectForm
-from order.forms import MachineForm,MaterialForm,Material_LocationForm,Material_SupplierForm
+from order.forms import MachineForm,MaterialForm,Material_StockForm,Material_SupplierForm
 from order.forms import ProcessForm,ProductForm,Product_GoodForm,Product_MaterialForm,Product_RejectForm
 #----------------------------------------------------------------------------------------------
 from order.forms import Supplier_01Form,Sales_01Form
@@ -288,9 +288,9 @@ def destroy_material(request, material_id):
 
 
 
-def emp_material_location(request):  
+def emp_material_stock(request):  
     if request.method == "POST":   
-        form = Material_LocationForm(request.POST)        
+        form = Material_StockForm(request.POST)        
       
         if form.is_valid():  
             try: 
@@ -300,22 +300,22 @@ def emp_material_location(request):
             except:  
                 traceback.print_exc()
     else:  
-        form = Material_LocationForm()  
+        form = Material_StockForm()  
     return render(request,'index/index_material_location.html',{'form':form})  
    
 
-def material_location(request):    
-        material_locations = Material_Location.objects.all()
+def material_stock(request):    
+        material_stocks = Material_Location.objects.all()
         data = Image.objects.all()  
-        paginator = Paginator(material_locations,1)
+        paginator = Paginator(material_stocks,1)
         page = request.GET.get('page1')
         try:
-            material_locations = paginator.page(page)               
+            material_stocks = paginator.page(page)               
         except PageNotAnInteger:
-            material_locations = paginator.page(1)
+            material_stocks = paginator.page(1)
         except EmptyPage:
-            material_locations = paginator.page(paginator.num_pages)
-        context = {'material_locations': material_locations,'data' : data}                          
+            material_stocks = paginator.page(paginator.num_pages)
+        context = {'material_stocks': material_stocks,'data' : data}                          
         return render(request,'list/material_location.html', context)                      
 
 def edit_material_location(request, material_location_id):  

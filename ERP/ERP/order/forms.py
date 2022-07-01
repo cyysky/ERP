@@ -53,7 +53,7 @@ class MaterialForm(forms.ModelForm):
         model = Material  
         fields = '__all__'      
 
-class Material_LocationForm(forms.ModelForm):  
+class Material_StockForm(forms.ModelForm):  
     class Meta:  
         model = Material_Location  
         fields = '__all__'      

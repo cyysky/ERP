@@ -201,7 +201,7 @@
             </tr>
         </thead>
         <tbody>
-            {% for material_location in material_locations %}
+            {% for material_location in material_stocks %}
             <tr>
                 <td>{{ material_location.material_location_id }}</td>
                 <td>{{ material_location.shelf_id }}</td>
@@ -221,23 +221,23 @@
     <center>
         <a href="emp_material_location" class="btn btn-success">Add New Record</a>
     </center>
-    {% if material_locations %}
+    {% if material_stocks %}
     <nav aria-label="Page navigation example">
-        {% for material_location in material_locations %}
+        {% for material_location in material_stocks %}
         {% endfor %}
         <span class="current">
-            Page {{ material_locations.number }} of {{ material_locations.paginator.num_pages }}
+            Page {{ material_stocks.number }} of {{ material_stocks.paginator.num_pages }}
         </span>
         <ul class="pagination">
-            {% if material_locations.has_previous %}
-            <li class="page-item"><a class="page-link" href="?page1={{ material_locations.previous_page_number }}"> previous </a></li>
+            {% if material_stocks.has_previous %}
+            <li class="page-item"><a class="page-link" href="?page1={{ material_stocks.previous_page_number }}"> previous </a></li>
             {% endif %}
             <li class="page-item"><a class="page-link" href="?page1=1">1</a></li>
             <li class="page-item"><a class="page-link" href="?page1=2">2</a></li>
             <li class="page-item"><a class="page-link" href="?page1=3">3</a></li>
             <li class="page-item"><a class="page-link" href="?page1=4">4</a></li>
-            {% if material_locations.has_next %}
-            <li class="page-item"><a class="page-link" href="?page1={{ material_locations.next_page_number }}"> next </a></li>
+            {% if material_stocks.has_next %}
+            <li class="page-item"><a class="page-link" href="?page1={{ material_stocks.next_page_number }}"> next </a></li>
             {% endif %}
         </ul>
     </nav>

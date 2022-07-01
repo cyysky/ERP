@@ -11,10 +11,10 @@ urlpatterns = [
     path('update_material/<int:material_id>', views.update_material),    
     path('delete_material/<int:material_id>', views.destroy_material),
 #----------------------------------------------------Material_Location    
-    path('material_location',views.material_location),
-    path('edit_material_location/<int:material_location_id>', views.edit_material_location),
-    path('emp_material_location', views.emp_material_location),
-    path('update_material_location/<int:material_location_id>', views.update_material_location),    
-    path('delete_material_location/<int:material_location_id>', views.destroy_material_location),
+    path('material_stock',views.material_stock),
+    path('edit_material_stock/<int:material_stock_id>', views.edit_material_stock),
+    path('emp_material_stock', views.emp_material_stock),
+    path('update_material_stock/<int:material_stock_id>', views.update_material_stock),    
+    path('delete_material_stock/<int:material_stock_id>', views.destroy_material_stock),
 
 ] 

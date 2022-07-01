@@ -16,10 +16,10 @@ urlpatterns = [
     path('delete_customer/<int:customer_id>', views.destroy_customer),
 #--------------------------------------------------------------------------project
     path('project',views.project),
-    path('edit_project/<int:id>', views.edit_project),
+    path('edit_project/<int:project_id>', views.edit_project),
     path('emp_project', views.emp_project),
-    path('update_project/<int:id>', views.update_project),
-    path('delete_project/<int:id>', views.destroy_project),
+    path('update_project/<int:project_id>', views.update_project),
+    path('delete_project/<int:project_id>', views.destroy_project),
 #----------------------------------------------------------------------------bom
     path('bom',views.bom),
     path('edit_bom/<int:id>', views.edit_bom),

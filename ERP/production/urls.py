@@ -23,16 +23,16 @@ urlpatterns = [
     path('delete_product/<int:product_id>', views.destroy_product),
 #----------------------------------------------------product_good    
     path('product_good',views.product_good),
-    path('edit_product_good/<int:product_good_id>', views.edit_product_good),
+    path('edit_product_good/<int:goodbatch_id>', views.edit_product_good),
     path('emp_product_good', views.emp_product_good),
-    path('update_product_good/<int:product_good_id>', views.update_product_good),
-    path('delete_product_good/<int:product_good_id>', views.destroy_product_good),
+    path('update_product_good/<int:goodbatch_id>', views.update_product_good),
+    path('delete_product_good/<int:goodbatch_id>', views.destroy_product_good),
 #----------------------------------------------------product_reject    
     path('product_reject',views.product_reject),
-    path('edit_product_reject/<int:id>', views.edit_product_reject),
+    path('edit_product_reject/<int:rejectbatch_id>', views.edit_product_reject),
     path('emp_product_reject', views.emp_product_reject),
-    path('update_product_reject/<int:id>', views.update_product_reject),
-    path('delete_product_reject/<int:id>', views.destroy_product_reject),   
+    path('update_product_reject/<int:rejectbatch_id>', views.update_product_reject),
+    path('delete_product_reject/<int:rejectbatch_id>', views.destroy_product_reject),   
 #----------------------------------------------------product_material    
     path('product_material',views.product_material),
     path('edit_product_material/<int:product_material_id>', views.edit_product_material),

@@ -21,17 +21,20 @@ from ERPSystem import views
 
 
 from django.contrib import admin
-from django.urls import re_path
+#from django.urls import re_path
 
 from django.conf import settings
 
 from django.conf.urls.static import static
 
+
+from django.conf.urls import include
+
 #from django.views.static import serve  #图片显示
 
 
 urlpatterns = [
-     
+ 
     path("accounts/", include("accounts.urls")),  
     path("accounts/", include("django.contrib.auth.urls")),
        
@@ -52,6 +55,9 @@ urlpatterns = [
 
     path('main_page', views.main_page),
     path('REP_mind_map', views.REP_mind_map),
+
+
+
     
 ]  
 

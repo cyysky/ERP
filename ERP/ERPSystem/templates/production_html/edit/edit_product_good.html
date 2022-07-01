@@ -14,7 +14,7 @@
 </head>
 <body>
     <div class="header">
-        <form method="POST" class="post-form" action="/production/update_product_good/{{product_good.product_good_id}}">
+        <form method="POST" class="post-form" action="/production/update_product_good/{{product_good.goodbatch_id}}">
             {% csrf_token %}
             <div class="container">
                 <h3>Product_Good Update Details</h3>

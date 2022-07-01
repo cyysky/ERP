@@ -199,13 +199,13 @@
             </tr>
         </thead>
         <tbody>
-            {% for material_location in material_locations %}
+            {% for material_supplier in material_suppliers %}
             <tr>
                 <td>{{ material_supplier.part_no }}</td>
                 <td>{{ material_supplier.supplier_id }}</td>
                 <td>
-                    <a href="edit_material/{{ material_supplier.id }}"><span class="btn btn-success">Edit</span></a>
-                    <a href="delete_material/{{ material_supplier.id }}" class="btn btn-danger">Delete</a>
+                    <a href="edit_material_supplier/{{ material_supplier.id }}"><span class="btn btn-success">Edit</span></a>
+                    <a href="delete_material_supplier/{{ material_supplier.id }}" class="btn btn-danger">Delete</a>
                 </td>
             </tr>
             {% endfor %}
@@ -217,7 +217,7 @@
     <center>
         <a href="emp_material" class="btn btn-success">Add New Record</a>
     </center>
-    {% if materials %}
+    {% if material_suppliers %}
     <nav aria-label="Page navigation example">
         {% for material in materials %}
         {% endfor %}
@@ -225,14 +225,14 @@
             Page {{ material_supplier.number }} of {{ material_supplier.paginator.num_pages }}
         </span>
         <ul class="pagination">
-            {% if materials.has_previous %}
+            {% if material_suppliers.has_previous %}
             <li class="page-item"><a class="page-link" href="?page1={{ material_supplier.previous_page_number }}"> previous </a></li>
             {% endif %}
             <li class="page-item"><a class="page-link" href="?page1=1">1</a></li>
             <li class="page-item"><a class="page-link" href="?page1=2">2</a></li>
             <li class="page-item"><a class="page-link" href="?page1=3">3</a></li>
             <li class="page-item"><a class="page-link" href="?page1=4">4</a></li>
-            {% if materials.has_next %}
+            {% if material_suppliers.has_next %}
             <li class="page-item"><a class="page-link" href="?page1={{ material_supplier.next_page_number }}"> next </a></li>
             {% endif %}
         </ul>

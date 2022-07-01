@@ -61,7 +61,7 @@ def edit_sales(request,sales_id):
 
 def update_sales(request, sales_id):  
     sales = Sales.objects.get(sales_id=sales_id)
-    form = Sales_01Form(request.POST, instance = sales)  
+    form = SalesForm(request.POST, instance = sales)  
     if form.is_valid():  
         form.save()
         return redirect("/marketing/sales")  
@@ -201,11 +201,11 @@ def project(request):
 
 def edit_project(request, project_id):  
     project = Project.objects.get(project_id=project_id)
-    return render(request,'marketing_html/edit/edit_project.html', {'product_reject':product_reject,})  
+    return render(request,'marketing_html/edit/edit_project.html', {'project':project,})  
 
 def update_project(request, project_id):  
     project = Project.objects.get(project_id=project_id)
-    form = ProjectForm(request.POST, instance = product_reject)  
+    form = ProjectForm(request.POST, instance = project)  
     if form.is_valid():  
         form.save()
         return redirect("/marketing/project")  

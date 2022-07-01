@@ -107,7 +107,7 @@ def main_page(request):
     machines = Machine.objects.all()
 
     materials = Material.objects.all()
-    material_locations = Material_Location.objects.all()
+    material_stock = Material_Stock.objects.all()
     material_suppliers = Material_Supplier.objects.all()
 
     products = Product.objects.all()
@@ -117,7 +117,7 @@ def main_page(request):
     product_rejects = Product_Reject.objects.all()
 
     context = {'saless': saless,'customers': customers,'suppliers':suppliers,'machines':machines,
-               'materials':materials,'material_locations':material_locations,'material_suppliers':material_suppliers,
+               'materials':materials,'material_stocks':material_stocks,'material_suppliers':material_suppliers,
                 'processs':processs,'products':products,'product_materials':product_materials,'product_goods':product_goods,
                     'product_rejects':product_rejects}
     return render(request,'main_page.html', context)
@@ -130,7 +130,7 @@ def REP_mind_map(request):
     machines = Machine.objects.all()
 
     materials = Material.objects.all()
-    material_locations = Material_Location.objects.all()
+    material_stock = Material_Stock.objects.all()
     material_suppliers = Material_Supplier.objects.all()
 
     products = Product.objects.all()
@@ -140,7 +140,7 @@ def REP_mind_map(request):
     product_rejects = Product_Reject.objects.all()
 
     context = {'saless': saless,'customers': customers,'suppliers':suppliers,'machines':machines,
-               'materials':materials,'material_locations':material_locations,'material_suppliers':material_suppliers,
+               'materials':materials,'material_stocks':material_stocks,'material_suppliers':material_suppliers,
                 'processs':processs,'products':products,'product_materials':product_materials,'product_goods':product_goods,
                     'product_rejects':product_rejects}
     return render(request,'REP_mind_map.html', context)

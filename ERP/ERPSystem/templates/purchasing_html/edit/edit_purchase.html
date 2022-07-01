@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<style>
+    p, div, h3, h4, a, h1 {
+        text-align: center;
+    }
+</style>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    {% load static %}
+    <!-- <link rel="stylesheet" href="{% static 'css/style.css' %}"/>  !-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+</head>
+
+<body>
+<div class="header">
+    <form method="POST" class="post-form" action="/purchasing/update_purchase/{{purchase.id}}">
+        {% csrf_token %}
+        <div class="container">
+            <h3>Purchase Update Details</h3>
+            <div class="form-group row">
+                <label class="col-md-1 col-form-label"></label>
+                <div class="col-md-4">
+                </div>
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text">Supplier ID</span>
+                <input type="text" class="form-control" placeholder="Id" aria-label="Username" name="supplier_id" id="id_supplier_id" required maxlength="20" value="{{ purchase.purchase_id }}">
+                <span class="input-group-text">Supplier Name</span>
+                <input type="text" class="form-control" placeholder="Name" aria-label="Server" name="supplier_name" id="id_supplier_name" required maxlength="100" value="{{ purchase.purchase_date }}">
+                <span class="input-group-text">Supplier Name</span>
+                <input type="text" class="form-control" placeholder="Name" aria-label="Server" name="supplier_name" id="id_supplier_name" required maxlength="100" value="{{ purchase.delivery_date }}">
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Email</span>
+                <input type="text" class="form-control" placeholder="email" aria-label="Username" name="email" id="id_email" required maxlength="254" value="{{ purchase.material_id }}">
+                <span class="input-group-text" id="basic-addon1">Email</span>
+                <input type="text" class="form-control" placeholder="email" aria-label="Username" name="email" id="id_email" required maxlength="254" value="{{ purchase.material_name }}">
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Email</span>
+                <input type="text" class="form-control" placeholder="email" aria-label="Username" name="email" id="id_email" required maxlength="254" value="{{ purchase.supplier_id }}">
+                <span class="input-group-text" id="basic-addon1">Email</span>
+                <input type="text" class="form-control" placeholder="email" aria-label="Username" name="email" id="id_email" required maxlength="254" value="{{ purchase.supplier_name }}">
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Email</span>
+                <input type="text" class="form-control" placeholder="email" aria-label="Username" name="email" id="id_email" required maxlength="254" value="{{ purchase.grade }}">
+            </div>
+            <div class="input-group">
+                <span class="input-group-text">Address</span>
+                <textarea class="form-control" aria-label="With textarea" type="text" name="address" id="id_address" required maxlength="100" value="{{ purchase.SIZEusage }}">{{ purchase.SIZEusage }}</textarea>
+            </div>
+            <br>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Email</span>
+                <input type="text" class="form-control" placeholder="email" aria-label="Username" name="email" id="id_email" required maxlength="254" value="{{ purchase.quantity }}">
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Email</span>
+                <input type="text" class="form-control" placeholder="email" aria-label="Username" name="email" id="id_email" required maxlength="254" value="{{ purchase.unit_price }}">
+                <span class="input-group-text" id="basic-addon1">Email</span>
+                <input type="text" class="form-control" placeholder="email" aria-label="Username" name="email" id="id_email" required maxlength="254" value="{{ purchase.discount }}">
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Email</span>
+                <input type="text" class="form-control" placeholder="email" aria-label="Username" name="email" id="id_email" required maxlength="254" value="{{ purchase.total_myr }}">
+                <span class="input-group-text" id="basic-addon1">Email</span>
+                <input type="text" class="form-control" placeholder="email" aria-label="Username" name="email" id="id_email" required maxlength="254" value="{{ purchase.request_id }}">
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Email</span>
+                <input type="text" class="form-control" placeholder="email" aria-label="Username" name="email" id="id_email" required maxlength="254" value="{{ purchase.remarks }}">
+            </div>
+            <button type="submit" class="btn btn-primary">Update</button>
+            <button href="purchase" class="btn btn-success">return</button>
+
+        </div>
+
+    </form>
+</div>
+</body>
+</html>  

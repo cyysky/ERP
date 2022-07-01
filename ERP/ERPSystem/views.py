@@ -10,7 +10,7 @@ from ERPSystem.models import History
 
 from ERPSystem.models import BOM,Delivery,Packaging
 from ERPSystem.models import Customer,Supplier,Sales,Project
-from ERPSystem.models import Machine,Material,Material_Location,Material_Supplier
+from ERPSystem.models import Machine,Material,Material_Stock,Material_Supplier
 from ERPSystem.models import Process,Product,Product_Good,Product_Material,Product_Reject
 #--------------------------------------------------------------------------------------------------------
 from django.http import FileResponse
@@ -105,7 +105,7 @@ def main_page(request):
     machines = Machine.objects.all()
 
     materials = Material.objects.all()
-    material_locations = Material_Location.objects.all()
+    material_stocks = Material_Stock.objects.all()
     material_suppliers = Material_Supplier.objects.all()
 
     products = Product.objects.all()
@@ -115,7 +115,7 @@ def main_page(request):
     product_rejects = Product_Reject.objects.all()
 
     context = {'saless': saless,'customers': customers,'suppliers':suppliers,'machines':machines,
-               'materials':materials,'material_locations':material_locations,'material_suppliers':material_suppliers,
+               'materials':materials,'material_stocks':material_stocks,'material_suppliers':material_suppliers,
                 'processs':processs,'products':products,'product_materials':product_materials,'product_goods':product_goods,
                     'product_rejects':product_rejects}
     return render(request,'main_page.html', context)
@@ -128,7 +128,7 @@ def REP_mind_map(request):
     machines = Machine.objects.all()
 
     materials = Material.objects.all()
-    material_locations = Material_Location.objects.all()
+    material_stocks = Material_Stock.objects.all()
     material_suppliers = Material_Supplier.objects.all()
 
     products = Product.objects.all()
@@ -138,7 +138,7 @@ def REP_mind_map(request):
     product_rejects = Product_Reject.objects.all()
 
     context = {'saless': saless,'customers': customers,'suppliers':suppliers,'machines':machines,
-               'materials':materials,'material_locations':material_locations,'material_suppliers':material_suppliers,
+               'materials':materials,'material_stocks':material_stocks,'material_suppliers':material_suppliers,
                 'processs':processs,'products':products,'product_materials':product_materials,'product_goods':product_goods,
                     'product_rejects':product_rejects}
     return render(request,'REP_mind_map.html', context)

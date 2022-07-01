@@ -24,7 +24,7 @@
 {% load widget_tweaks %}
 <body>
 <div class="header">
-    <form method="POST" class="post-form" action="emp_material_location">
+    <form method="POST" class="post-form" action="emp_material_stock">
         {% csrf_token %}
         <div class="container">
             <h3>Material_Location Enter Details</h3>
@@ -34,7 +34,18 @@
                 </div>
             </div>
             <div class="input-group mb-3">
-                <span class="input-group-text">Material_location ID</span>
+                <span class="input-group-text">Material Stock ID</span>
+                {{ form.material_stock_id |attr:"class:form-control"|attr:"cols:20" }}
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text">Material ID</span>
+                {{ form.material_id |attr:"class:form-control"|attr:"cols:20" }}
+                <span class="input-group-text">Material Name</span>
+                {{ form.material_name |attr:"class:form-control"|attr:"cols:20" }}
+            </div>
+            <br>
+            <div class="input-group mb-3">
+                <span class="input-group-text">Material Location ID</span>
                 {{ form.material_location_id |attr:"class:form-control"|attr:"cols:20" }}
             </div>
             <br>
@@ -44,16 +55,11 @@
             </div>
             <br>
             <div class="input-group mb-3">
-                <span class="input-group-text">Material ID</span>
-                {{ form.material_id |attr:"class:form-control"|attr:"cols:20" }}
-            </div>
-            <br>
-            <div class="input-group mb-3">
                 <span class="input-group-text">Quantity </span>
                 {{ form.quantity |attr:"class:form-control"|attr:"cols:20" }}
             </div>
             <br>
-            <center><button type="submit" class="btn btn-primary">Submit</a></center>
+            <center><button type="submit" class="btn btn-primary">Submit</button></center>
         </div>
    </form>
 </div>

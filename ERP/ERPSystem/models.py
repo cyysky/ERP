@@ -2,7 +2,6 @@
 
 from django.db import models
 from django.utils import timezone
-import uuid
 #--------------------------------------------------------------------
 class Sales(models.Model):#销售
     sales_id = models.IntegerField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')   
@@ -13,7 +12,6 @@ class Sales(models.Model):#销售
     start_time = models.CharField(max_length=100)
     finish_time = models.CharField(max_length=100)
     customer_po_id = models.CharField(max_length=100)
-    #product_id = models.CharField(max_length=100)
     product_id = models.ForeignKey(to="Product",on_delete=models.CASCADE)
     description = models.CharField(max_length=100)
     quantity = models.CharField(max_length=100)
@@ -53,7 +51,7 @@ class Machine(models.Model):#机器
 #---------------------------------------------------------------------材料      
 class Material(models.Model):#材料
     material_id = models.IntegerField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')   
-    material_supplier = models.CharField(max_length=100)
+    material_supplier = models.ForeignKey(to="Material_Supplier",on_delete=models.CASCADE)
     measure_unit = models.CharField(max_length=100)
     tybe = models.CharField(max_length=100)
     Form = models.CharField(max_length=100)
@@ -68,13 +66,15 @@ class Material(models.Model):#材料
     class Meta:  
         db_table = "material" 
       
-class Material_Location(models.Model):#材料位置
-    material_location_id = models.IntegerField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')   
+class Material_Stock(models.Model):#材料库存
+    material_stock_id= models.IntegerField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')   
+    material_id = models.ForeignKey('Material', on_delete=models.SET_NULL, null=True)
+    material_name = models.CharField(max_length=100)
+    material_location_id = models.CharField(max_length=100)
     shelf_id = models.CharField(max_length=100)
-    material_id = models.ForeignKey('Material', on_delete=models.SET_NULL, null=True) 
-    quantity =  models.IntegerField(100)
+    quantity = models.IntegerField(100)
     class Meta:  
-        db_table = "material_location"
+        db_table = "material_stock"
         
 class Material_Supplier(models.Model):#材料供应商
     part_no = models.CharField(max_length=100)
@@ -169,18 +169,7 @@ class BOM(models.Model):
     remarks = models.CharField(max_length=100) 
     class Meta:  
         db_table = "bom" 
-#----------------------------------------------------------------------------------------------
-class Delivery(models.Model):
-    sales_id = models.CharField(max_length=100 )
-    sales_name = models.CharField(max_length=100 )
-    custiomer_id = models.CharField(max_length=100 )
-    product_id = models.CharField(max_length=100 )
-    product_name = models.CharField(max_length=100 )
-    quantity = models.CharField(max_length=100 )
-    unitprice = models.CharField(max_length=100 )
-    term = models.CharField(max_length=100 )
-    class Meta:
-         db_table = "delivery"
+
 #------------------------------------------------------------------------         
 class Packaging(models.Model):
     packaging_id= models.CharField(max_length=100)
@@ -199,6 +188,38 @@ class Packaging(models.Model):
     defaul_stock_location = models.CharField(max_length=100 )
     class Meta:
             db_table= "packaging"
+#----------------------------------------------------------------------------------------------
+class Delivery(models.Model):
+    sales_id = models.CharField(max_length=100 )
+    sales_name = models.CharField(max_length=100 )
+    custiomer_id = models.CharField(max_length=100 )
+    product_id = models.CharField(max_length=100 )
+    product_name = models.CharField(max_length=100 )
+    quantity = models.CharField(max_length=100 )
+    unitprice = models.CharField(max_length=100 )
+    term = models.CharField(max_length=100 )
+    class Meta:
+         db_table = "delivery"
+#----------------------------------------------------------------------------
+class Purchase(models.Model):
+    purchase_id = models.CharField(max_length=100 )
+    purchase_date = models.CharField(max_length=100 )
+    delivery_date = models.CharField(max_length=100 )
+    material_id = models.CharField(max_length=100 )
+    material_name = models.CharField(max_length=100 )
+    supplier_id = models.CharField(max_length=100 )
+    supplier_name = models.CharField(max_length=100 )
+    grade = models.CharField(max_length=100 )
+    SIZEusage = models.TextField(max_length=100 )
+    quantity = models.CharField(max_length=100 )
+    unit_price = models.CharField(max_length=100 )
+    discount = models.CharField(max_length=100 )
+    total_myr = models.CharField(max_length=100 )
+    request_id = models.CharField(max_length=100 )
+    remarks = models.CharField(max_length=100 )
+    class Meta:
+            db_table= "purchase"
+
 #--------------------------------------------------------------------------------------
 
 class History(models.Model):

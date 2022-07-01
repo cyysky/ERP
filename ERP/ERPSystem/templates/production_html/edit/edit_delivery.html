@@ -25,13 +25,13 @@
             <br>
             <div class="input-group mb-3">
                 <span class="input-group-text">sales_id</span>
-                <input type="text" class="form-control" placeholder="customer_id" aria-label="Username" type="text" name="customer_id" id="id_customer_id" required maxlength="20" class="form-control" value="{{ delivery.sales_id }}">
+                <input type="text" class="form-control" placeholder="sales_id" aria-label="Username" type="text" name="sales_id" id="id_sales_id" required maxlength="20" class="form-control" value="{{ delivery.sales_id }}">
                 <span class="input-group-text">sales_name</span>
-                <input type="text" class="form-control" placeholder="customer_name" aria-label="Server" type="text" name="customer_name" id="id_customer_name" required maxlength="100" class="form-control" value="{{ delivery.sales_name }}">
+                <input type="text" class="form-control" placeholder="sales_name" aria-label="Server" type="text" name="sales_name" id="id_sales_name" required maxlength="100" class="form-control" value="{{ delivery.sales_name }}">
             </div>
             <div class="input-group mb-3">
                 <span class="input-group-text" id="basic-addon1">custiomer_id</span>
-                <input type="text" class="form-control" placeholder="bom_id" aria-label="Username" type="text" name="bom_id" id="id_bom_id" required maxlength="254" class="form-control" value="{{ delivery.custiomer_id }}">
+                <input type="text" class="form-control" placeholder="custiomer_id" aria-label="Username" type="text" name="custiomer_id" id="id_custiomer_id" required maxlength="254" class="form-control" value="{{ delivery.custiomer_id }}">
             </div>
             <div class="input-group mb-3">
                 <span class="input-group-text">product_id</span>
@@ -51,7 +51,7 @@
             <br>
             <div class="input-group">
                 <span class="input-group-text">term</span>
-                <textarea class="form-control" aria-label="With textarea" type="text" name="term" id="id_term" required maxlength="100" class="form-control" value="{{ delivery.termo }}">{{ delivery.term }}</textarea>
+                <textarea class="form-control" aria-label="With textarea" type="text" name="term" id="id_term" required maxlength="100" class="form-control" value="{{ delivery.term }}">{{ delivery.term }}</textarea>
             </div>
             <br>
             <button type="submit" class="btn btn-primary">Update</button>

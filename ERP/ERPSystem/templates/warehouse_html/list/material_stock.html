@@ -42,7 +42,7 @@
                         <ul class="dropdown-menu">
                             <li>
                             <li><a class="dropdown-item" href="/warehouse/material">Material</a></li>
-                            <li><a class="dropdown-item" href="/warehouse/material_location">Material_Location</a></li>
+                            <li><a class="dropdown-item" href="/warehouse/material_stock">Material Stock</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
@@ -110,7 +110,7 @@
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
                                 <li><a class="dropdown-item" href="/warehouse/material">Material</a></li>
-                                <li><a class="dropdown-item" href="/warehouse/material_location">Material_Location</a></li>
+                                <li><a class="dropdown-item" href="/warehouse/material_stock">Material Stock</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
@@ -171,7 +171,7 @@
     {% endblock %}
     {% if user.is_authenticated %}
     <!--startprint-->
-    <h1 class="p-3 mb-2 bg-warning text-white">Material_Location</h1>
+    <h1 class="p-3 mb-2 bg-warning text-white">Material Stock</h1>
     <table class="table table-striped table-bordered table-sm">
         <thead class="thead-dark">
             <tr>
@@ -183,15 +183,15 @@
             </tr>
         </thead>
         <tbody>
-            {% for material_location in material_locations %}
+            {% for material_stock in material_stocks %}
             <tr>
-                <td>{{ material_location.material_location_id }}</td>
-                <td>{{ material_location.shelf_id }}</td>
-                <td>{{ material_location.material_id }}</td>
-                <td>{{ material_location.quantity }}</td>
+                <td>{{ material_stock.material_location_id }}</td>
+                <td>{{ material_stock.shelf_id }}</td>
+                <td>{{ material_stock.material_id }}</td>
+                <td>{{ material_stock.quantity }}</td>
                 <td>
-                    <a href="edit_material_location/{{ material_location.material_location_id }}"><span class="btn btn-success">Edit</span></a>
-                    <a href="delete_material_location/{{ material_location.material_location_id }}" class="btn btn-danger">Delete</a>
+                    <a href="edit_material_stock/{{ material_stock.material_stock_id }}"><span class="btn btn-success">Edit</span></a>
+                    <a href="delete_material_stock/{{ material_stock.material_stock_id }}" class="btn btn-danger">Delete</a>
                 </td>
             </tr>
             {% endfor %}
@@ -201,25 +201,25 @@
     <br>
     <br>
     <center>
-        <a href="emp_material_location" class="btn btn-success">Add New Record</a>
+        <a href="emp_material_stock" class="btn btn-success">Add New Record</a>
     </center>
-    {% if material_locations %}
+    {% if material_stocks %}
     <nav aria-label="Page navigation example">
-        {% for material_location in material_locations %}
+        {% for material_stock in material_stocks %}
         {% endfor %}
         <span class="current">
-            Page {{ material_locations.number }} of {{ material_locations.paginator.num_pages }}
+            Page {{ material_stocks.number }} of {{ material_stocks.paginator.num_pages }}
         </span>
         <ul class="pagination">
-            {% if material_locations.has_previous %}
-            <li class="page-item"><a class="page-link" href="?page1={{ material_locations.previous_page_number }}"> previous </a></li>
+            {% if material_stocks.has_previous %}
+            <li class="page-item"><a class="page-link" href="?page1={{ material_stocks.previous_page_number }}"> previous </a></li>
             {% endif %}
             <li class="page-item"><a class="page-link" href="?page1=1">1</a></li>
             <li class="page-item"><a class="page-link" href="?page1=2">2</a></li>
             <li class="page-item"><a class="page-link" href="?page1=3">3</a></li>
             <li class="page-item"><a class="page-link" href="?page1=4">4</a></li>
-            {% if material_locations.has_next %}
-            <li class="page-item"><a class="page-link" href="?page1={{ material_locations.next_page_number }}"> next </a></li>
+            {% if material_stocks.has_next %}
+            <li class="page-item"><a class="page-link" href="?page1={{ material_stocks.next_page_number }}"> next </a></li>
             {% endif %}
         </ul>
     </nav>

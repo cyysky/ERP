@@ -291,7 +291,7 @@
         </tr>
     </thead>
     <tbody>
-        {% for material_location in material_locations %}
+        {% for material_location in material_stocks %}
         <tr>
             <td>{{ material_location.shelf_id }}</td>
             <td>{{ material_location.material_id }}</td>
@@ -341,7 +341,7 @@
         </tr>
     </thead>
     <tbody>
-        {% for material_location in material_locations %}
+        {% for material_supplier in material_suppliers %}
         <tr>
             <td>{{ material_supplier.part_no }}</td>
             <td>{{ material_supplier.supplier_id }}</td>

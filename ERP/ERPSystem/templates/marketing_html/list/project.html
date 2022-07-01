@@ -42,7 +42,7 @@
                         <ul class="dropdown-menu">
                             <li>
                             <li><a class="dropdown-item" href="/warehouse/material">Material</a></li>
-                            <li><a class="dropdown-item" href="/warehouse/material_location">Material_Location</a></li>
+                            <li><a class="dropdown-item" href="/warehouse/material_stock">Material Stock</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
@@ -110,7 +110,7 @@
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
                                 <li><a class="dropdown-item" href="/warehouse/material">Material</a></li>
-                                <li><a class="dropdown-item" href="/warehouse/material_location">Material_Location</a></li>
+                                <li><a class="dropdown-item" href="/warehouse/material_stock">Material Stock</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
@@ -182,8 +182,14 @@
                 <th>Customerpart ID </th>
                 <th>Product ID</th>
                 <th>Product Name</th>
+                <th>Quantity </th>
+                <th>Unitprice</th>
+                <th>Term</th>
+                <th>Start Time</th>
+                <th>Finish Time</th>
+                <th>Actions</th>
             </tr>
-        </thead>
+        </thead>       
         <tbody>
             {% for project in projects %}
             <tr>
@@ -194,29 +200,11 @@
                 <td>{{ project.customerpart_id }}</td>
                 <td>{{ project.product_id }}</td>
                 <td>{{ project.product_name }}</td>
-            </tr>
-        </tbody>
-        <thead class="thead-dark">
-            <tr>
-
-                <th>Quantity </th>
-                <th>Unitprice</th>
-                <th>Term</th>
-                <th>Start Time</th>
-                <th>Finish Time</th>
-                <th></th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-
                 <td>{{ project.quantity }}</td>
                 <td>{{ project.unitprice }}</td>
                 <td>{{ project.term }}</td>
                 <td>{{ project.start_time }}</td>
                 <td>{{ project.finish_time }}</td>
-                <td></td>
                 <td>
                     <a href="edit_project/{{ project.project_id }}"><span class="btn btn-success">Edit</span></a>
                     <a href="delete_project/{{ project.project_id }}" class="btn btn-danger">Delete</a>
@@ -239,14 +227,14 @@
             Page {{ project.number }} of {{ project.paginator.num_pages }}
         </span>
         <ul class="pagination">
-            {% if material_locations.has_previous %}
+            {% if projects.has_previous %}
             <li class="page-item"><a class="page-link" href="?page1={{ project.previous_page_number }}"> previous </a></li>
             {% endif %}
             <li class="page-item"><a class="page-link" href="?page1=1">1</a></li>
             <li class="page-item"><a class="page-link" href="?page1=2">2</a></li>
             <li class="page-item"><a class="page-link" href="?page1=3">3</a></li>
             <li class="page-item"><a class="page-link" href="?page1=4">4</a></li>
-            {% if material_locations.has_next %}
+            {% if projects.has_next %}
             <li class="page-item"><a class="page-link" href="?page1={{ project.next_page_number }}"> next </a></li>
             {% endif %}
         </ul>

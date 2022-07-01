@@ -14,10 +14,10 @@
 </head>
 <body>
     <div class="header">
-        <form method="POST" class="post-form" action="/production/update_product_reject/{{product_reject.product_reject_id}}">
+        <form method="POST" class="post-form" action="/production/update_product_reject/{{product_reject.rejectbatch_id}}">
             {% csrf_token %}
             <div class="container">
-                <h3>Product_Good Update Details</h3>
+                <h3>Product Reject Update Details</h3>
                 <div class="form-group row">
                     <label class="col-md-1 col-form-label"></label>
                     <div class="col-md-4">

@@ -130,8 +130,15 @@ WSGI_APPLICATION = 'crudexample.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        #'ENGINE': 'django.db.backends.sqlite3',
+        #'NAME': BASE_DIR / 'db.sqlite3',
+         'ENGINE': 'django.db.backends.mysql',  # 指定使用的資料庫引擎，可以通過 Django.db.backends 來檢視哪些資料庫可以與 Django 配合使用； 
+         'NAME': 'erp',# 資料庫名字
+         'USER': "user",  # mysql 使用者名稱稱
+         'PASSWORD': '123456',  # 資料庫的密碼
+         'HOST': "127.0.0.1",  # 資料庫服務地址， 這裡我們是測試開發 填本地地址 
+         'PORT': 3306,   # mysql 對應的埠號 
+         'default-character-set': "UTF8",  # 設定編碼規則 utf8 
     }
 }
 

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<style>
+    p, div, h3, h4, a, h1 {
+        text-align: center;
+    }
+</style>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    {% load static %}
+    <!-- <link rel="stylesheet" href="{% static 'css/style.css' %}"/>  !-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+</head>
+<body>
+    <div class="header">
+        <form method="POST" class="post-form" action="/purchasing/update_require/{{require.RequireID}}">
+            {% csrf_token %}
+            <div class="container">
+                <h3>Product Update Details</h3>
+                <div class="form-group row">
+                    <label class="col-md-1 col-form-label"></label>
+                    <div class="col-md-4">
+                    </div>
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Require ID </span>
+                    <input type="text" class="form-control" placeholder="RequireID" aria-label="Username" name="RequireID" id="id_RequireID" required maxlength="150" value="{{ require.RequireID }}">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Material ID </span>
+                    <input type="text" class="form-control" placeholder="MaterialID" aria-label="Username" name="MaterialID" id="id_MaterialID" required maxlength="150" value="{{ require.MaterialID }}">
+                    <span class="input-group-text">Material Name </span>
+                    <input type="text" class="form-control" placeholder="material_name" aria-label="Server" name="material_name" id="id_material_name" required maxlength="150" value="{{ require.material_name }}">
+                </div>
+                <br>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">ProjectID</span>
+                    <input type="text" class="form-control" placeholder="ProjectID" aria-label="Username" name="ProjectID" id="id_ProjectID" required maxlength="150" value="{{ require.ProjectID }}">
+                    <span class="input-group-text">project_name   </span>
+                    <input type="text" class="form-control" placeholder="project_name" aria-label="Server" name="project_name" id="id_project_name" required maxlength="150" value="{{ require.project_name }}">
+                </div>
+                <br>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">MaterialSupplierID</span>
+                    <input type="text" class="form-control" placeholder="MaterialSupplierID" aria-label="Server" name="MaterialSupplierID" id="id_MaterialSupplierID" required maxlength="150" value="{{ require.MaterialSupplierID }}">
+                    <span class="input-group-text" id="basic-addon1">Material Supplier Name</span>
+                    <input type="text" class="form-control" placeholder="material_supplier_name" aria-label="Server" name="material_supplier_name" id="id_material_supplier_name" required maxlength="150" value="{{ require.material_supplier_name }}">
+                </div>
+                <br>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Quantity</span>
+                    <input type="text" class="form-control" placeholder="quantity" aria-label="Server" name="quantity" id="id_quantity" required maxlength="150" value="{{ require.quantity }}">
+                </div>
+                <button type="submit" class="btn btn-primary">Update</button>
+                <button href="request" class="btn btn-success">return</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>  

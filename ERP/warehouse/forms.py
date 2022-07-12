@@ -13,4 +13,8 @@ class Material_StockForm(forms.ModelForm):
     class Meta:  
         model = Material_Stock  
         fields = '__all__'      
-        
+
+class Material_Stock01Form(forms.ModelForm):  
+    class Meta:  
+        model = Material_Stock  
+        fields = 'MaterialStockID','material_name','material_location_id','shelf_id','quantity'  

@@ -38,7 +38,9 @@ def form_add(request):
 #----------------------------------------------------------
 def emp_calculator(request):  
     if request.method == "POST":   
-        form = CalculatorForm(request.POST)        
+        form = CalculatorForm(request.POST) 
+        calculate = Calculate.objects.all()
+        calculate.delete()  
         if form.is_valid():
             try:            
                 form.save()
@@ -48,20 +50,11 @@ def emp_calculator(request):
                 traceback.print_exc()
     else:  
         form = CalculatorForm()
-        calculators = Calculator.objects.all()
-        re1=Calculator.objects.all().aggregate(Sum('a')).get('a__sum')
-        print(re1)   
-        re2=Calculator.objects.all().aggregate(Sum('b')).get('b__sum')
-        print(re2)   
-        re3=Calculator.objects.all().aggregate(Sum('c')).get('c__sum')
-        print(re3)
-        #def calculator(request):
-        #calculate.delete()        
-        Calculate.objects.update(calculate01=re1,calculate02=re2,calculate03=re3)  
     return render(request,'index/index_calculator.html',{'form':form})  
      
 def calculator(request):
         #Statistics.objects.all().count() #查询所有数据的数量
+        #Calculate.objects.create(calculate01='0',calculate02='0',calculate03='0')
         calculators = Calculator.objects.all()
         re1=Calculator.objects.all().aggregate(Sum('a')).get('a__sum')
         print(re1)   

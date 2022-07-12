@@ -1,0 +1,13 @@
+
+body{
+
+
+}
+
+网页正中间显示
+.content{
+    position:absolute;
+    top : 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}

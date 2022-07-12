@@ -5,7 +5,7 @@ from PIL import Image as Im                  # new
 # Create your models here.
 
 class Image(models.Model):
-    title = models.CharField(max_length=20)
+    title = models.CharField(max_length=150)
     photo = models.ImageField(upload_to='pics')
 
     def save(self):                        # new

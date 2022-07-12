@@ -2,7 +2,7 @@
     <th><label for="id_eid">Eid:</label></th>
     <td>
 
-      <input type="text" name="eid" value="123" maxlength="20" required id="id_eid">
+      <input type="text" name="eid" value="123" maxlength="150" required id="id_eid">
 
 
     </td>
@@ -82,7 +82,7 @@
     <th><label for="id_sub_contract_id">Sub contract id:</label></th>
     <td>
 
-      <input type="text" name="sub_contract_id" value="a" maxlength="55" required id="id_sub_contract_id">
+      <input type="text" name="sub_contract_id" value="a" maxlength="150" required id="id_sub_contract_id">
 
 
     </td>
@@ -92,7 +92,7 @@
     <th><label for="id_supplier_id">Supplier id:</label></th>
     <td>
 
-      <input type="text" name="supplier_id" value="b" maxlength="55" required id="id_supplier_id">
+      <input type="text" name="supplier_id" value="b" maxlength="150" required id="id_supplier_id">
 
 
     </td>
@@ -102,7 +102,7 @@
     <th><label for="id_customer_id">Customer id:</label></th>
     <td>
 
-      <input type="text" name="customer_id" value="c" maxlength="55" required id="id_customer_id">
+      <input type="text" name="customer_id" value="c" maxlength="150" required id="id_customer_id">
 
 
     </td>
@@ -112,7 +112,7 @@
     <th><label for="id_material_id">Material id:</label></th>
     <td>
 
-      <input type="text" name="material_id" value="d" maxlength="55" required id="id_material_id">
+      <input type="text" name="material_id" value="d" maxlength="150" required id="id_material_id">
 
 
 

@@ -7,8 +7,8 @@
 {% if user.is_authenticated %}
   Hi {{ user.username }}!
 {% else %}
-  <p>You are not logged in</p>
-  <a href="{% url 'login' %}">Log In</a> |
-  <a href="{% url 'signup' %}">Sign Up</a>
-{% endif %}
-{% endblock %}
+<p>You are not logged in</p>
+<a type="button" class="btn btn-primary" href="{% url 'login' %}">Log In(登入)</a> |
+<a type="button" class="btn btn-success" href="{% url 'signup' %}">Sign Up(注册)</a>
+    {% endif %}
+    {% endblock %}

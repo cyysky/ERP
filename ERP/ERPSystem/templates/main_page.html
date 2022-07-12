@@ -42,7 +42,7 @@
                         <ul class="dropdown-menu">
                             <li>
                             <li><a class="dropdown-item" href="/warehouse/material">Material</a></li>
-                            <li><a class="dropdown-item" href="/warehouse/material_location">Material_Location</a></li>
+                            <li><a class="dropdown-item" href="/warehouse/material_stock">Material Stock</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
@@ -51,6 +51,8 @@
                             <li>
                             <li><a class="dropdown-item" href="/purchasing/supplier">Supplier</a></li>
                             <li><a class="dropdown-item" href="/purchasing/material_supplier">Material Supplier</a></li>
+                            <li><a class="dropdown-item" href="/purchasing/request">Request </a></li>
+                            <li><a class="dropdown-item" href="/purchasing/purchase">Purchase </a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
@@ -110,7 +112,7 @@
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
                                 <li><a class="dropdown-item" href="/warehouse/material">Material</a></li>
-                                <li><a class="dropdown-item" href="/warehouse/material_location">Material_Location</a></li>
+                                <li><a class="dropdown-item" href="/warehouse/material_stock">Material Stock</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
@@ -120,6 +122,8 @@
                             <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
                                 <li><a class="dropdown-item" href="/purchasing/supplier">Supplier</a></li>
                                 <li><a class="dropdown-item" href="/purchasing/material_supplier">Material Supplier</a></li>
+                                <li><a class="dropdown-item" href="/purchasing/request">Request </a></li>
+                                <li><a class="dropdown-item" href="/purchasing/purchase">Purchase </a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
@@ -172,351 +176,796 @@
 <h1 class="p-3 mb-2 bg-primary text-white">Main page</h1>
 <tbody>
 </tbody>
-    <table class="table table-striped table-bordered table-sm">
-        <thead class="thead-dark">
-            <tr>
-                <th class="p-3 mb-2 bg-danger text-white">Sales</th>
-                <th>Sales ID</th>
-                <th>Customer ID</th>
-                <th>Customer Name</th>
-                <th>Term</th>
-                <th>Time</th>
-                <th>Time end</th>
-                <th>customer Po ID</th>
-                <th>product ID</th>
-                <th>description</th>
-                <th>quantity</th>
-                <th>Unit Price</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for sales in saless %}
-            <tr>
-                <td>{{ sales.sales_id }}</td>
-                <td>{{ sales.customer_id }}</td>
-                <td>{{ sales.customer_name }}</td>
-                <td>{{ sales.term }}</td>
-                <td>{{ sales.time }}</td>
-                <td>{{ sales.hour}}</td>
-                <td>{{ sales.customer_po_id}}</td>
-                <td>{{ sales.product_id}}</td>
-                <td>{{ sales.description}}</td>
-                <td>{{ sales.quantity}}</td>
-                <td>{{ sales.unit_price}}</td>
-                <td>
-                    <a href="/order/edit_sales/{{ sales.id }}"><span class="btn btn-success">Edit</span></a>
-                    <a href="delete_sales/{{ sales.id }}" class="btn btn-danger">Delete</a>
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-        <thead class="thead-dark">
-            <tr>
-                <th class="p-3 mb-2 bg-danger text-white">Customer</th>
-                <th> ID</th>
-                <th> Name</th>
-                <th> Address</th>
-                <th> Term</th>
-                <th> Email</th>
-                <th> Phone1</th>
-                <th> Phone2</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for customer in customers %}
-            <tr>
-                <td>{{ customer.customer_id }}</td>
-                <td>{{ customer.customer_name }}</td>
-                <td>{{ customer.address }}</td>
-                <td>{{ customer.term }}</td>
-                <td>{{ customer.email }}</td>
-                <td>{{ customer.phone1}}</td>
-                <td>{{ customer.phone2}}</td>
-                <td>
-                    <a href="edit_customer/{{ customer.customer_id }}"><span class="btn btn-success">Edit</span></a>
-                    <a href="delete_customer/{{ customer.customer_id }}" class="btn btn-danger">Delete</a>
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-        <thead class="thead-dark">
-            <tr>
-                <th class="p-3 mb-2 bg-primary text-white">Product</th>
-                <th>Product ID</th>
-                <th>Process ID </th>
-                <th>Bom ID </th>
-                <th>Date</th>
-                <th>Quantity </th>
-                <th>product_type</th>
-                <th>start_time</th>
-                <th>finish_time</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for product in products %}
-            <tr>
-                <td>{{ product.product_id }}</td>
-                <td>{{ product.process_id }}</td>
-                <td>{{ product.bom_id }}</td>
-                <td>{{ product.date }}</td>
-                <td>{{ product.quantity }}</td>
-                <td>{{ product.product_type }}</td>
-                <td>{{ product.start_time }}</td>
-                <td>{{ product.finish_time }}</td>
-                <td>
-                    <a href="edit_product/{{ product.product_id }}"><span class="btn btn-success">Edit</span></a>
-                    <a href="delete_product/{{ product.product_id }}" class="btn btn-danger">Delete</a>
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-
-        <thead class="thead-dark">
-            <tr>
-                <th class="p-3 mb-2 bg-primary text-white">Product Material</th>
-                <th>Product ID</th>
-                <th>MateriaL ID </th>
-                <th>Usage  </th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for product_material in product_materials %}
-            <tr>
-                <td>{{ product_material.product_id }}</td>
-                <td>{{ product_material.material_id }}</td>
-                <td>{{ product_material.usage }}</td>
-                <td>
-                    <a href="edit_product_material/{{ product_material.product_material_id }}"><span class="btn btn-success">Edit</span></a>
-                    <a href="delete_product_material/{{ product_material.product_material_id }}" class="btn btn-danger">Delete</a>
-                </td>
-            </tr>
-            {% endfor %}
-
-        </tbody>
-        <thead class="thead-dark">
-            <tr>
-                <th class="p-3 mb-2 bg-warning text-white">Material</th>
-                <th>material_supplier</th>
-                <th>measure_unit</th>
-                <th>tybe</th>
-                <th>Form</th>
-                <th>thickness</th>
-                <th>usage</th>
-                <th>default_stock_locatiuon</th>
-                <th>quantity</th>
-                <th>nit_price</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for material in materials %}
-            <tr>
-                <td>{{ material.material_id }}</td>
-                <td>{{ material.material_supplier }}</td>
-                <td>{{ material.measure_unit }}</td>
-                <td>{{ material.tybe }}</td>
-                <td>{{ material.Form}}</td>
-                <td>{{ material.thickness}}</td>
-                <td>{{ material.usage}}</td>
-                <td>{{ material.default_stock_locatiuon }}</td>
-                <td>{{ material.quantity}}</td>
-                <td>{{ material.nit_price}}</td>
-                <td>
-                    <a href="edit_material/{{ material.material_id }}"><span class="btn btn-success">Edit</span></a>
-                    <a href="delete_material/{{ material.material_id }}" class="btn btn-danger">Delete</a>
-                </td>
-            </tr>
-            {% endfor %}
-        <thead class="thead-dark">
-            <tr>
-                <th class="p-3 mb-2 bg-warning text-white">Material_Location</th>
-                <th>shelf_id</th>
-                <th>material_id </th>
-                <th>quantity</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for material_location in material_stocks %}
-            <tr>
-                <td>{{ material_location.shelf_id }}</td>
-                <td>{{ material_location.material_id }}</td>
-                <td>{{ material_location.quantity }}</td>
-                <td>
-                    <a href="edit_material_location/{{ material_location.id }}"><span class="btn btn-success">Edit</span></a>
-                    <a href="delete_material_location/{{ material_location.id }}" class="btn btn-danger">Delete</a>
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-        <thead class="thead-dark">
-            <tr>
-                <th class="p-3 mb-2 bg-success text-white">Supplier</th>
-                <th> Supplier Name</th>
-                <th> Address</th>
-                <th> Term</th>
-                <th> Email</th>
-                <th> Phone1</th>
-                <th> Phone2</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for supplier in suppliers %}
-            <tr>
-                <td>{{ supplier.supplier_id }}</td>
-                <td>{{ supplier.supplier_name }}</td>
-                <td>{{ supplier.address }}</td>
-                <td>{{ supplier.term }}</td>
-                <td>{{ supplier.email }}</td>
-                <td>{{ supplier.phone1}}</td>
-                <td>{{ supplier.phone2}}</td>
-                <td>
-                    <a href="edit_supplier/{{ supplier.supplier_id }}"><span class="btn btn-success">Edit</span></a>
-                    <a href="delete_supplier/{{ supplier.supplier_id }}" class="btn btn-danger">Delete</a>
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-        <thead class="thead-dark">
-            <tr>
-                <th class="p-3 mb-2 bg-success text-white">Material Supplier</th>
-                <th>Part NO</th>
-                <th>Supplier ID</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for material_supplier in material_suppliers %}
-            <tr>
-                <td>{{ material_supplier.part_no }}</td>
-                <td>{{ material_supplier.supplier_id }}</td>
-                <td>
-                    <a href="edit_material/{{ material_supplier.id }}"><span class="btn btn-success">Edit</span></a>
-                    <a href="delete_material/{{ material_supplier.id }}" class="btn btn-danger">Delete</a>
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-        <thead class="thead-dark">
-            <tr>
-                <th class="p-3 mb-2 bg-info text-white">Process</th>
-                <th>Process ID</th>
-                <th>Product ID </th>
-                <th>Produt Name</th>
-                <th>Type</th>
-                <th>Machine ID</th>
-                <th>Quantity</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for process in processs %}
-            <tr>
-                <td>{{ process.process_id }}</td>
-                <td>{{ process.product_id }}</td>
-                <td>{{ process.produt_name }}</td>
-                <td>{{ process.type }}</td>
-                <td>{{ process.machine_id }}</td>
-                <td>{{ process.quantity }}</td>
-                <td>{{ process.term }}</td>
-                <td>
-                    <a href="edit_process/{{ process.process_id }}"><span class="btn btn-success">Edit</span></a>
-                    <a href="delete_process/{{ process.process_id }}" class="btn btn-danger">Delete</a>
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-        <thead class="thead-dark">
-            <tr>
-                <th class="p-3 mb-2 bg-info text-white">Machine</th>
-                <th> Machine ID</th>
-                <th> Machine Name</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for machine in machines %}
-            <tr>
-                <td>{{ machine.machine_id }}</td>
-                <td>{{ machine.machine_name }}</td>
-
-                <td>
-                    <a href="edit_machine/{{ machine.machine_id }}"><span class="btn btn-success">Edit</span></a>
-                    <a href="delete_machine/{{ machine.machine_id }}" class="btn btn-danger">Delete</a>
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-        <thead class="thead-dark">
-            <tr>
-                <th class="p-3 mb-2 bg-secondary text-white">Product Good</th>
-                <th>Goodbatch ID</th>
-                <th>Product ID </th>
-                <th>Product Name </th>
-                <th>Customer ID</th>
-                <th>Type </th>
-                <th>Quantity</th>
-                <th>Term</th>
-                <th>Date</th>
-                <th>Material ID</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for product_good in product_goods %}
-            <tr>
-                <td>{{ product_good.goodbatch_id }}</td>
-                <td>{{ product_good.product_id }}</td>
-                <td>{{ product_good.product_name }}</td>
-                <td>{{ product_good.customer_id }}</td>
-                <td>{{ product_good.type }}</td>
-                <td>{{ product_good.quantity }}</td>
-                <td>{{ product_good.term }}</td>
-                <td>{{ product_good.date }}</td>
-                <td>{{ product_good.material_id }}</td>
-                <td>
-                    <a href="edit_product_good/{{ product_good.product_good_id }}"><span class="btn btn-success">Edit</span></a>
-                    <a href="delete_product_good/{{ product_good.product_good_id }}" class="btn btn-danger">Delete</a>
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-        <thead class="thead-dark">
-            <tr>
-                <th class="p-3 mb-2 bg-secondary text-white">Product Reject </th>
-                <th>Rejectbatch ID</th>
-                <th>Product ID </th>
-                <th>Product Name</th>
-                <th>Type  </th>
-                <th>Quantity</th>
-                <th>Date</th>
-                <th>Material ID</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for product_reject in product_rejects %}
-            <tr>
-                <td>{{ product_reject.rejectbatch_id }}</td>
-                <td>{{ product_reject.product_id }}</td>
-                <td>{{ product_reject.product_name }}</td>
-                <td>{{ product_reject.type }}</td>
-                <td>{{ product_reject.quantity }}</td>
-                <td>{{ product_reject.date }}</td>
-                <td>{{ product_reject.material_id }}</td>
-                <td>
-                    <a href="edit_product_reject/{{ product_reject.product_reject_id }}"><span class="btn btn-success">Edit</span></a>
-                    <a href="delete_product_reject/{{ product_reject.product_reject_id }}" class="btn btn-danger">Delete</a>
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+<table class="table table-striped table-bordered table-sm">
+    <thead class="thead-dark">
+        <tr>
+            <th class="p-3 mb-2 bg-danger text-white">Sales </th>
+            <th>Sales ID</th>
+            <th>Customer ID</th>
+            <th>Customer Name</th>
+            <th>Term</th>
+            <th>Start Time</th>
+            <th>Finish Time</th>
+            <th>customer Po ID</th>
+            <th>product ID</th>
+            <th>description</th>
+            <th>quantity</th>
+            <th>Unit Price</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for sales in saless %}
+        <tr>
+            <td>Sales</td>
+            <td>{{ sales.SalesID }}</td>
+            <td>{{ sales.CustomerID }}</td>
+            <td>{{ sales.customer_name }}</td>
+            <td>{{ sales.term }}</td>
+            <td>{{ sales.start_time }}</td>
+            <td>{{ sales.finish_time}}</td>
+            <td>{{ sales.customer_po_id}}</td>
+            <td>{{ sales.ProductID}}</td>
+            <td>{{ sales.description}}</td>
+            <td>{{ sales.quantity}}</td>
+            <td>{{ sales.unit_price}}</td>
+            <td>
+                <a href="edit_sales/{{ sales.SalesID }}"><span class="btn btn-success">Edit</span></a>
+                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">Delete</button>
+            </td>
+        </tr>
+        <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Delete Record</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure you want to delete?(你确定要删除吗?)
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <a href="delete_sales/{{ sales.SalesID }}" class="btn btn-danger">Delete</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </tbody>
+    <thead class="thead-dark">
+        <tr>
+            <th class="p-3 mb-2 bg-danger text-white">Customer </th>
+            <th> Customer ID</th>
+            <th> Customer Name</th>
+            <th> Address</th>
+            <th> Term</th>
+            <th> Email</th>
+            <th> Phone1</th>
+            <th> Phone2</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for customer in customers %}
+        <tr>
+            <td>Customer</td>
+            <td>{{ customer.CustomerID }}</td>
+            <td>{{ customer.customer_name }}</td>
+            <td>{{ customer.address_ship }}</td>
+            <td>{{ customer.address_sold }}</td>
+            <td>{{ customer.address_bill }}</td>
+            <td>{{ customer.term }}</td>
+            <td>{{ customer.email }}</td>
+            <td>{{ customer.phone1}}</td>
+            <td>{{ customer.phone2}}</td>
+            <td>
+                <a href="edit_customer/{{ customer.CustomerID }}"><span class="btn btn-success">Edit</span></a>
+                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">Delete</button>
+            </td>
+        </tr>
+        <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Delete Record</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure you want to delete?(你确定要删除吗?)
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <a href="delete_customer/{{ customer.CustomerID }}" class="btn btn-danger">Delete</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </tbody>
+    <thead class="thead-dark">
+        <tr>
+            <th class="p-3 mb-2 bg-danger text-white">Project </th>
+            <th>Project ID</th>
+            <th>Project Name </th>
+            <th>Sales ID</th>
+            <th>Customer ID</th>
+            <th>Customerpart ID </th>
+            <th>Product ID</th>
+            <th>Product Name</th>
+            <th>Quantity </th>
+            <th>Unitprice</th>
+            <th>Project Date</th>
+            <th>Term</th>
+            <th>Start Time</th>
+            <th>Finish Time</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for project in projects %}
+        <tr>
+            <td>Project</td>
+            <td>{{ project.ProjectID }}</td>
+            <td>{{ project.project_name }}</td>
+            <td>{{ project.SalesID }}</td>
+            <td>{{ project.CustomerID }}</td>
+            <td>{{ project.customerpart_id }}</td>
+            <td>{{ project.ProductID }}</td>
+            <td>{{ project.product_name }}</td>
+            <td>{{ project.quantity }}</td>
+            <td>{{ project.unitprice }}</td>
+            <td>{{ project.project_date }}</td>
+            <td>{{ project.term }}</td>
+            <td>{{ project.start_time }}</td>
+            <td>{{ project.finish_time }}</td>
+            <td>
+                <a href="edit_project/{{ project.ProjectID }}"><span class="btn btn-success">Edit</span></a>
+                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">Delete</button>
+            </td>
+        </tr>
+        <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Delete Record</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure you want to delete?(你确定要删除吗?)
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <a href="delete_project/{{ project.ProjectID }}" class="btn btn-danger">Delete</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </tbody>
+    <thead class="thead-dark">
+        <tr>
+            <th class="p-3 mb-2 bg-danger text-white">BOM</th>
+            <th>BOM ID</th>
+            <th>Product ID</th>
+            <th>Product Name</th>
+            <th>Material ID</th>
+            <th>Material Name</th>
+            <th>Part Number</th>
+            <th>Describe</th>
+            <th>Quantity</th>
+            <th>UOM</th>
+            <th>Usage type</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for bom in boms %}
+        <tr>
+            <td>BOM</td>
+            <td>{{ bom.BOMID}}</td>
+            <td>{{ bom.ProductID}}</td>
+            <td>{{ bom.product_name}}</td>
+            <td>{{ bom.MaterialID}}</td>
+            <td>{{ bom.material_name}}</td>
+            <td>{{ bom.part_number}}</td>
+            <td>{{ bom.describe}}</td>
+            <td>{{ bom.quantity}}</td>
+            <td>{{ bom.unit_of_measurement}}</td>
+            <td>{{ bom.usage_type}}</td>
+            <td>
+                <a href="edit_bom/{{ bom.BOMID }}"><span class="btn btn-success">Edit</span></a>
+                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">Delete</button>
+            </td>
+        </tr>
+        <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Delete Record</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure you want to delete?(你确定要删除吗?)
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <a href="delete_bom/{{ bom.BOMID }}" class="btn btn-danger">Delete</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </tbody>
+    <thead class="thead-dark">
+        <tr>
+            <th class="p-3 mb-2 bg-warning text-white">Material</th>
+            <th>material ID</th>
+            <th>material Name</th>
+            <th>MaterialSupplierID</th>
+            <th>Material Supplier Name</th>
+            <th>measure_unit</th>
+            <th>tybe</th>
+            <th>Form</th>
+            <th>thickness</th>
+            <th>usage</th>
+            <th>width </th>
+            <th>length</th>
+            <th>pltch</th>
+            <th>default_stock_locatiuon</th>
+            <th>quantity</th>
+            <th>nit_price</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for material in materials %}
+        <tr>
+            <td>Material</td>
+            <td>{{ material.MaterialID }}</td>
+            <td>{{ material.material_name }}</td>
+            <td>{{ material.MaterialSupplierID }}</td>
+            <td>{{ material.material_supplier_name }}</td>
+            <td>{{ material.measure_unit }}</td>
+            <td>{{ material.tybe }}</td>
+            <td>{{ material.Form}}</td>
+            <td>{{ material.thickness}}</td>
+            <td>{{ material.usage}}</td>
+            <td>{{ material.width }}</td>
+            <td>{{ material.length }}</td>
+            <td>{{ material.pltch }}</td>
+            <td>{{ material.default_stock_locatiuon }}</td>
+            <td>{{ material.usage }}</td>
+            <td>{{ material.quantity}}</td>
+            <td>{{ material.nit_price}}</td>
+            <td>
+                <a href="edit_material/{{ material.MaterialID }}"><span class="btn btn-success">Edit</span></a>
+                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">Delete</button>
+            </td>
+        </tr>
+        <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Delete Record</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure you want to delete?(你确定要删除吗?)
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <a href="delete_material/{{ material.MaterialID }}" class="btn btn-danger">Delete</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </tbody>
+    <thead class="thead-dark">
+        <tr>
+            <th class="p-3 mb-2 bg-warning text-white">Material Location</th>
+            <th>Material Location ID</th>
+            <th>shelf_id</th>
+            <th>MaterialID </th>
+            <th>quantity</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for material_stock in material_stocks %}
+        <tr>
+            <td>Material Location</td>
+            <td>{{ material_stock.material_location_id }}</td>
+            <td>{{ material_stock.shelf_id }}</td>
+            <td>{{ material_stock.MaterialID }}</td>
+            <td>{{ material_stock.quantity }}</td>
+            <td>
+                <a href="edit_material_stock/{{ material_stock.MaterialStockID }}"><span class="btn btn-success">Edit</span></a>
+                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">Delete</button>
+            </td>
+        </tr>
+        <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Delete Record</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure you want to delete?(你确定要删除吗?)
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <a href="delete_material_stock/{{ material_stock.MaterialStockID }}" class="btn btn-danger">Delete</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </tbody>
+    <thead class="thead-dark">
+        <tr>
+            <th class="p-3 mb-2 bg-success text-white">Supplier</th>
+            <th> Supplier ID</th>
+            <th> Supplier Name</th>
+            <th> Address</th>
+            <th> Supplier Type</th>
+            <th> Term</th>
+            <th> Email</th>
+            <th> Phone1</th>
+            <th> Phone2</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for supplier in suppliers %}
+        <tr>
+            <td>Supplier</td>
+            <td>{{ supplier.SupplierID }}</td>
+            <td>{{ supplier.supplier_name }}</td>
+            <td>{{ supplier.supplier_type }}</td>
+            <td>{{ supplier.address }}</td>
+            <td>{{ supplier.term }}</td>
+            <td>{{ supplier.email }}</td>
+            <td>{{ supplier.phone1}}</td>
+            <td>{{ supplier.phone2}}</td>
+            <td>
+                <a href="edit_supplier/{{ supplier.SupplierID }}"><span class="btn btn-success">Edit</span></a>
+                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">Delete</button>
+            </td>
+        </tr>
+        <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Delete Record</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure you want to delete?(你确定要删除吗?)
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <a href="delete_supplier/{{ supplier.SupplierID }}" class="btn btn-danger">Delete</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </tbody>
+    <thead class="thead-dark">
+        <tr>
+            <th class="p-3 mb-2 bg-success text-white">Material Supplier</th>
+            <th>Material Supplier ID </th>
+            <th>Supplier ID </th>
+            <th>Material ID </th>
+            <th>Material Name </th>
+            <th>Quantity </th>
+            <th>Remarks </th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for material_supplier in material_suppliers %}
+        <tr>
+            <td>Material Supplier</td>
+            <td>{{ material_supplier.MaterialSupplierID }}</td>
+            <td>{{ material_supplier.SupplierID }}</td>
+            <td>{{ material_supplier.MaterialID }}</td>
+            <td>{{ material_supplier.material_name }}</td>
+            <td>{{ material_supplier.quantity }}</td>
+            <td>{{ material_supplier.remarks }}</td>
+            <td>
+                <a href="edit_material_supplier/{{ material_supplier.id }}"><span class="btn btn-success">Edit</span></a>
+                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">Delete</button>
+            </td>
+        </tr>
+        <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Delete Record</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure you want to delete?(你确定要删除吗?)
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <a href="delete_material_supplier/{{ material_supplier.id }}" class="btn btn-danger">Delete</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </tbody>
+    <thead class="thead-dark">
+        <tr>
+            <th class="p-3 mb-2 bg-success text-white">Request </th>
+            <th> RequireID</th>
+            <th> MaterialID</th>
+            <th> material_name</th>
+            <th> ProjectID</th>
+            <th> material_name</th>
+            <th> project_name</th>
+            <th> MaterialSupplierID</th>
+            <th>material_supplier_name</th>
+            <th>quantity</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for request in requests %}
+        <tr>
+            <td>Request</td>
+            <td>{{ request.RequireID }}</td>
+            <td>{{ request.MaterialID }}</td>
+            <td>{{ request.material_name }}</td>
+            <td>{{ request.ProjectID }}</td>
+            <td>{{ request.project_name }}</td>
+            <td>{{ request.MaterialSupplierID}}</td>
+            <td>{{ request.material_supplier_name}}</td>
+            <td>{{ request.quantity}}</td>
+            <td>
+                <a href="edit_request/{{ request.RequireID }}"><span class="btn btn-success">Edit</span></a>
+                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">Delete</button>
+            </td>
+        </tr>
+        <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Delete Record</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure you want to delete?(你确定要删除吗?)
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <a href="delete_request/{{ request.RequireID }}" class="btn btn-danger">Delete</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </tbody>
+    <thead class="thead-dark">
+        <tr>
+            <th class="p-3 mb-2 bg-success text-white">Purchase </th>
+            <th>Purchase ID</th>
+            <th>Purchase Date</th>
+            <th>Delivery Date</th>
+            <th>Material ID</th>
+            <th>material Name</th>
+            <th>Supplier ID</th>
+            <th>Supplier Name</th>
+            <th>Grade</th>
+            <th>SIZEusage</th>
+            <th>Quantity</th>
+            <th>Uni Price</th>
+            <th>Discount</th>
+            <th>Total_myr</th>
+            <th>Request ID</th>
+            <th>Remarks</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for purchase in purchases %}
+        <tr>
+            <td>Purchase</td>
+            <td>{{ purchase.purchase_id }}</td>
+            <td>{{ purchase.purchase_date }}</td>
+            <td>{{ purchase.delivery_date }}</td>
+            <td>{{ purchase.MaterialID }}</td>
+            <td>{{ purchase.material_name }}</td>
+            <td>{{ purchase.SupplierID}}</td>
+            <td>{{ purchase.supplier_name}}</td>
+            <td>{{ purchase.grade}}</td>
+            <td>{{ purchase.SIZEusage}}</td>
+            <td>{{ purchase.quantity}}</td>
+            <td>{{ purchase.unit_price}}</td>
+            <td>{{ purchase.discount}}</td>
+            <td>{{ purchase.total_myr}}</td>
+            <td>{{ purchase.request_id}}</td>
+            <td>{{ purchase.remarks}}</td>
+            <td>
+                <a href="edit_purchase/{{ purchase.id }}"><span class="btn btn-success">Edit</span></a>
+                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">Delete</button>
+            </td>
+        </tr>
+        <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Delete Record</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure you want to delete?(你确定要删除吗?)
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <a href="delete_purchase/{{ purchase.id }}" class="btn btn-danger">Delete</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </tbody>
+    <thead class="thead-dark">
+        <tr>
+            <th class="p-3 mb-2 bg-info text-white">Machine</th>
+            <th>Machine ID</th>
+            <th>Machine Name</th>
+            <th>Unit Price </th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for machine in machines %}
+        <tr>
+            <td>Machine</td>
+            <td>{{ machine.MachineID }}</td>
+            <td>{{ machine.machine_name }}</td>
+            <td>{{ machine.unit_price }}</td>
+            <td>
+                <a href="edit_machine/{{ machine.MachineID }}"><span class="btn btn-success">Edit</span></a>
+                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">Delete</button>
+            </td>
+        </tr>
+        <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Delete Record</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure you want to delete?(你确定要删除吗?)
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <a href="delete_machine/{{ machine.MachineID }}" class="btn btn-danger">Delete</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </tbody>
+    <thead class="thead-dark">
+        <tr>
+            <th class="p-3 mb-2 bg-info text-white">Process</th>
+            <th>Process ID</th>
+            <th>Process Name </th>
+            <th>Resource ID</th>
+            <th>Project ID</th>
+            <th>Product ID</th>
+            <th>Time</th>
+            <th>Remarks</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for process in processs %}
+        <tr>
+            <td>Process</td>
+            <td>{{ process.ProcessID }}</td>
+            <td>{{ process.process_name }}</td>
+            <td>{{ process.ResourceID }}</td>
+            <td>{{ process.ProjectID }}</td>
+            <td>{{ process.ProductID }}</td>
+            <td>{{ process.time }}</td>
+            <td>{{ process.remarks }}</td>
+            <td>
+                <a href="edit_process/{{ process.ProcessID }}"><span class="btn btn-success">Edit</span></a>
+                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">Delete</button>
+            </td>
+        </tr>
+        <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Delete Record</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure you want to delete?(你确定要删除吗?)
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <a href="delete_process/{{ process.ProcessID }}" class="btn btn-danger">Delete</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </tbody>
+    <thead class="thead-dark">
+        <tr>
+            <th class="p-3 mb-2 bg-info text-white">Product</th>
+            <th>Product ID</th>
+            <th>Process ID </th>
+            <th>Bom ID </th>
+            <th>Date</th>
+            <th>Quantity </th>
+            <th>product_type</th>
+            <th>start_time</th>
+            <th>finish_time</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for product in products %}
+        <tr>
+            <td>Product</td>
+            <td>{{ product.ProductID }}</td>
+            <td>{{ product.ProcessID }}</td>
+            <td>{{ product.BOMID }}</td>
+            <td>{{ product.date }}</td>
+            <td>{{ product.quantity }}</td>
+            <td>{{ product.product_type }}</td>
+            <td>{{ product.start_time }}</td>
+            <td>{{ product.finish_time }}</td>
+            <td>
+                <a href="edit_product/{{ product.ProductID }}"><span class="btn btn-success">Edit</span></a>
+                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">Delete</button>
+            </td>
+        </tr>
+        <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Delete Record</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure you want to delete?(你确定要删除吗?)
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <a href="delete_product/{{ product.ProductID }}" class="btn btn-danger">Delete</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </tbody>
+    <thead class="thead-dark">
+        <tr>
+            <th class="p-3 mb-2 bg-info text-white">Packaging</th>
+            <th>Packaging ID</th>
+            <th>Packaging Name </th>
+            <th>PackagingUnit</th>
+            <th>PackagingType</th>
+            <th>Size</th>
+            <th>Heigh</th>
+            <th>Width</th>
+            <th>Length</th>
+            <th>Color</th>
+            <th>Model</th>
+            <th>Packaging Location</th>
+            <th>Quantity</th>
+            <th>ProductCompany</th>
+            <th>Defaul Stock Location</th>
+            <th>Remarks</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for packaging in packagings %}
+        <tr>
+            <td>Packaging</td>
+            <td>{{ packaging.packaging_id}}</td>
+            <td>{{ packaging.packaging_name}}</td>
+            <td>{{ packaging.packaging_unit}}</td>
+            <td>{{ packaging.packaging_type}}</td>
+            <td>{{ packaging.size}}</td>
+            <td>{{ packaging.heigh}}</td>
+            <td>{{ packaging.width}}</td>
+            <td>{{ packaging.length}}</td>
+            <td>{{ packaging.color}}</td>
+            <td>{{ packaging.model}}</td>
+            <td>{{ packaging.packaging_location}}</td>
+            <td>{{ packaging.quantity}}</td>
+            <td>{{ packaging.product_company}}</td>
+            <td>{{ packaging.defaul_stock_location}}</td>
+            <td>
+                <a href="edit_packaging/{{ packaging.id }}"><span class="btn btn-success">Edit</span></a>
+                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">Delete</button>
+            </td>
+        </tr>
+        <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Delete Record</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure you want to delete?(你确定要删除吗?)
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <a href="delete_packaging/{{ packaging.id }}" class="btn btn-danger">Delete</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </tbody>
+    <thead class="thead-dark">
+        <tr>
+            <th class="p-3 mb-2 bg-info text-white">Delivery</th>
+            <th>Sales ID</th>
+            <th>Sales Name</th>
+            <th>Custiomer ID</th>
+            <th>Product ID</th>
+            <th>Product Name</th>
+            <th>Quantity</th>
+            <th>Unitprice</th>
+            <th>Term</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for delivery in deliverys %}
+        <tr>
+            <td>Delivery</td>
+            <td>{{ delivery.SalesID }}</td>
+            <td>{{ delivery.sales_name }}</td>
+            <td>{{ delivery.CustomerID }}</td>
+            <td>{{ delivery.ProductID }}</td>
+            <td>{{ delivery.product_name }}</td>
+            <td>{{ delivery.quantity }}</td>
+            <td>{{ delivery.unitprice }}</td>
+            <td>{{ delivery.term }}</td>
+            <td>
+                <a href="edit_delivery/{{ delivery.id }}"><span class="btn btn-success">Edit</span></a>
+                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">Delete</button>
+            </td>
+        </tr>
+        <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Delete Record</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure you want to delete?(你确定要删除吗?)
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <a href="delete_delivery/{{ delivery.id }}" class="btn btn-danger">Delete</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </tbody>
+</table>
 <input type="button" value="打印此页面" onclick="printpage()" />   <!-- 可保存成 pdf档案  -->
 <script>
     function printpage() {

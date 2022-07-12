@@ -11,25 +11,33 @@
  </style>  
  <body>
      <div class="header">
-    <form method="POST" class="post-form" action="/purchasing/update_material_supplier/{{material_supplier.id}}">
+    <form method="POST" class="post-form" action="/purchasing/update_material_supplier/{{material_supplier.MaterialSupplierID}}">
         {% csrf_token %}
         <div class="container">
             <h3>Material_Supplier Update Details</h3>
-            <div class="form-group row">
-                <label class="col-md-1 col-form-label"></label>
-                <div class="col-md-4">
-                </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text">Material Supplier ID  </span>
+                <input type="text" class="form-control" placeholder="MaterialSupplierID" aria-label="Username" name="MaterialSupplierID" id="id_part_no" required maxlength="100" value="{{ material_supplier.MaterialSupplierID }}">
             </div>
-
-       <div class="input-group mb-3">
-	    <span class="input-group-text">Part NO </span>
-         <input type="text" class="form-control" placeholder="part_no" aria-label="Username"  name="part_no" id="id_part_no" required maxlength="100"  value="{{ material_supplier.part_no }}">
-          <span class="input-group-text">Supplier ID </span>
-        <input type="text" class="form-control" placeholder="supplier_id" aria-label="Server" name="supplier_id" id="id_supplier_id" required maxlength="100"  value="{{ material_supplier.supplier_id }}">
-       </div>
-<br>						
-		  <button type="submit" class="btn btn-primary">Update</button>
-		   <button href="material_supplier" class="btn btn-success">return</button>			
+            <div class="input-group mb-3">
+                <span class="input-group-text"> Supplier ID  </span>
+                <input type="text" class="form-control" placeholder="SupplierID" aria-label="Username" name="SupplierID" id="id_SupplierID" required maxlength="100" value="{{ material_supplier.SupplierID }}">
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text">Materia ID  </span>
+                <input type="text" class="form-control" placeholder="MaterialID" aria-label="Server" name="MaterialID" id="id_MaterialID" required maxlength="100" value="{{ material_supplier.MaterialID }}">
+                <span class="input-group-text">Material Name  </span>
+                <input type="text" class="form-control" placeholder="material_name" aria-label="Server" name="material_name" id="id_material_name" required maxlength="100" value="{{ material_supplier.material_name }}">
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text">Quantity  </span>
+                <input type="text" class="form-control" placeholder="quantity" aria-label="Username" name="quantity" id="id_quantity" required maxlength="100" value="{{ material_supplier.quantity }}">
+                <span class="input-group-text">Remarks  </span>
+                <input type="text" class="form-control" placeholder="remarks" aria-label="Server" name="remarks" id="id_remarks " required maxlength="100" value="{{ material_supplier.remarks }}">
+            </div>
+            <br>
+            <button type="submit" class="btn btn-primary">Update</button>
+            <button href="material_supplier" class="btn btn-success">return</button>
         </div>
 	</div>
     </form>

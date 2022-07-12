@@ -1,62 +1,77 @@
 <!DOCTYPE html>
+<style>
+    p, div, h3, h4, a, h1 {
+        text-align: center;
+    }
+</style>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Index</title>
     {% load static %}
-<!-- <link rel="stylesheet" href="{% static 'css/style.css' %}"/>  !-->
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"></head>
- <style>
- p,div,h3,h4,a,h1{text-align:center;}
- </style>
-     <div class="header">
-    <form method="POST" class="post-form" action="/marketing/update_customer/{{customer.customer_id}}">
-        {% csrf_token %}
-        <div class="container">
-            <h3>Customer Update Details</h3>
-            <div class="form-group row">
-                <label class="col-md-1 col-form-label"></label>
-                <div class="col-md-4">
+    <!-- <link rel="stylesheet" href="{% static 'css/style.css' %}"/>  !-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+</head>
+<body>
+    <div class="header">
+        <form method="POST" class="post-form" action="/marketing/update_customer/{{customer.CustomerID}}">
+            {% csrf_token %}
+            <div class="container">
+                <h3>Customer Update Details</h3>
+                <div class="form-group row">
+                    <label class="col-md-1 col-form-label"></label>
+                    <div class="col-md-4">
+                    </div>
                 </div>
-            </div>
-       <div class="input-group mb-3">
-	    <span class="input-group-text">customer_id</span>
-         <input type="text" class="form-control" placeholder="customer_id" aria-label="Username" type="text" name="customer_id" id="id_customer_id" required maxlength="20" class="form-control" value="{{ customer.customer_id }}">
-          <span class="input-group-text">customer_name</span>
-        <input type="text" class="form-control" placeholder="customer_name" aria-label="Server" type="text" name="customer_name" id="id_customer_name" required maxlength="100" class="form-control" value="{{ customer.customer_name }}">
-       </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">CustomerID</span>
+                    <input type="text" class="form-control" placeholder="CustomerID" aria-label="Username" name="CustomerID" id="id_CustomerID" required maxlength="150" value="{{ customer.CustomerID }}">
+                    <span class="input-group-text">customer_name</span>
+                    <input type="text" class="form-control" placeholder="customer_name" aria-label="Server" name="customer_name" id="id_customer_name" required maxlength="100" value="{{ customer.customer_name }}">
+                </div>
 
-          
-        <div class="input-group">
-             <span class="input-group-text">Address</span>
-              <textarea class="form-control" aria-label="With textarea"type="text" name="address" id="id_address" required maxlength="100" class="form-control" value="{{ customer.address }}">{{ customer.address }}</textarea>
-        </div>
-<br>
-        <div class="input-group">
-            <span class="input-group-text">Trem</span>
-             <textarea class="form-control" aria-label="With textarea" type="text" name="term" id="id_term" required maxlength="100" class="form-control" value="{{ customer.term }}" >{{ customer.term }}</textarea>
-        </div>		
-<br>
-		<div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon1">Email</span>
-              <input type="text" class="form-control"  placeholder="email" aria-label="Username" type="text" name="email" id="id_email" required maxlength="254" class="form-control" value="{{ customer.email }}" >
-        </div>
-<br>		
-		<div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon1">Phone1</span>
-              <input type="text" class="form-control"  placeholder="phone1" aria-label="Server"type="text" name="phone1" id="id_phone1" required maxlength="20" class="form-control" value="{{ customer.phone1 }}" >
-        </div>
-<br>
-		<div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon1">Phone2</span>
-              <input type="text" class="form-control"  placeholder="phone2" aria-label="Server"type="text" name="phone2" id="id_phone2" required maxlength="20" class="form-control" value="{{ customer.phone2 }}" >
-        </div>
-					
-		   <button type="submit" class="btn btn-primary">Update</button>
-		   <button href="customer" class="btn btn-success">return</button>			
-		   
-        </div>
-	</div>
-    </form>
+
+                <div class="input-group">
+                    <span class="input-group-text">address_ship</span>
+                    <textarea class="form-control"   name="address_ship" id="id_address_ship" required maxlength="100" value="{{ customer.address_ship }}">{{ customer.address_ship }}</textarea>
+                </div>
+                <br>        
+                <div class="input-group">
+                    <span class="input-group-text">address_sold</span>
+                    <textarea class="form-control" name="address_sold" id="id_address_sold" required maxlength="100" value="{{ customer.address_sold }}">{{ customer.address_sold }}</textarea>
+                </div>
+                <br>        
+                <div class="input-group">
+                    <span class="input-group-text">address_bill</span>
+                    <textarea class="form-control" name="address_bill" id="id_address_bill" required maxlength="100" value="{{ customer.address_bill }}">{{ customer.address_bill }}</textarea>
+                </div>
+                <br>
+                <div class="input-group">
+                    <span class="input-group-text">Trem</span>
+                    <textarea class="form-control"  type="text" name="term" id="id_term" required maxlength="100" value="{{ customer.term }}">{{ customer.term }}</textarea>
+                </div>
+                <br>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" >Email</span>
+                    <input type="text" class="form-control" placeholder="email" aria-label="Username" name="email" id="id_email" required maxlength="254" value="{{ customer.email }}">
+                </div>
+                <br>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" >Phone1</span>
+                    <input type="text" class="form-control" placeholder="phone1" aria-label="Server" name="phone1" id="id_phone1" required maxlength="150" value="{{ customer.phone1 }}">
+                </div>
+                <br>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" >Phone2</span>
+                    <input type="text" class="form-control" placeholder="phone2" aria-label="Server" name="phone2" id="id_phone2" required maxlength="150" value="{{ customer.phone2 }}">
+                </div>
+
+                <button type="submit" class="btn btn-primary">Update</button>
+                <button href="customer" class="btn btn-success">return</button>
+
+            </div>
+
+        </form>
+    </div>
 </body>
 </html>  

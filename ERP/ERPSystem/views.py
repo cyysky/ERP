@@ -10,7 +10,7 @@ from ERPSystem.models import History
 
 from ERPSystem.models import BOM,Delivery,Packaging
 from ERPSystem.models import Customer,Supplier,Sales,Project
-from ERPSystem.models import Machine,Material,Material_Stock,Material_Supplier
+from ERPSystem.models import Machine,Material,Material_Stock,Material_Supplier,Require
 from ERPSystem.models import Process,Product,Product_Good,Product_Material,Product_Reject
 #--------------------------------------------------------------------------------------------------------
 from django.http import FileResponse
@@ -27,18 +27,7 @@ second = str(now.second)
 create1 =  day + "-" + month + "-" + year + "__" + hour + ":" + minute + ":" + second        
 #create1 = datetime.datetime.now() 
 
-      
-from reportlab.pdfgen import canvas
-import sqlite3
-import time 
-import traceback
-import reportlab
-import io
-from django import forms
-from django.forms import widgets
-from django.forms import fields
-from django.conf import settings       #导入settings
-import os                      #创建文件夹需要的包
+import time                       #创建文件夹需要的包
 from django.db.models import F
 
 
@@ -123,13 +112,21 @@ def main_page(request):
 def REP_mind_map(request):
     saless = Sales.objects.all()
     customers = Customer.objects.all()
-    suppliers = Supplier.objects.all()
-
+    projects = Project.objects.all()
+    boms = BOM.objects.all()
+    
+    
     machines = Machine.objects.all()
 
     materials = Material.objects.all()
     material_stocks = Material_Stock.objects.all()
+    
+    suppliers = Supplier.objects.all()
     material_suppliers = Material_Supplier.objects.all()
+    require = Require.object.all()
+    
+    deliverys = Delivery.objects.all()
+    packagings = Packaging.object.all()
 
     products = Product.objects.all()
     processs = Process.objects.all()
@@ -137,10 +134,33 @@ def REP_mind_map(request):
     product_goods = Product_Good.objects.all()
     product_rejects = Product_Reject.objects.all()
 
-    context = {'saless': saless,'customers': customers,'suppliers':suppliers,'machines':machines,
-               'materials':materials,'material_stocks':material_stocks,'material_suppliers':material_suppliers,
-                'processs':processs,'products':products,'product_materials':product_materials,'product_goods':product_goods,
-                    'product_rejects':product_rejects}
+    context = {'saless': saless,
+               'customers': customers,
+               'suppliers':suppliers,
+               'projects':projects,
+               'boms':boms,
+
+               'machines':machines,
+
+               'materials':materials,
+               'material_stocks':material_stocks,
+
+               'material_suppliers':material_suppliers,
+
+               'require':require,
+
+               'processs':processs,
+               'products':products,
+               'product_materials':product_materials,
+               'product_goods':product_goods,
+               'product_rejects':product_rejects,
+    
+               'packagings':packagings,
+
+               'projects':projects,
+               'deliverys':deliverys
+               
+               }
     return render(request,'REP_mind_map.html', context)
 # Create your views here.
 

@@ -3,21 +3,20 @@
 
 div {text-align:center;}
 
-<div >
-            <div class="modal-body">
-                {% block title %}Log In{% endblock %}
+<div class="card-body d-flex flex-column justify-content-end">
+    <div class="modal-body">
+        
+        {% block title %}Log In{% endblock %}
 
-                {% block content %}
-                <h2>Log In</h2>
-                <form method="post">
-                    {% csrf_token %}
-                    {{ form.as_p }}
-
-            </div>
-            <div>
-                <!--<a href="http://127.0.0.1:8000/" class="btn btn-secondary"  >Close</a> -->
-                <button type="submit" class="btn btn-primary">Log In</button>
-                </form>
-            </div>
+        {% block content %}
+        <h2>Log In</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <!--<a href="http://127.0.0.1:8000/" class="btn btn-secondary"  >Close</a> -->
+            <button type="submit" class="btn btn-primary">Log In(登入)</button>
+            <a href="/accounts/signup/" class="btn btn-secondary text-white">Sign Up(注册)</a>
+        </form>
+    </div>
 </div>
-{% endblock %}
+{% endblock %}%}

@@ -15,19 +15,14 @@
 
 <body>
     <div class="header">
-        <form method="POST" class="post-form" action="/production/update_machine/{{machine.machine_id}}">
+        <form method="POST" class="post-form" action="/production/update_machine/{{machine.MachineID}}">
             {% csrf_token %}
             <div class="container">
                 <h3>Machine Update Details</h3>
-                <div class="form-group row">
-                    <label class="col-md-1 col-form-label"></label>
-                    <div class="col-md-4">
-                    </div>
-                </div>
-
+                <br>
                 <div class="input-group mb-3">
                     <span class="input-group-text">Machine ID</span>
-                    <input type="text" class="form-control" placeholder="machine_id" aria-label="Username" name="machine_id" id="id_machine_id" required maxlength="100" value="{{ machine.machine_id }}">
+                    <input type="text" class="form-control" placeholder="MachineID" aria-label="Username" name="MachineID" id="MachineID" required maxlength="100" value="{{ machine.MachineID }}">
                     <span class="input-group-text">machine Name </span>
                     <input type="text" class="form-control" placeholder="machine_name" aria-label="Server"  name="machine_name" id="id_machine_name" required maxlength="100" value="{{ machine.machine_name }}">
                 </div>

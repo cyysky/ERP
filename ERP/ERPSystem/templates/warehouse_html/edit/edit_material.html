@@ -1,67 +1,95 @@
 <!DOCTYPE html>
+<style>
+    div, h3, h4, a, h1 {
+        text-align: center;
+    }
+</style>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Index</title>
     {% load static %}
-<!-- <link rel="stylesheet" href="{% static 'css/style.css' %}"/>  !-->
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"></head>
- <style>
- p,div,h3,h4,a,h1{text-align:center;}
- </style>
-     <div class="header">
-    <form method="POST" class="post-form" action="/warehouse/update_material/{{material.material_id}}">
+    <!-- <link rel="stylesheet" href="{% static 'css/style.css' %}"/>  !-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+</head>
+<body>
+<div class="header">
+    <form method="POST" class="post-form" action="/warehouse/update_material/{{material.MaterialID}}">
         {% csrf_token %}
         <div class="container">
-            <h3>Material Update Details</h3>
+            <h3>Customer Update Details</h3>
             <div class="form-group row">
                 <label class="col-md-1 col-form-label"></label>
                 <div class="col-md-4">
                 </div>
             </div>
+            <br>
+            <div class="input-group mb-3">
+                <span class="input-group-text">Material ID</span>
+                <input type="text" class="form-control" placeholder="MaterialID" aria-label="Username" name="MaterialID" id="id_MaterialID" required maxlength="150" value="{{ material.MaterialID }}">
+                <span class="input-group-text">Material Name</span>
+                <input type="text" class="form-control" placeholder="material_name" aria-label="Username" name="material_name" id="id_material_name" required maxlength="150" value="{{ material.material_name }}">
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text">Material Supplier ID</span>
+                <input type="text" class="form-control" placeholder="MaterialSupplierID" aria-label="Server" name="MaterialSupplierID" id="id_MaterialSupplierID" required maxlength="150" value="{{ material.MaterialSupplierID }}">
+                <span class="input-group-text">Material Supplier Name</span>
+                <input type="text" class="form-control" placeholder="material_supplier_name" aria-label="Server" name="material_supplier_name" id="id_material_supplier_name" required maxlength="150" value="{{ material.material_supplier_name }}">
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Measure Unit</span>
+                <input type="text" class="form-control" placeholder="measure_unit" aria-label="Username" name="measure_unit" id="id_measure_unit" required maxlength="150" value="{{ material.measure_unit }}">
+            </div>
+            <br>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Tybe</span>
+                <input type="text" class="form-control" placeholder="tybe" aria-label="Username" name="tybe" id="id_tybe" required maxlength="150" value="{{ material.tybe }}">
+            </div>
+           <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Form</span>
+                <input type="text" class="form-control" placeholder="Form" aria-label="Username" name="Form" id="id_Form" required maxlength="150" value="{{ material.Form }}">
+            </div>
+            <br>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Thickness</span>
+                <input type="text" class="form-control" placeholder="thickness" aria-label="Username" name="thickness" id="id_thickness" required maxlength="150" value="{{ material.thickness }}">
+                <span class="input-group-text" id="basic-addon1">Width</span>
+                <input type="text" class="form-control" placeholder="width" aria-label="Username" name="width" id="id_width" required maxlength="150" value="{{ material.width }}">
+                <span class="input-group-text" id="basic-addon1">Length</span>
+                <input type="text" class="form-control" placeholder="length" aria-label="Username" name="length" id="id_length" required maxlength="150" value="{{ material.length }}">
+            </div>
+            <br>
+            <div class="input-group">
+                <span class="input-group-text">Pltch</span>
+                <input type="text" class="form-control" placeholder="pltch" aria-label="Server" name="pltch" id="id_pltch" required maxlength="150" value="{{ material.pltch }}">
+            </div>
+            <br>
+            <div class="input-group">
+                <span class="input-group-text">Default Stock Locatiuon</span>
+                <input type="text" class="form-control" placeholder="default_stock_locatiuon" aria-label="Server" name="default_stock_locatiuon" id="id_default_stock_locatiuon" required maxlength="150" value="{{ material.default_stock_locatiuon }}">
+            </div>
+            <br>
+            <div class="input-group">
+                <span class="input-group-text">Usage</span>
+                <input type="text" class="form-control" placeholder="usage" aria-label="Server" name="usage" id="id_usage" required maxlength="150" value="{{ material.usage }}">
+            </div>
+            <br>
+            <div class="input-group">
+                <span class="input-group-text">Quantity</span>
+                <input type="text" class="form-control" placeholder="quantity" aria-label="Server" name="quantity" id="id_quantity" required maxlength="150" value="{{ material.quantity }}">
+            </div>
+            <br>
+            <div class="input-group">
+                <span class="input-group-text">Nit Price</span>
+                <input type="text" class="form-control" placeholder="nit_price" aria-label="Server" name="nit_price" id="id_nit_price" required maxlength="150" value="{{ material.nit_price }}">
+            </div>
+            <br>
+            <button type="submit" class="btn btn-primary">Update</button>
+            <button href="customer" class="btn btn-success">return</button>
 
-		<div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon1">Material ID</span>
-              <input type="text" class="form-control"  placeholder="material_id" aria-label="Username" type="text" name="material_id" id="id_material_id" required maxlength="254" class="form-control" value="{{ material.material_id }}" >
-        </div>
-<br>		
-		<div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon1">Material Supplier</span>
-              <input type="text" class="form-control"  placeholder="grade" aria-label="Server"type="text" name="grade" id="id_grade" required maxlength="20" class="form-control" value="{{ material.material_supplier }}" >
-        </div>
-<br>
-		<div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon1">Measure Unit</span>
-              <input type="text" class="form-control"  placeholder="size" aria-label="Server"type="text" name="size" id="id_size" required maxlength="20" class="form-control" value="{{ material.measure_unit }}" >
-        </div>
-<br>
-<div class="input-group mb-3">
-    <span class="input-group-text" id="basic-addon1">Tybe</span>
-    <input type="text" class="form-control" placeholder="usage" aria-label="Server" type="text" name="usage" id="id_usage" required maxlength="20" class="form-control" value="{{ material.usage }}">
-    <span class="input-group-text" id="basic-addon1">Form</span>
-    <input type="text" class="form-control" placeholder="usage" aria-label="Server" type="text" name="usage" id="id_usage" required maxlength="20" class="form-control" value="{{ material.usage }}">
-
-</div>
-<br>
-<div class="input-group mb-3">
-    <span class="input-group-text" id="basic-addon1">Thickness</span>
-    <input type="text" class="form-control" placeholder="quantity" aria-label="Server" type="text" name="quantity" id="id_quantity" required maxlength="20" class="form-control" value="{{ material.thickness }}">
-    <span class="input-group-text" id="basic-addon1">Width</span>
-    <input type="text" class="form-control" placeholder="quantity" aria-label="Server" type="text" name="quantity" id="id_quantity" required maxlength="20" class="form-control" value="{{ material.width }}">
-    <span class="input-group-text" id="basic-addon1">Length</span>
-    <input type="text" class="form-control" placeholder="quantity" aria-label="Server" type="text" name="quantity" id="id_quantity" required maxlength="20" class="form-control" value="{{ material.length }}">
-</div>
-<br>
-		<div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon1">Nit Price</span>
-              <input type="text" class="form-control"  placeholder="nit_price" aria-label="Server"type="text" name="nit_price" id="id_nit_price" required maxlength="20" class="form-control" value="{{ material.nit_price }}" >
-        </div>
-<br>						
-		  <button type="submit" class="btn btn-primary">Update</button>
-		   <button href="material" class="btn btn-success">return</button>			
         </div>
 
-	</div>
     </form>
+</div>
 </body>
 </html>  

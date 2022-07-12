@@ -15,7 +15,7 @@
 
 <body>
     <div class="header">
-        <form method="POST" class="post-form" action="/purchasing/update_supplier/{{supplier.supplier_id}}">
+        <form method="POST" class="post-form" action="/purchasing/update_supplier/{{supplier.SupplierID}}">
             {% csrf_token %}
             <div class="container">
                 <h3>Supplier Update Details</h3>
@@ -26,12 +26,14 @@
                 </div>
                 <div class="input-group mb-3">
                     <span class="input-group-text">Supplier ID</span>
-                    <input type="text" class="form-control" placeholder="Id" aria-label="Username" name="supplier_id" id="id_supplier_id" required maxlength="20" value="{{ supplier.supplier_id }}">
+                    <input type="text" class="form-control" placeholder="Id" aria-label="Username" name="SupplierID" id="id_SupplierID" required maxlength="150" value="{{ supplier.SupplierID }}">
                     <span class="input-group-text">Supplier Name</span>
                     <input type="text" class="form-control" placeholder="Name" aria-label="Server" name="supplier_name" id="id_supplier_name" required maxlength="100" value="{{ supplier.supplier_name }}">
                 </div>
-
-
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Supplier Type</span>
+                    <input type="text" class="form-control" placeholder="supplier_type" aria-label="Username" name="supplier_type" id="id_supplier_type" required maxlength="254" value="{{ supplier.supplier_type }}">
+                </div>
                 <div class="input-group">
                     <span class="input-group-text">Address</span>
                     <textarea class="form-control" aria-label="With textarea" type="text" name="address" id="id_address" required maxlength="100" value="{{ supplier.address }}">{{ supplier.address }}</textarea>
@@ -49,12 +51,12 @@
                 <br>
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1">Phone1</span>
-                    <input type="text" class="form-control" placeholder="phone1" aria-label="Server" name="phone1" id="id_phone1" required maxlength="20" value="{{ supplier.phone1 }}">
+                    <input type="text" class="form-control" placeholder="phone1" aria-label="Server" name="phone1" id="id_phone1" required maxlength="150" value="{{ supplier.phone1 }}">
                 </div>
                 <br>
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1">Phone2</span>
-                    <input type="text" class="form-control" placeholder="phone2" aria-label="Server" name="phone2" id="id_phone2" required maxlength="20" value="{{ supplier.phone2 }}">
+                    <input type="text" class="form-control" placeholder="phone2" aria-label="Server" name="phone2" id="id_phone2" required maxlength="150" value="{{ supplier.phone2 }}">
                 </div>
 
                 <button type="submit" class="btn btn-primary">Update</button>

@@ -14,28 +14,24 @@
 </head>
 <body>
 <div class="header">
-    <form method="POST" class="post-form" action="/production/update_product/{{product.product_id}}">
+    <form method="POST" class="post-form" action="/production/update_product/{{product.ProductID}}">
         {% csrf_token %}
         <div class="container">
             <h3>Product Update Details</h3>
-            <div class="form-group row">
-                <label class="col-md-1 col-form-label"></label>
-                <div class="col-md-4">
-                </div>
-            </div>
+                <br>
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1">Product ID</span>
-                    <input type="text" class="form-control" placeholder="process_id" aria-label="Username"  name="process_id" id="id_process_id" required maxlength="254" value="{{ product.process_id }}">
+                    <input type="text" class="form-control" placeholder="ProductID" aria-label="Username"  name="ProductID" id="id_ProductID" required maxlength="254" value="{{ product.ProductID }}">
                 </div>
                 <br>
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1">Process ID</span>
-                    <input type="text" class="form-control" placeholder="process_id" aria-label="Server"  name="process_id" id="id_process_id" required maxlength="20" value="{{ product.process_id }}">
+                    <input type="text" class="form-control" placeholder="ProcessID" aria-label="Server"  name="ProcessID" id="id_process_id" required maxlength="150" value="{{ product.ProcessID }}">
                 </div>
                 <br>
                 <div class="input-group mb-3">
                     <span class="input-group-text">Bom ID</span>
-                    <input type="text" class="form-control" placeholder="bom_id" aria-label="Username" name="bom_id" id="id_bom_id" required maxlength="100" value="{{ product.bom_id }}">
+                    <input type="text" class="form-control" placeholder="BOMID" aria-label="Username" name="BOMID" id="id_BOMID" required maxlength="100" value="{{ product.BOMID }}">
                     <span class="input-group-text">Date </span>
                     <input type="text" class="form-control" placeholder="date" aria-label="Server" name="date" id="id_date" required maxlength="100" value="{{ product.date }}">
                 </div>
@@ -49,7 +45,7 @@
                 <br>
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1">unit_price</span>
-                    <input type="text" class="form-control" placeholder="unit_price" aria-label="Server" name="unit_price" id="id_unit_price" required maxlength="20" value="{{ product.unit_price }}">
+                    <input type="text" class="form-control" placeholder="unit_price" aria-label="Server" name="unit_price" id="id_unit_price" required maxlength="150" value="{{ product.unit_price }}">
                 </div>
                 <br>
                 <h4>

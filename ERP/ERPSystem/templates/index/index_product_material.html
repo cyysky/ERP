@@ -21,7 +21,7 @@
 {% endif %}
 {% endblock %}
 {% if user.is_authenticated %}
-{% load widget_tweaks %}
+{% load widget_tweaks %}{% include 'gg.html' %}
 <body>
 <div class="header">
     <form method="POST" class="post-form" action="emp_product_material">

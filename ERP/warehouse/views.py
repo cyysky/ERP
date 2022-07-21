@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 
-from warehouse.forms import MaterialForm,Material_StockForm,Material_Stock01Form
-
+from warehouse.forms import MaterialForm,Material_StockForm
+from warehouse.forms import Material01Form,Material_Stock01Form
 #----------------------------------------------------------------------------------------------
 from ERPSystem.models import Material,Material_Stock
 
@@ -43,7 +43,7 @@ def emp_material(request):
 def material(request):    
         materials = Material.objects.all()
         data = Image.objects.all()  
-        paginator = Paginator(materials,1)
+        paginator = Paginator(materials,10)
         page = request.GET.get('page1')
         try:
             materials = paginator.page(page)               
@@ -60,7 +60,7 @@ def edit_material(request, MaterialID):
 
 def update_material(request, MaterialID):  
     material = Material.objects.get(MaterialID=MaterialID)
-    form = MaterialForm(request.POST, instance = material)  
+    form = Material01Form(request.POST, instance = material)  
     if form.is_valid():  
         form.save()
         return redirect("/warehouse/material")  
@@ -70,10 +70,6 @@ def destroy_material(request, MaterialID):
     material = Material.objects.get(MaterialID=MaterialID)
     material.delete()
     return redirect("/warehouse/material")      
-
-
-
-
 
 
 def emp_material_stock(request):  
@@ -94,7 +90,7 @@ def emp_material_stock(request):
 def material_stock(request):    
         material_stocks = Material_Stock.objects.all()
         data = Image.objects.all()  
-        paginator = Paginator(material_stocks,1)
+        paginator = Paginator(material_stocks,10)
         page = request.GET.get('page1')
         try:
             material_stocks = paginator.page(page)               

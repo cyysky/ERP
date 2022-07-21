@@ -51,7 +51,13 @@ urlpatterns = [
     path('emp_delivery', views.emp_delivery),
     path('update_delivery/<str:DeliveryID>', views.update_delivery),
     path('delete_delivery/<str:DeliveryID>', views.destroy_delivery),   
-#-------------------------------------------------------------------------------------
+
+#---------------------------------------------------------resource
+    path('resource',views.resource),
+    path('edit_resource/<str:ResourceID>', views.edit_resource),
+    path('emp_resource', views.emp_resource),
+    path('update_resource/<str:ResourceID>', views.update_resource),
+    path('delete_resource/<str:ResourceID>', views.destroy_resource),   
 
 
 ]

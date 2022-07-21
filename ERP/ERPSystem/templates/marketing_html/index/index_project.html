@@ -1,9 +1,5 @@
 <!DOCTYPE html>
-<style>
-    p, div, h3, h4, a, h1, input {
-        text-align: center;
-    }
-</style>
+{% include 'gg.html' %}
 {% block title %}{% endblock %}
 {% block content %}
 {% if user.is_authenticated %}
@@ -82,8 +78,6 @@
                 </div>
                 <br>
                 <div class="input-group mb-3">
-                    <span class="input-group-text">Delivery ID</span>
-                    {{ form.DeliveryID |attr:"class:form-control"|attr:"cols:20" }}
                     <span class="input-group-text">Delivery Datetime</span>
                     {{ form.DeliveryDatetime |attr:"class:form-control"|attr:"cols:20" |attr:"type:datetime-local" }}
                 </div>

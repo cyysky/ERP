@@ -32,7 +32,7 @@
             <br>
             <div class="input-group mb-3">
                 <span class="input-group-text" id="basic-addon1">Sales ID</span>
-                <input type="text" class="form-control" placeholder="SalesID" aria-label="Server" name="SalesID" id="id_SalesID" required maxlength="150" value="{{ project.SalesID }}">
+                <input type="text" class="form-control" placeholder="SalesID"  name="SalesID" id="id_SalesID" required maxlength="150" value="{{ project.SalesID }}">
             </div>
             <br>
             <div class="input-group mb-3">
@@ -53,17 +53,17 @@
                 <span class="input-group-text">Quantity</span>
                 <input type="text" class="form-control" placeholder="quantity" name="quantity" id="id_quantity" required maxlength="150" value="{{ project.quantity }}">
                 <span class="input-group-text">unitprice</span>
-                <input type="text" class="form-control" placeholder="unitprice" aria-label="Server" name="unitprice" id="id_unitprice" required maxlength="150" value="{{ project.unitprice }}">
+                <input type="text" class="form-control" placeholder="unitprice"  name="unitprice" id="id_unitprice" required maxlength="150" value="{{ project.unitprice }}">
             </div>
             <br>
             <div class="input-group mb-3">
                 <span class="input-group-text">Project Date </span>
-                <input type="text" class="form-control" placeholder="project_date" aria-label="Server" name="project_date" id="id_project_date" required maxlength="150" value="{{ project.project_date }}">
+                <input type="text" class="form-control" placeholder="project_date"  name="project_date" id="id_project_date" required maxlength="150" value="{{ project.project_date }}">
             </div>
             <br>
             <div class="input-group mb-3">
                 <span class="input-group-text">term </span>
-                <input type="text" class="form-control" placeholder="term" aria-label="Server" name="term" id="id_term" required maxlength="150" value="{{ project.term }}">
+                <input type="text" class="form-control" placeholder="term"  name="term" id="id_term" required maxlength="150" value="{{ project.term }}">
             </div>
             <br>
             <div class="input-group mb-3">
@@ -76,10 +76,8 @@
             </div>
             <br>
             <div class="input-group mb-3">
-                <span class="input-group-text">Delivery ID</span>
-                <input type="text" class="form-control" placeholder="DeliveryID" name="quantity" id="id_DeliveryID" required maxlength="150" value="{{ project.DeliveryID }}">
                 <span class="input-group-text">Delivery Datetime</span>
-                <input type="datetime-local" class="form-control" placeholder="DeliveryDatetime" aria-label="Server" name="DeliveryDatetime" id="id_DeliveryDatetime" required maxlength="150" value="{{ project.DeliveryDatetime }}">
+                <input type="datetime-local" class="form-control" placeholder="DeliveryDatetime"  name="DeliveryDatetime" id="id_DeliveryDatetime" required maxlength="150" value="{{ project.DeliveryDatetime }}">
             </div>
             <br>
             <button type="submit" class="btn btn-primary">Update</button>

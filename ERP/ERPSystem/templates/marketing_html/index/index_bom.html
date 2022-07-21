@@ -1,9 +1,5 @@
 <!DOCTYPE html>
-<style>
-    p, div, h3, h4, a, h1, input {
-        text-align: center;
-    }
-</style>
+{% include 'gg.html' %}
 {% block title %}{% endblock %}
 {% block content %}
 {% if user.is_authenticated %}
@@ -29,14 +25,12 @@
             {% csrf_token %}
             <div class="container">
                 <h3>BOM Enter Details</h3>
-                <div class="form-group row">
-                    <label class="col-md-1 col-form-label"></label>
-                    <div class="col-sm-4">
-                    </div>
-                </div>
+                <br>
                 <div class="input-group mb-3">
                     <span class="input-group-text">BOM ID</span>
                     {{ form.BOMID |attr:"class:form-control"|attr:"cols:20" }}
+                    <span class="input-group-text">BOM Level</span>
+                    {{ form.BOM_Level |attr:"class:form-control"|attr:"cols:20" }}
                 </div>
                 <div class="input-group mb-3">
                     <span class="input-group-text">Product ID</span>
@@ -51,26 +45,38 @@
                     {{ form.material_name |attr:"class:form-control"|attr:"cols:20" }}
                 </div>
                 <div class="input-group mb-3">
-                    <span class="input-group-text">Part Number</span>
-                    {{ form.part_number |attr:"class:form-control"|attr:"cols:20" }}
+                    <span class="input-group-text">source</span>
+                    {{ form.source |attr:"class:form-control"|attr:"cols:20" }}
                 </div>
                 <br>
-                <h3>Describe(Select)</h3>
-                <h4><input name="describe" id="id_describe" list="appNamelist" required maxlength="100" value="{{ bom.describe  |attr:"class:form-control"|attr:"cols:20" }}" /></h4>
-                <datalist id="appNamelist">
-                    <option>Sub Contract</option>
-                    <option>Buy Part</option>
-                </datalist>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">UOM</span>
+                    {{ form.UOM |attr:"class:form-control"|attr:"cols:20" |attr:"rows:4" }}
+                </div>
                 <br>
                 <div class="input-group mb-3">
-                    <span class="input-group-text">Quantity</span>
-                    {{ form.quantity |attr:"class:form-control"|attr:"cols:20" }}
+                    <span class="input-group-text">Usage</span>
+                    {{ form.usage |attr:"class:form-control"|attr:"cols:20" }}
                 </div>
+                <br>
                 <div class="input-group mb-3">
-                    <span class="input-group-text">Unit Of Measurement</span>
-                    {{ form.unit_of_measurement |attr:"class:form-control"|attr:"cols:20" }}
-                    <span class="input-group-text">Usage Type</span>
-                    {{ form.usage_type |attr:"class:form-control"|attr:"cols:20" }}
+                    <span class="input-group-text">Unit Price</span>
+                    {{ form.unit_price |attr:"class:form-control"|attr:"cols:20" }}
+                </div>
+                <br>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Remarks</span>
+                    {{ form.remarks |attr:"class:form-control"|attr:"cols:20"}}
+                </div>
+                <br>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">amount</span>
+                    {{ form.amount |attr:"class:form-control"|attr:"cols:20"}}
+                </div>
+                <br>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">total</span>
+                    {{ form.total |attr:"class:form-control"|attr:"cols:20"}}
                 </div>
                 <br>
                 <center><button type="submit" class="btn btn-primary">Submit</button></center>

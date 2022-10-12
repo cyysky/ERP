@@ -29,8 +29,11 @@
                 <th>product Group</th>
                 <th>product Tooling</th>
                 <th>product Unit ID</th>
-                <th>BOM Level</th>
+                <th>Material ID</th>
+                <th>Material UsageID</th>
+                <th>Project ID</th>
                 <th>Date</th>
+                <th>BOMID ID</th>
                 <th>Date</th>
                 <th>Quantity </th>
                 <th>Product Type</th>
@@ -48,7 +51,10 @@
                 <td>{{ product.product_group }}</td>
                 <td>{{ product.product_tooling }}</td>
                 <td>{{ product.product_unit }}</td>
-                <td>{{ product.BOM_Level }}</td>
+                <td>{{ product.MaterialID }}</td>
+                <td>{{ product.material_usage }}</td>
+                <td>{{ product.ProjectID }}</td>
+                <td>{{ product.BOMID }}</td>
                 <td>{{ product.date }}</td>
                 <td>{{ product.quantity }}</td>
                 <td>{{ product.product_type }}</td>
@@ -57,7 +63,7 @@
                 <td>{{ product.finish_time }}</td>
                 <td>
                     <a type="button" href="edit_product/{{ product.ProductID }}">
-                        <span class="btn btn-primary">
+                        <span class="btn btn-success">
                             <!-- Alerts    图标-->
                             <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="信息：">
                                 <use xlink:href="#info-fill">
@@ -65,17 +71,34 @@
                             </svg>Edit
                         </span>
                     </a>
-                    <!-- Example single danger button -->
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="危险：">
-                                <use xlink:href="#exclamation-triangle-fill">
-                                </use>
-                            </svg>Delete
-                        </button>
-                        <ul1 class="dropdown-menu">
-                            <p>Are you sure you want to delete?</p>
-                            <p>(你确定要删除吗?)</p>
+                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <!-- Alerts    图标-->
+                        <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="危险：">
+                            <use xlink:href="#exclamation-triangle-fill">
+                            </use>
+                        </svg>Delete
+                    </button>
+                </td>
+            </tr>
+            <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Delete Record</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            Are you sure you want to delete?(你确定要删除吗?)
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                <!-- Alerts    图标-->
+                                <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="信息：">
+                                    <use xlink:href="#info-fill">
+                                    </use>
+                                </svg>
+                                Close
+                            </button>
                             <a href="delete_product/{{ product.ProductID }}" class="btn btn-danger">
                                 <!-- Alerts    图标-->
                                 <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="危险：">
@@ -83,10 +106,10 @@
                                     </use>
                                 </svg>Delete
                             </a>
-                        </ul1>
+                        </div>
                     </div>
-                </td>
-            </tr>
+                </div>
+            </div>
             {% endfor %}
         </tbody>
     </table>

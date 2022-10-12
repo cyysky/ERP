@@ -27,7 +27,7 @@
                     <span class="input-group-text">CustomerID</span>
                     <input type="text" class="form-control" placeholder="CustomerID" aria-label="Username" name="CustomerID" id="id_CustomerID" required maxlength="150" value="{{ customer.CustomerID }}">
                     <span class="input-group-text">customer_name</span>
-                    <input type="text" class="form-control" placeholder="customer_name"  name="customer_name" id="id_customer_name" required maxlength="100" value="{{ customer.customer_name }}">
+                    <input type="text" class="form-control" placeholder="customer_name" aria-label="Server" name="customer_name" id="id_customer_name" required maxlength="100" value="{{ customer.customer_name }}">
                 </div>
 
 
@@ -58,12 +58,12 @@
                 <br>
                 <div class="input-group mb-3">
                     <span class="input-group-text" >Phone1</span>
-                    <input type="text" class="form-control" placeholder="phone1"  name="phone1" id="id_phone1" required maxlength="150" value="{{ customer.phone1 }}">
+                    <input type="text" class="form-control" placeholder="phone1" aria-label="Server" name="phone1" id="id_phone1" required maxlength="150" value="{{ customer.phone1 }}">
                 </div>
                 <br>
                 <div class="input-group mb-3">
                     <span class="input-group-text" >Phone2</span>
-                    <input type="text" class="form-control" placeholder="phone2"  name="phone2" id="id_phone2" required maxlength="150" value="{{ customer.phone2 }}">
+                    <input type="text" class="form-control" placeholder="phone2" aria-label="Server" name="phone2" id="id_phone2" required maxlength="150" value="{{ customer.phone2 }}">
                 </div>
 
                 <button type="submit" class="btn btn-primary">Update</button>

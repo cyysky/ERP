@@ -29,47 +29,27 @@
             </div>
             <div class="input-group mb-3">
                 <span class="input-group-text" id="basic-addon1">Resource ID</span>
-                <input type="text" class="form-control" placeholder="ResourceID" name="ResourceID" id="id_ResourceID" required maxlength="200" value="{{ process.ResourceID }}">
+                <input type="text" class="form-control" placeholder="ResourceID" aria-label="Server" name="ResourceID" id="id_ResourceID" required maxlength="200" value="{{ process.ResourceID }}">
             </div>
             <div class="input-group mb-3">
                 <span class="input-group-text" id="basic-addon1">Project ID</span>
-                <input type="text" class="form-control" placeholder="ProjectID" name="ProjectID" id="id_ProjectID" required maxlength="200" value="{{ process.ProjectID }}">
+                <input type="text" class="form-control" placeholder="ProjectID" aria-label="Server" name="ProjectID" id="id_ProjectID" required maxlength="200" value="{{ process.ProjectID }}">
             </div>
             <div class="input-group mb-3">
                 <span class="input-group-text" id="basic-addon1">Product ID</span>
-                <input type="text" class="form-control" placeholder="ProductID" name="ProductID" id="id_ProductID" required maxlength="200" value="{{ process.ProductID }}">
+                <input type="text" class="form-control" placeholder="ProductID" aria-label="Server" name="ProductID" id="id_ProductID" required maxlength="200" value="{{ process.ProductID }}">
             </div>
             <div class="input-group mb-3">
                 <span class="input-group-text" id="basic-addon1">Process Tooling</span>
-                <input type="text" class="form-control" placeholder="process_tooling" name="process_tooling" id="id_process_tooling" required maxlength="200" value="{{ process.process_tooling }}">
+                <input type="text" class="form-control" placeholder="process_tooling" aria-label="Server" name="process_tooling" id="id_process_tooling" required maxlength="200" value="{{ process.process_tooling }}">
             </div>
             <div class="input-group mb-3">
                 <span class="input-group-text" id="basic-addon1">Start Time</span>
-                <input type="text" class="form-control" placeholder="start_time" name="start_time" id="id_start_time" required maxlength="150" value="{{ process.start_time }}"{{ process.start_time }}>
+                <input type="datetime-local" class="form-control" placeholder="start_time" aria-label="Server" name="start_time" id="id_start_time" required maxlength="150" value="{{ process.start_time }}">
             </div>
             <div class="input-group mb-3">
-                <span class="input-group-text" id="basic-addon1">Finish Time </span>
-                <input type="text" class="form-control" placeholder="finish_time" name="finish_time" id="id_finish_time" required maxlength="150" value="{{ process.finish_time }}"{{ process.finish_time }}>
-            </div>
-            <div class="input-group mb-3">
-                <span class="input-group-text" id="basic-addon1">duration</span>
-                <input type="text" class="form-control" placeholder="duration" name="duration" id="id_duration" required maxlength="10000" value="{{ process.duration }}"{{ process.duration }}>
-            </div>
-            <div class="input-group mb-3">
-                <span class="input-group-text" id="basic-addon1">quanitiy</span>
-                <input type="text" class="form-control" placeholder="quanitiy" name="quanitiy" id="id_quanitiy" required maxlength="10000" value="{{ process.quanitiy }}">
-            </div>
-            <div class="input-group mb-3">
-                <span class="input-group-text" id="basic-addon1">Unit Price</span>
-                <input type="text" class="form-control" placeholder="unit_price" name="unit_price" id="id_unit_price" required maxlength="10000" value="{{ process.unit_price }}">
-            </div>
-            <div class="input-group mb-3">
-                <span class="input-group-text" id="basic-addon1">Cost</span>
-                <input type="text" class="form-control" placeholder="cost" name="cost" id="id_cost" required maxlength="10000" value="{{ process.cost }}">
-            </div>
-            <div class="input-group mb-3">
-                <span class="input-group-text" id="basic-addon1">Total</span>
-                <input type="text" class="form-control" placeholder="total" name="total" id="id_total" required maxlength="200" value="{{ process.total }}">
+                <span class="input-group-text" id="basic-addon1">Remarks</span>
+                <input type="text" class="form-control" placeholder="remarks" aria-label="Server" name="remarks" id="id_remarks" required maxlength="200" value="{{ process.remarks }}">
             </div>
         </div>
         <button type="submit" class="btn btn-primary">Update</button>

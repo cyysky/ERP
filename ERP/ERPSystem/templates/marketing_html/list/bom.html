@@ -25,18 +25,15 @@
         <thead class="thead-dark">
             <tr>
                 <th>BOM ID</th>
-                <th>BOM Level</th>
                 <th>Product ID</th>
                 <th>Product Name</th>
                 <th>Material ID</th>
                 <th>Material Name</th>
-                <th>source</th>
+                <th>Part Number</th>
+                <th>Describe</th>
+                <th>Quantity</th>
                 <th>UOM</th>
-                <th>usage</th>
-                <th>Unit Price </th>
-                <th>Remarks </th>
-                <th>Amount </th>
-                <th>Total </th>
+                <th>Usage type</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -44,21 +41,18 @@
             {% for bom in boms %}
             <tr>
                 <td>{{ bom.BOMID}}</td>
-                <td>{{ bom.BOM_Level}}</td>
                 <td>{{ bom.ProductID}}</td>
                 <td>{{ bom.product_name}}</td>
                 <td>{{ bom.MaterialID}}</td>
                 <td>{{ bom.material_name}}</td>
-                <td>{{ bom.source}}</td>
-                <td>{{ bom.UOM}}</td>
-                <td>{{ bom.usage}}</td>
-                <td>{{ bom.unit_price}}</td>
-                <td>{{ bom.remarks}}</td>
-                <td>{{ bom.amount}}</td>
-                <td>{{ bom.total}}</td>
+                <td>{{ bom.part_number}}</td>
+                <td>{{ bom.describe}}</td>
+                <td>{{ bom.quantity}}</td>
+                <td>{{ bom.unit_of_measurement}}</td>
+                <td>{{ bom.usage_type}}</td>
                 <td>
                     <a type="button" href="edit_bom/{{ bom.BOMID }}">
-                        <span class="btn btn-primary">
+                        <span class="btn btn-success">
                             <!-- Alerts    图标-->
                             <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="信息：">
                                 <use xlink:href="#info-fill">
@@ -66,35 +60,51 @@
                             </svg>Edit
                         </span>
                     </a>
-                    <!-- Example single danger button -->
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="危险：">
-                                <use xlink:href="#exclamation-triangle-fill">
-                                </use>
-                            </svg>Delete
-                        </button>
-                        <ul1 class="dropdown-menu">
-                            <p>Are you sure you want to delete?</p>
-                            <p>(你确定要删除吗?)</p>
-                            <a href="delete_product_bom/{{ bom.BOMID }}" class="btn btn-danger">
+                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <!-- Alerts    图标-->
+                        <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="危险：">
+                            <use xlink:href="#exclamation-triangle-fill">
+                            </use>
+                        </svg>Delete
+                    </button>
+                </td>
+            </tr>
+            <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Delete Record</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            Are you sure you want to delete?(你确定要删除吗?)
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                <!-- Alerts    图标-->
+                                <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="信息：">
+                                    <use xlink:href="#info-fill">
+                                    </use>
+                                </svg>
+                                Close
+                            </button>
+                            <a href="delete_bom/{{ bom.BOMID }}" class="btn btn-danger">
                                 <!-- Alerts    图标-->
                                 <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="危险：">
                                     <use xlink:href="#exclamation-triangle-fill">
                                     </use>
                                 </svg>Delete
                             </a>
-                        </ul1>
+                        </div>
                     </div>
-                </td>
-            </tr>
+                </div>
+            </div>
             {% endfor %}
         </tbody>
     </table>
     <!--endprint-->
     <br>
     <br>
-
     <center>
         <a href="emp_bom" class="btn btn-success">Add New Record</a>
     </center>
@@ -132,7 +142,6 @@
             window.document.body.innerHTML = oldStr; // body替换为原来的内容
         }
     </script>
-    {{df|safe}}
 </body>
 </html>
 {% endif %}

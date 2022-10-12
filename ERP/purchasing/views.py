@@ -1,9 +1,9 @@
 from django.shortcuts import render, redirect
-from django.db.models import Sum  #能从  .objects.all() 拿记录
+
 from purchasing.forms import SupplierForm,Material_SupplierForm,PurchaseForm,RequireForm,ReceiveForm
-from purchasing.forms import Material_Supplier01Form,Purchase01Form,Require01Form
+from purchasing.forms import Material_Supplier01Form
 #----------------------------------------------------------------------------------------------
-from ERPSystem.models import Supplier,Material_Supplier,Purchase,Require,Receive 
+from ERPSystem.models import Supplier,Material_Supplier,Purchase,Require,Receive
 
 #----------------------------------------
 from datetime    import datetime     # 引入时间模块 
@@ -43,7 +43,7 @@ def emp_supplier(request):
 def supplier(request):    
         suppliers = Supplier.objects.all()
         data = Image.objects.all()  
-        paginator = Paginator(suppliers,10)
+        paginator = Paginator(suppliers,1)
         page = request.GET.get('page1')
         try:
             suppliers = paginator.page(page)               
@@ -80,6 +80,7 @@ def emp_material_supplier(request):
         if form.is_valid():  
             try: 
                 form.save()
+                
                 return redirect('/purchasing/material_supplier')      
             except:  
                 traceback.print_exc()
@@ -88,11 +89,10 @@ def emp_material_supplier(request):
     return render(request,'purchasing_html/index/index_material_supplier.html',{'form':form})  
    
 
-def material_supplier(request):
-        #Material.objects.get(Material.MaterialID).aggregate(Sum('customer_name')).get('customer_name__sum')
+def material_supplier(request):    
         material_suppliers = Material_Supplier.objects.all()
         data = Image.objects.all()  
-        paginator = Paginator(material_suppliers,10)
+        paginator = Paginator(material_suppliers,1)
         page = request.GET.get('page1')
         try:
             material_suppliers = paginator.page(page)               
@@ -140,7 +140,7 @@ def emp_require(request):
 def require(request):    
         requires = Require.objects.all()
         data = Image.objects.all()  
-        paginator = Paginator(requires,10)
+        paginator = Paginator(requires,1)
         page = request.GET.get('page1')
         try:
             requires = paginator.page(page)               
@@ -157,7 +157,7 @@ def edit_require(request, RequireID):
 
 def update_require(request, RequireID):  
     require = Require.objects.get(RequireID=RequireID)
-    form = Require01Form(request.POST, instance = require)  
+    form = RequireForm(request.POST, instance = require)  
     if form.is_valid():  
         form.save()
         return redirect("/purchasing/require")  
@@ -186,7 +186,7 @@ def emp_receive(request):
 def receive(request):    
         receives = Receive.objects.all()
         data = Image.objects.all()  
-        paginator = Paginator(receives,10)
+        paginator = Paginator(receives,1)
         page = request.GET.get('page1')
         try:
             receives = paginator.page(page)               
@@ -234,7 +234,7 @@ def emp_purchase(request):
 def purchase(request):    
         purchases = Purchase.objects.all()
         data = Image.objects.all()  
-        paginator = Paginator(purchases,10)
+        paginator = Paginator(purchases,1)
         page = request.GET.get('page1')
         try:
             purchases = paginator.page(page)               
@@ -251,7 +251,7 @@ def edit_purchase(request, PurchaseID):
 
 def update_purchase(request, PurchaseID):  
     purchase = Purchase.objects.get(PurchaseID=PurchaseID)
-    form = Purchase01Form(request.POST, instance = purchase)  
+    form = PurchaseForm(request.POST, instance = purchase)  
     if form.is_valid():  
         form.save()
         return redirect("/purchasing/purchase")  

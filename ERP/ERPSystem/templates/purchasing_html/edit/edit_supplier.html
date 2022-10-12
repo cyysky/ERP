@@ -28,7 +28,7 @@
                     <span class="input-group-text">Supplier ID</span>
                     <input type="text" class="form-control" placeholder="Id" aria-label="Username" name="SupplierID" id="id_SupplierID" required maxlength="150" value="{{ supplier.SupplierID }}">
                     <span class="input-group-text">Supplier Name</span>
-                    <input type="text" class="form-control" placeholder="Name"  name="supplier_name" id="id_supplier_name" required maxlength="100" value="{{ supplier.supplier_name }}">
+                    <input type="text" class="form-control" placeholder="Name" aria-label="Server" name="supplier_name" id="id_supplier_name" required maxlength="100" value="{{ supplier.supplier_name }}">
                 </div>
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1">Supplier Type</span>
@@ -36,27 +36,27 @@
                 </div>
                 <div class="input-group">
                     <span class="input-group-text">Address</span>
-                    <textarea class="form-control" aria-label="With textarea" type="text" name="address" id="id_address" required maxlength="254" rows="4" value="{{ supplier.address }}">{{ supplier.address }}</textarea>
+                    <textarea class="form-control" aria-label="With textarea" type="text" name="address" id="id_address" required maxlength="100" value="{{ supplier.address }}">{{ supplier.address }}</textarea>
                 </div>
                 <br>
                 <div class="input-group">
                     <span class="input-group-text">Trem</span>
-                    <textarea class="form-control" aria-label="With textarea" type="text" name="term" id="id_term" required maxlength="254" rows="4" value="{{ supplier.term }}">{{ supplier.term }}</textarea>
+                    <textarea class="form-control" aria-label="With textarea" type="text" name="term" id="id_term" required maxlength="100" value="{{ supplier.term }}">{{ supplier.term }}</textarea>
                 </div>
                 <br>
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1">Email</span>
-                    <input type="text" class="form-control"   name="email" id="id_email" required maxlength="254" value="{{ supplier.email }}">
+                    <input type="text" class="form-control" placeholder="email" aria-label="Username" name="email" id="id_email" required maxlength="254" value="{{ supplier.email }}">
                 </div>
                 <br>
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1">Phone1</span>
-                    <input type="text" class="form-control"   name="phone1" id="id_phone1" required maxlength="150" value="{{ supplier.phone1 }}">
+                    <input type="text" class="form-control" placeholder="phone1" aria-label="Server" name="phone1" id="id_phone1" required maxlength="150" value="{{ supplier.phone1 }}">
                 </div>
                 <br>
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1">Phone2</span>
-                    <input type="text" class="form-control"  name="phone2" id="id_phone2" required maxlength="150" value="{{ supplier.phone2 }}">
+                    <input type="text" class="form-control" placeholder="phone2" aria-label="Server" name="phone2" id="id_phone2" required maxlength="150" value="{{ supplier.phone2 }}">
                 </div>
 
                 <button type="submit" class="btn btn-primary">Update</button>

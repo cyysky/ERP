@@ -2,17 +2,12 @@ from django import forms
 
 from ERPSystem.models import Material,Material_Stock
 
+
 #--------------------------------------------------------------------------------材料        
 class MaterialForm(forms.ModelForm):  
     class Meta:  
         model = Material  
         fields = '__all__'      
-
-class Material01Form(forms.ModelForm):  
-    class Meta:  
-        model = Material  
-        fields = 'MaterialID','material_name','measure_unit','tybe','Form','thickness','width','length','pltch','default_stock_locatiuon','quantity','unit_price'      
-#,'material_supplier_name'
 
 class Material_StockForm(forms.ModelForm):  
     class Meta:  

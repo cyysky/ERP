@@ -1,19 +1,28 @@
-from itertools import count
 from django.shortcuts import render, redirect
-from django.db.models import F, Sum, Window,Avg,OuterRef,Subquery,Q
-from production.forms import ProcessForm,MachineForm,ProductForm
-from production.forms import Product_GoodForm,Product_RejectForm,Product_MaterialForm
-from production.forms import PackagingForm,DeliveryForm,ResourceForm
-from production.forms import Delivery01Form,Product_Good01Form,Product_Reject01Form
-from production.forms import Process01Form,Product01Form
 
-from ERPSystem.models import Process,Machine,Product,Product_Good,Product_Reject,Product_Material,Packaging,Delivery,Resource
+from production.forms import ProcessForm,MachineForm,ProductForm,Product_GoodForm,Product_RejectForm,Product_MaterialForm,PackagingForm,DeliveryForm
+from production.forms import Delivery01Form,Product_Good01Form,Product_Reject01Form
+from ERPSystem.models import Process,Machine,Product,Product_Good,Product_Reject,Product_Material,Packaging,Delivery
 
 #----------------------------------------
+from datetime    import datetime     # 引入时间模块 
+now = datetime.now()
+day = str(now.day)
+month = str(now.month)
+year = str(now.year)
+hour = str(now.hour)
+minute =str(now.minute)
+second = str(now.second)
+create1 =  day + "-" + month + "-" + year + "__" + hour + ":" + minute + ":" + second
+
 import traceback
-from demo.models import Image
+
+from django.db.models import F
+
 from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
  
+from demo.models import Image
+
 #--------------------------------------------------------------------------
 
 def emp_process(request):  
@@ -33,29 +42,8 @@ def emp_process(request):
   
 def process(request):    
         processs = Process.objects.all()
-   #     def total(self):
-   #       a= self.objects.values('self.cost').annotate(test=Window(Sum('self.cost'), order_by=F('self.ProcessID').asc()))
-   #       b=a.values('test')
-     #   a= Process.objects.values('cost').annotate(total=Window(Sum('cost'),order_by=F('ProcessID').asc()))
-      #  print(a)
-       # b=a.values('total')
-      #  M=Process.objects.all().aggregate(Sum('total')).get('total__sum')
-     #   print('material=',M)   
-    #    M1=Process.objects.all().aggregate(Sum('total')).get('total__sum')
-    #    print('material single cost=',M1)   
-     #   P = lambda M,M1: M+M1 
-      #  P1 =(P(M,M1))
-       # print(P1)   
-       # Process.objects.update(total=M)  
-     #   Process.objects.update(c)
-    #     Relation.objects.all(). \
-    #   update(rating=RawSQL(SignRelation.objects. \
-    #                     extra(where=['relation_id = relation.id']). \
-    #                     values('relation'). \
-    #                     annotate(sum_rating=Sum('rating')). \
-    #                     values('sum_rating').query, []))
         data = Image.objects.all()  
-        paginator = Paginator(processs,10)
+        paginator = Paginator(processs,1)
         page = request.GET.get('page1')
         try:
             processs = paginator.page(page)               
@@ -72,7 +60,7 @@ def edit_process(request, ProcessID):
 
 def update_process(request, ProcessID):  
     process = Process.objects.get(ProcessID=ProcessID)
-    form = Process01Form(request.POST, instance = process)  
+    form = ProcessForm(request.POST, instance = process)  
     if form.is_valid():  
         form.save()
         return redirect("/production/process")  
@@ -82,54 +70,6 @@ def destroy_process(request, ProcessID):
     process = Process.objects.get(ProcessID=ProcessID)
     process.delete()
     return redirect("/production/process")  
-#--------------------------------------------------------------------------------------------
-def emp_resource(request):  
-    if request.method == "POST":   
-        form = ResourceForm(request.POST)        
-      
-        if form.is_valid():  
-            try: 
-                form.save()               
-                return redirect('/production/resource')      
-            except:  
-                traceback.print_exc()
-    else:  
-        form = ResourceForm()  
-    return render(request,'production_html/index/index_resource.html',{'form':form})  
-  
-def resource(request):    
-        resources = Resource.objects.all()
-        data = Image.objects.all()  
-        paginator = Paginator(resources,10)
-        page = request.GET.get('page1')
-        try:
-            resources = paginator.page(page)               
-        except PageNotAnInteger:
-            resources = paginator.page(1)
-        except EmptyPage:
-            resources = paginator.page(paginator.num_pages)
-        context = {'resources': resources,'data' : data}                          
-        return render(request,'production_html/list/resource.html', context)                      
-
-def edit_resource(request, ResourceID):  
-    resource = Resource.objects.get(ResourceID=ResourceID)
-    return render(request,'production_html/edit/edit_resource.html', {'resource':resource,})  
-
-def update_resource(request, ResourceID):  
-    resource = Resource.objects.get(ResourceID=ResourceID)
-    form = ResourceForm(request.POST, instance = resource)  
-    if form.is_valid():  
-        form.save()
-        return redirect("/production/resource")  
-    return render(request,'production_html/edit/edit_resource.html', {'resource': resource})  
-
-def destroy_resource(request, ResourceID):  
-    resource = Resource.objects.get(ResourceID=ResourceID)
-    resource.delete()
-    return redirect("/production/resource") 
-
-
-
 #------------------------------------------------------------------------------------------------
 def emp_machine(request):  
     if request.method == "POST":   
@@ -146,10 +86,11 @@ def emp_machine(request):
         form = MachineForm()  
     return render(request,'production_html/index/index_machine.html',{'form':form})  
    
+
 def machine(request):    
         machines = Machine.objects.all()
         data = Image.objects.all()  
-        paginator = Paginator(machines,10)
+        paginator = Paginator(machines,1)
         page = request.GET.get('page1')
         try:
             machines = paginator.page(page)               
@@ -197,7 +138,7 @@ def emp_product(request):
 def product(request):    
         products = Product.objects.all()
         data = Image.objects.all()  
-        paginator = Paginator(products,10)
+        paginator = Paginator(products,1)
         page = request.GET.get('page1')
         try:
             products = paginator.page(page)               
@@ -214,7 +155,7 @@ def edit_product(request, ProductID):
 
 def update_product(request, ProductID):  
     product = Product.objects.get(ProductID=ProductID)
-    form = Product01Form(request.POST, instance = product)  
+    form = ProductForm(request.POST, instance = product)  
     if form.is_valid():  
         form.save()
         return redirect("/production/product")  
@@ -224,7 +165,6 @@ def destroy_product(request, ProductID):
     product = Product.objects.get(ProductID=ProductID)
     product.delete()
     return redirect("/production/product")  
-
 
 #-----------------------------------------------------------------------------------------------------
 
@@ -246,7 +186,7 @@ def emp_product_material(request):
 def product_material(request):    
         product_materials = Product_Material.objects.all()
         data = Image.objects.all()  
-        paginator = Paginator(product_materials,10)
+        paginator = Paginator(product_materials,1)
         page = request.GET.get('page1')
         try:
             product_materials = paginator.page(page)               
@@ -263,7 +203,7 @@ def edit_product_material(request, id):
 
 def update_product_material(request, id):  
     product_material = Product_Material.objects.get(id=id)
-    form = Product_MaterialForm(request.POST, instance = product_material)  
+    form = Product_Material_01Form(request.POST, instance = product_material)  
     if form.is_valid():  
         form.save()
         return redirect("/production/product_material")  
@@ -294,7 +234,7 @@ def emp_product_good(request):
 def product_good(request):    
         product_goods = Product_Good.objects.all()
         data = Image.objects.all()  
-        paginator = Paginator(product_goods,10)
+        paginator = Paginator(product_goods,1)
         page = request.GET.get('page1')
         try:
             product_goods = paginator.page(page)               
@@ -341,7 +281,7 @@ def emp_product_reject(request):
 def product_reject(request):    
         product_rejects = Product_Reject.objects.all()
         data = Image.objects.all()  
-        paginator = Paginator(product_rejects,10)
+        paginator = Paginator(product_rejects,1)
         page = request.GET.get('page1')
         try:
             product_rejects = paginator.page(page)               
@@ -390,7 +330,7 @@ def emp_packaging(request):
 def packaging(request):    
         packagings = Packaging.objects.all()
         data = Image.objects.all()  
-        paginator = Paginator(packagings,10)
+        paginator = Paginator(packagings,1)
         page = request.GET.get('page1')
         try:
             packagings = paginator.page(page)               
@@ -437,7 +377,7 @@ def emp_delivery(request):
 def delivery(request):    
         deliverys = Delivery.objects.all()
         data = Image.objects.all()
-        paginator = Paginator(deliverys,10)
+        paginator = Paginator(deliverys,1)
         page = request.GET.get('page1')
         try:
             deliverys = paginator.page(page)               

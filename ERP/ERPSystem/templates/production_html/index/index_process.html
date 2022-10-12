@@ -1,5 +1,9 @@
 <!DOCTYPE html>
-{% include 'gg.html' %}
+<style>
+    p, div, h3, h4, a, h1, input {
+        text-align: center;
+    }
+</style>
 {% block title %}{% endblock %}
 {% block content %}
 {% if user.is_authenticated %}
@@ -60,36 +64,11 @@
                 <div class="input-group mb-3">
                     <span class="input-group-text">Start Time</span>
                     {{ form.start_time |attr:"class:form-control"|attr:"cols:20" |attr:"type:datetime-local"  }}
-                    <span class="input-group-text">Finish Time</span>
-                    {{ form.finish_time |attr:"class:form-control"|attr:"cols:20" |attr:"type:datetime-local"  }}
+                    <span class="input-group-text">Remarks</span>
+                    {{ form.remarks |attr:"class:form-control"|attr:"cols:20" }}
                 </div>
                 <br>
-                <div class="input-group mb-3">
-                    <span class="input-group-text">duration</span>
-                    {{ form.duration |attr:"class:form-control"|attr:"cols:20" }}
-                </div>
-                <br>
-                <div class="input-group mb-3">
-                    <span class="input-group-text">quanitiy</span>
-                    {{ form.quanitiy |attr:"class:form-control"|attr:"cols:20" }}
-                </div>
-                <br>
-                <div class="input-group mb-3">
-                    <span class="input-group-text">Unit Price</span>
-                    {{ form.unit_price |attr:"class:form-control"|attr:"cols:20" }}
-                </div>
-                <br>
-                <div class="input-group mb-3">
-                    <span class="input-group-text">Cost</span>
-                    {{ form.cost |attr:"class:form-control"|attr:"cols:20" }}
-                </div>
-                <br>
-                <div class="input-group mb-3">
-                    <span class="input-group-text">total</span>
-                    {{ form.total |attr:"class:form-control"|attr:"cols:20"}}
-                </div>
-                <br>
-                <center><button type="submit" class="btn btn-primary">Submit</button></center>
+                <center><button type="submit" class="btn btn-primary">Submit</center>
             </div>
         </form>
     </div>

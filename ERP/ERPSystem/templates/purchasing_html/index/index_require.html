@@ -1,5 +1,9 @@
 <!DOCTYPE html>
-{% include 'gg.html' %}
+<style>
+    p, div, h3, h4, a, h1, input {
+        text-align: center;
+    }
+</style>
 {% block title %}{% endblock %}
 {% block content %}
 {% if user.is_authenticated %}
@@ -41,9 +45,9 @@
                     {{ form.material_name |attr:"class:form-control"|attr:"cols:20" }}
                 </div>
                 <div class="input-group mb-3">
-                    <span class="input-group-text">Project ID</span>
+                    <span class="input-group-text">Material ID</span>
                     {{ form.ProjectID |attr:"class:form-control"|attr:"cols:20" }}
-                    <span class="input-group-text">project Name</span>
+                    <span class="input-group-text">Material Name</span>
                     {{ form.project_name |attr:"class:form-control"|attr:"cols:20" }}
                 </div>
                 <div class="input-group mb-3">

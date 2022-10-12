@@ -48,7 +48,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',    
     'pure_pagination',  # 分頁
     'widget_tweaks', #Forms更改
-    'django_filters',  #new
     
     'ERPSystem',
     'accounts',
@@ -128,13 +127,13 @@ WSGI_APPLICATION = 'crudexample.wsgi.application'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
+    'urser': {
         'NAME': BASE_DIR / 'db.sqlite3',
         'ENGINE': 'django.db.backends.sqlite3',
         'USER': 'postgres_user',
         'PASSWORD': 's3krit'
     },
-    'urser': {
+    'default': {
         'NAME': 'erp',# 資料庫名字
         'ENGINE': 'django.db.backends.mysql',  # 指定使用的資料庫引擎，可以通過 Django.db.backends 來檢視哪些資料庫可以與 Django 配合使用； 
         'USER': "user",  # mysql 使用者名稱稱

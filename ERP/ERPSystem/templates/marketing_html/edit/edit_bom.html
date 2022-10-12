@@ -17,7 +17,7 @@
     <form method="POST" class="post-form" action="/marketing/update_bom/{{bom.BOMID}}">
         {% csrf_token %}
         <div class="container">
-            <h3>BOM Update Details</h3>
+            <h3>Customer Update Details</h3>
             <div class="form-group row">
                 <label class="col-md-1 col-form-label"></label>
                 <div class="col-md-4">
@@ -26,55 +26,43 @@
             <br>
             <div class="input-group mb-3">
                 <span class="input-group-text" id="basic-addon1">BOMID</span>
-                <input type="text" class="form-control" name="BOMID" id="id_BOMID" required maxlength="150" value="{{ bom.BOMID }}">
-                <span class="input-group-text" id="basic-addon1">BOM_Level</span>
-                <input type="text" class="form-control" name="BOM_Level" id="id_BOM_Level" required maxlength="150" value="{{ bom.BOM_Level }}">
+                <input type="text" class="form-control" placeholder="BOMID" aria-label="Username" type="text" name="BOMID" id="id_BOMID" required maxlength="150" value="{{ bom.BOMID }}">
             </div>
             <div class="input-group mb-3">
                 <span class="input-group-text">ProductID</span>
-                <input type="text" class="form-control" name="ProductID" id="id_ProductID" required maxlength="150" value="{{ bom.ProductID }}">
+                <input type="text" class="form-control" placeholder="ProductID" aria-label="Username" name="ProductID" id="id_ProductID" required maxlength="150" value="{{ bom.ProductID }}">
                 <span class="input-group-text">product_name</span>
-                <input type="text" class="form-control" name="product_name" id="id_product_name" required maxlength="150" value="{{ bom.product_name }}">
+                <input type="text" class="form-control" placeholder="product_name" aria-label="Username" name="product_name" id="id_product_name" required maxlength="150" value="{{ bom.product_name }}">
             </div>
             <div class="input-group mb-3">
                 <span class="input-group-text">MaterialID</span>
-                <input type="text" class="form-control" name="MaterialID" id="id_MaterialID" required maxlength="150" value="{{ bom.MaterialID }}">
+                <input type="text" class="form-control" placeholder="MaterialID" aria-label="Server" name="MaterialID" id="id_MaterialID" required maxlength="150" value="{{ bom.MaterialID }}">
                 <span class="input-group-text">material_name</span>
-                <input type="text" class="form-control" name="material_name" id="id_material_name" required maxlength="150" value="{{ bom.material_name }}">
+                <input type="text" class="form-control" placeholder="material_name" aria-label="Server" name="material_name" id="id_material_name" required maxlength="150" value="{{ bom.material_name }}">
             </div>
             <div class="input-group mb-3">
-                <span class="input-group-text" id="basic-addon1">source</span>
-                <input type="text" class="form-control" name="source" id="id_source" required maxlength="150" value="{{ bom.source }}">
-            </div>
-            <br>
-            <div class="input-group">
-                <span class="input-group-text">UOM</span>
-                <textarea class="form-control" type="text" name="UOM" id="id_UOM" required maxlength="150" value="{{ bom.UOM }}">{{ bom.UOM }}</textarea>
-            </div>
-            <br>
-            <div class="input-group">
-                <span class="input-group-text">Usage</span>
-                <input type="text" class="form-control" name="usage" id="id_usage" required maxlength="150" value="{{ bom.usage }}">
-            </div>
-            <br>
-            <div class="input-group">
-                <span class="input-group-text">Unit Price</span>
-                <input type="text" class="form-control" name="unit_price" id="id_unit_price" required maxlength="150" value="{{ bom.unit_price }}">
+                <span class="input-group-text" id="basic-addon1">part_number</span>
+                <input type="text" class="form-control" placeholder="part_number" aria-label="Username" name="part_number" id="id_part_number" required maxlength="150" value="{{ bom.part_number }}">
             </div>
             <br>
             <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">describe</span>
+                <input type="text" class="form-control" placeholder="describe" aria-label="Username" name="describe" id="id_describe" required maxlength="150" value="{{ bom.describe }}">
+            </div>
+            <br>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">quantity</span>
+                <input type="text" class="form-control" placeholder="quantity" aria-label="Username" name="quantity" id="id_quantity" required maxlength="150" value="{{ bom.quantity }}">
+            </div>
+            <br>
+            <div class="input-group">
+                <span class="input-group-text">unit_of_measurement</span>
+                <textarea class="form-control" aria-label="With textarea" type="text" name="unit_of_measurement" id="id_unit_of_measurement" required maxlength="150" value="{{ bom.unit_of_measurement }}">{{ bom.unit_of_measurement }}</textarea>
+            </div>
+            <br>
+            <div class="input-group">
                 <span class="input-group-text">Remarks</span>
-                <input type="text" class="form-control" name="remarks" id="id_remarks" required maxlength="150" value="{{ bom.remarks }}">
-            </div>
-            <br>
-            <div class="input-group mb-3">
-                <span class="input-group-text">Amount</span>
-                <input type="text" class="form-control" name="amount" id="id_amount" required maxlength="150" value="{{ bom.amount }}">
-            </div>
-            <br>
-            <div class="input-group mb-3">
-                <span class="input-group-text">Total</span>
-                <input type="text" class="form-control" name="total" id="id_total" required maxlength="150" value="{{ bom.total }}">
+                <textarea class="form-control" aria-label="With textarea" type="text" name="usage_type" id="id_usage_type" required maxlength="150" value="{{ bom.usage_type }}">{{ bom.usage_type }}</textarea>
             </div>
             <br>
             <button type="submit" class="btn btn-primary">Update</button>

@@ -1,5 +1,9 @@
 <!DOCTYPE html>
-{% include 'gg.html' %}
+<style>
+    p, div, h3, h4, a, h1, input {
+        text-align: center;
+    }
+</style>
 {% block title %}{% endblock %}
 {% block content %}
 {% if user.is_authenticated %}

@@ -1,5 +1,9 @@
 <!DOCTYPE html>
-{% include 'gg.html' %}
+<style>
+    p, div, h3, h4, a, h1, input {
+        text-align: center;
+    }
+</style>
 {% block title %}{% endblock %}
 {% block content %}
 {% if user.is_authenticated %}
@@ -11,7 +15,6 @@
 {% endblock %}
 {% if user.is_authenticated %}
 {% load widget_tweaks %}
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -32,6 +35,12 @@
                     {{ form.MaterialID |attr:"class:form-control"|attr:"cols:20" }}
                     <span class="input-group-text">Material Name</span>
                     {{ form.material_name |attr:"class:form-control"|attr:"cols:20" }}
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Material Supplier ID</span>
+                    {{ form.MaterialSupplierID |attr:"class:form-control"|attr:"cols:20" }}
+                    <span class="input-group-text">Material Supplier Name</span>
+                    {{ form.material_supplier_name |attr:"class:form-control"|attr:"cols:20" }}
                 </div>
                 <div class="input-group mb-3">
                     <span class="input-group-text">Measure Unit</span>
@@ -63,10 +72,15 @@
                 </div>
                 <br>
                 <div class="input-group mb-3">
+                    <span class="input-group-text">Usage</span>
+                    {{ form.usage |attr:"class:form-control"|attr:"cols:20" }}
+                </div>
+                <br>
+                <div class="input-group mb-3">
                     <span class="input-group-text">Quantity</span>
                     {{ form.quantity |attr:"class:form-control"|attr:"cols:20" }}
-                    <span class="input-group-text">Uit Price</span>
-                    {{ form.unit_price |attr:"class:form-control"|attr:"cols:20" }}
+                    <span class="input-group-text">NitPrice</span>
+                    {{ form.nit_price |attr:"class:form-control"|attr:"cols:20" }}
                 </div>
                 <br>
                 <button type="submit" class="btn btn-primary">Submit</button>

@@ -18,51 +18,42 @@
         {% csrf_token %}
         <div class="container">
             <h3>Product Update Details</h3>
-            <br>
-            <div class="input-group mb-3">
-                <span class="input-group-text" id="basic-addon1">Product ID</span>
-                <input type="text" class="form-control" placeholder="ProductID" aria-label="Username" name="ProductID" id="id_ProductID" required maxlength="254" value="{{ product.ProductID }}">
-                <span class="input-group-text" id="basic-addon1">Product Name</span>
-                <input type="text" class="form-control" placeholder="product_name" aria-label="Username" name="product_name" id="id_product_name" required maxlength="254" value="{{ product.product_name }}">
-            </div>
-            <br>
-            <br>
-            <div class="input-group mb-3">
-                <span class="input-group-text" id="basic-addon1">Product Group</span>
-                <input type="text" class="form-control" placeholder="product_group" aria-label="Username" name="product_group" id="id_product_group" required maxlength="254" value="{{ product.product_group }}">
-                <span class="input-group-text" id="basic-addon1">Product Tooling </span>
-                <input type="text" class="form-control" placeholder="product_tooling" aria-label="Username" name="product_tooling" id="id_product_tooling" required maxlength="254" value="{{ product.product_tooling }}">
-                <span class="input-group-text" id="basic-addon1">Product Unit </span>
-                <input type="text" class="form-control" placeholder="product_unit" aria-label="Username" name="product_unit" id="id_product_unit" required maxlength="254" value="{{ product.product_unit }}">
-            </div>
-            <br>
-            <div class="input-group mb-3">
-                <span class="input-group-text">BOM Level </span>
-                <input type="text" class="form-control" placeholder="BOM_Level" aria-label="Username" name="BOM_Level" id="id_BOM_Level" required maxlength="100" value="{{ product.BOM_Level }}">
-                <span class="input-group-text">Date </span>
-                <input type="text" class="form-control" placeholder="date"  name="date" id="id_date" required maxlength="100" value="{{ product.date }}">
-            </div>
-            <br>
-            <div class="input-group mb-3">
-                <span class="input-group-text">Quantity</span>
-                <input type="text" class="form-control" placeholder="quantity" aria-label="Username" name="quantity" id="id_quantity" required maxlength="100" value="{{ product.quantity }}">
-                <span class="input-group-text">Product Type  </span>
-                <input type="text" class="form-control" placeholder="product_type"  name="product_type" id="id_product_type" required maxlength="100" value="{{ product.product_type }}">
-            </div>
-            <br>
-            <div class="input-group mb-3">
-                <span class="input-group-text" id="basic-addon1">Unit_price</span>
-                <input type="text" class="form-control" placeholder="unit_price"  name="unit_price" id="id_unit_price" required maxlength="150" value="{{ product.unit_price }}">
-            </div>
-            <br>
-            <div class="input-group mb-3">
-                <span class="input-group-text" id="basic-addon1">Start Time</span>
-                <input type="datetime-local" class="form-control" placeholder="start_time"  name="start_time" id="id_start_time" required maxlength="150" value="{{ product.start_time }}">
-                <span class="input-group-text" id="basic-addon1">finish_time</span>
-                <input type="datetime-local" class="form-control" placeholder="finish_time"  name="finish_time" id="id_finish_time" required maxlength="150" value="{{ product.finish_time }}">
-            </div>
-            <button type="submit" class="btn btn-primary">Update</button>
-            <button href="product" class="btn btn-success">return</button>
+                <br>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Product ID</span>
+                    <input type="text" class="form-control" placeholder="ProductID" aria-label="Username"  name="ProductID" id="id_ProductID" required maxlength="254" value="{{ product.ProductID }}">
+                </div>
+                <br>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Process ID</span>
+                    <input type="text" class="form-control" placeholder="ProcessID" aria-label="Server"  name="ProcessID" id="id_process_id" required maxlength="150" value="{{ product.ProcessID }}">
+                </div>
+                <br>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Bom ID</span>
+                    <input type="text" class="form-control" placeholder="BOMID" aria-label="Username" name="BOMID" id="id_BOMID" required maxlength="100" value="{{ product.BOMID }}">
+                    <span class="input-group-text">Date </span>
+                    <input type="text" class="form-control" placeholder="date" aria-label="Server" name="date" id="id_date" required maxlength="100" value="{{ product.date }}">
+                </div>
+                <br>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Quantity</span>
+                    <input type="text" class="form-control" placeholder="quantity" aria-label="Username"  name="quantity" id="id_quantity" required maxlength="100" value="{{ product.quantity }}">
+                    <span class="input-group-text">Product Type  </span>
+                    <input type="text" class="form-control" placeholder="product_type" aria-label="Server"  name="product_type" id="id_product_type" required maxlength="100" value="{{ product.product_type }}">
+                </div>
+                <br>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">unit_price</span>
+                    <input type="text" class="form-control" placeholder="unit_price" aria-label="Server" name="unit_price" id="id_unit_price" required maxlength="150" value="{{ product.unit_price }}">
+                </div>
+                <br>
+                <h4>
+                    start_time:<input type="datetime-local" id="id_start_time" name="start_time" required maxlength="25" value="{{ product.start_time }}" />
+                    finish_time:<input type="datetime-local" id="id_finish_time" name="finish_time" required maxlength="25" value="{{ product.finish_time }}" />
+                </h4>
+                <button type="submit" class="btn btn-primary">Update</button>
+                <button href="product" class="btn btn-success">return</button>
         </div>
 
     </form>

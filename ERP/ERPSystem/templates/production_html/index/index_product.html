@@ -1,5 +1,9 @@
 <!DOCTYPE html>
-{% include 'gg.html' %}
+<style>
+    p, div, h3, h4, a, h1, input {
+        text-align: center;
+    }
+</style>
 {% block title %}{% endblock %}
 {% block content %}
 {% if user.is_authenticated %}
@@ -47,8 +51,20 @@
                 </div>
                 <br>
                 <div class="input-group mb-3">
-                    <span class="input-group-text">BOM Level </span>
-                    {{ form.BOM_Level |attr:"class:form-control"|attr:"cols:20" }}
+                    <span class="input-group-text">Materil ID</span>
+                    {{ form.materil_id |attr:"class:form-control"|attr:"cols:20" }}
+                    <span class="input-group-text">Material Usage </span>
+                    {{ form.material_usage |attr:"class:form-control"|attr:"cols:20" }}
+                </div>
+                <br>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Project ID</span>
+                    {{ form.ProjectID |attr:"class:form-control"|attr:"cols:20" }}
+                </div>
+                <br>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Bom ID</span>
+                    {{ form.BOMID |attr:"class:form-control"|attr:"cols:20" }}
                     <span class="input-group-text">Date</span>
                     {{ form.date |attr:"class:form-control"|attr:"cols:20"|attr:"type:datetime-local" }}
                 </div>
@@ -61,7 +77,7 @@
                 </div>
                 <br>
                 <div class="input-group mb-3">
-                    <span class="input-group-text">Unit Price </span>
+                    <span class="input-group-text">Nnit Price </span>
                     {{ form.unit_price |attr:"class:form-control"|attr:"cols:20" }}
                 </div>
                 <br>

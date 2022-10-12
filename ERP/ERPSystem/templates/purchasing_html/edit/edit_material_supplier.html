@@ -24,34 +24,16 @@
                 <input type="text" class="form-control" placeholder="SupplierID" aria-label="Username" name="SupplierID" id="id_SupplierID" required maxlength="100" value="{{ material_supplier.SupplierID }}">
             </div>
             <div class="input-group mb-3">
-                <span class="input-group-text">Materia I </span>
-                <input type="text" class="form-control" placeholder="MaterialID" name="MaterialID" id="id_MaterialID" required maxlength="100" value="{{ material_supplier.MaterialID }}">
-                <span class="input-group-text">Material Nam </span>
-                <input type="text" class="form-control" placeholder="material_name" name="material_name" id="id_material_name" required maxlength="100" value="{{ material_supplier.material_name }}">
+                <span class="input-group-text">Materia ID  </span>
+                <input type="text" class="form-control" placeholder="MaterialID" aria-label="Server" name="MaterialID" id="id_MaterialID" required maxlength="100" value="{{ material_supplier.MaterialID }}">
+                <span class="input-group-text">Material Name  </span>
+                <input type="text" class="form-control" placeholder="material_name" aria-label="Server" name="material_name" id="id_material_name" required maxlength="100" value="{{ material_supplier.material_name }}">
             </div>
             <div class="input-group mb-3">
-                <span class="input-group-text">source</span>
-                <input type="text" class="form-control" placeholder="source" name="source" id="id_source " required maxlength="100" value="{{ material_supplier.source }}">
-            </div>
-            <br>
-            <div class="input-group mb-3">
-                <span class="input-group-text">UOM</span>
-                <input type="text" class="form-control" placeholder="UOM" name="UOM" id="id_UOM " required maxlength="100" value="{{ material_supplier.UOM }}">
-            </div>
-            <br>
-            <div class="input-group mb-3">
-                <span class="input-group-text">EOQ</span>
-                <input type="text" class="form-control" placeholder="EOQ" name="EOQ" id="id_EOQ " required maxlength="100" value="{{ material_supplier.EOQ }}">
-            </div>
-            <br>
-            <div class="input-group mb-3">
-                <span class="input-group-text">Unit Price</span>
-                <input type="text" class="form-control" placeholder="unit_price" name="unit_price" id="id_unit_price " required maxlength="100" value="{{ material_supplier.unit_price }}">
-            </div>
-            <br>
-            <div class="input-group mb-3">
-                <span class="input-group-text">term</span>
-                <input type="text" class="form-control" placeholder="term" name="remarks" id="id_term " required maxlength="100" value="{{ material_supplier.term }}">
+                <span class="input-group-text">Quantity  </span>
+                <input type="text" class="form-control" placeholder="quantity" aria-label="Username" name="quantity" id="id_quantity" required maxlength="100" value="{{ material_supplier.quantity }}">
+                <span class="input-group-text">Remarks  </span>
+                <input type="text" class="form-control" placeholder="remarks" aria-label="Server" name="remarks" id="id_remarks " required maxlength="100" value="{{ material_supplier.remarks }}">
             </div>
             <br>
             <button type="submit" class="btn btn-primary">Update</button>

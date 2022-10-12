@@ -1,21 +1,29 @@
-
-
-from select import select
 from django.shortcuts import render, redirect
-from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
 
 from marketing.forms import SalesForm,CustomerForm,ProjectForm,BOMForm
-from marketing.forms import Sales01Form,Project01Form,BOM01Form
+from marketing.forms import Sales01Form,Project01Form
 #----------------------------------------------------------------------------------------------
+
 from ERPSystem.models import Sales,Customer,Project,BOM
-from django.db.models import F   
-from django.db.models import Q
-from django.db.models import Sum
+
+#----------------------------------------
+from datetime    import datetime     # 引入时间模块 
+now = datetime.now()
+day = str(now.day)
+month = str(now.month)
+year = str(now.year)
+hour = str(now.hour)
+minute =str(now.minute)
+second = str(now.second)
+create1 =  day + "-" + month + "-" + year + "__" + hour + ":" + minute + ":" + second
 
 import traceback
-from demo.models import Image   #图片功能
 
+from django.db.models import F
 
+from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
+ 
+from demo.models import Image
 
 #-------------------------------------------------------------------------
 def emp_sales(request):  
@@ -64,6 +72,7 @@ def destroy_sales(request, SalesID):
     sales.delete()
     return redirect("/marketing/sales")
 
+
 def emp_customer(request):  
     if request.method == "POST":   
         form = CustomerForm(request.POST)        
@@ -82,7 +91,7 @@ def emp_customer(request):
 def customer(request):    
         customers = Customer.objects.all()
         data = Image.objects.all()  
-        paginator = Paginator(customers,10)
+        paginator = Paginator(customers,1)
         page = request.GET.get('page1')
         try:
             customers = paginator.page(page)               
@@ -110,6 +119,7 @@ def destroy_customer(request, CustomerID):
     customer.delete()
     return redirect("/marketing/customer")  
     
+
 #-----------------------------------------------------------------------------
 def emp_project(request):  
     if request.method == "POST":   
@@ -129,7 +139,7 @@ def emp_project(request):
 def project(request):    
         projects = Project.objects.all()
         data = Image.objects.all()  
-        paginator = Paginator(projects,10)
+        paginator = Paginator(projects,1)
         page = request.GET.get('page1')
         try:
             projects = paginator.page(page)               
@@ -160,8 +170,9 @@ def destroy_project(request, ProjectID):
 def emp_bom(request):  
     if request.method == "POST":   
         form = BOMForm(request.POST)        
+      
         if form.is_valid():  
-            try: 
+            try:                 
                 form.save()
                 return redirect('/marketing/bom')      
             except:  
@@ -169,35 +180,17 @@ def emp_bom(request):
     else:  
         form = BOMForm()  
     return render(request,'marketing_html/index/index_bom.html',{'form':form})  
- 
+   
 
-
-def bom(request):
-        boms = BOM.objects.all()          
-     #   if BOM.objects.values('ProductID'): 
-     #    a=BOM.objects.values('ProductID').annotate(amount=Sum(F('usage') * F('unit_price')))  #得到 所有的,但 update 只可以输入一个
-     #    d=BOM.objects.values('ProductID').annotate(total=Sum(F('amount')))
-     #    b=a.values('ProductID')
-     #    c=a.values('amount')
-     #    print(a) 
-     #    print(b)
-     #    print(c)
-     #    print(d)
-
-       #  BOM.objects.values('ProductID').update(amount=(F('usage') * F('unit_price'))) #amount
-       #  q=BOM.objects.values('ProductID').annotate(total=Sum(F('amount')))
-       #  BOM.objects.values('ProductID').update(total=q)
-        # BOM.objects.values('ProductID').update(total=gg)
-         
-      #   BOM.objects.values('ProductID').update(total=b)
-      #   if BOM.objects.values('ProductID'): 
-      #    re2=BOM.objects.filter(ProductID=1).aggregate(Sum('amount')).get('amount__sum')
-      #    BOM.objects.filter(ProductID=1).update(total=re2)     
-      #    re3=BOM.objects.filter(ProductID=2).aggregate(Sum('amount')).get('amount__sum') 
-      #    BOM.objects.filter(ProductID=2).update(total=re3)
-           
+def bom(request):    
+        boms = BOM.objects.all()
         data = Image.objects.all()
-        paginator = Paginator(boms,10)
+        #对于date/time字段，可与timedelta()进行运算
+        #boms.filter(BOMID=F('ProductID')+('MaterialID'))      
+        #a=boms.filter(=F('ProductID')+('MaterialID'))
+        #BOM.objects.update(ProductID=0,MaterialID=0,level=a)         
+        #print(a)
+        paginator = Paginator(boms,1)
         page = request.GET.get('page1')
         try:
             boms = paginator.page(page)               
@@ -208,39 +201,24 @@ def bom(request):
         context = {'boms': boms,'data' : data}                          
         return render(request,'marketing_html/list/bom.html', context)                      
      
-def edit_bom(request, BOMID):
+def edit_bom(request, BOMID):  
     bom = BOM.objects.get(BOMID=BOMID)
     return render(request,'marketing_html/edit/edit_bom.html', {'bom':bom,})  
 
 def update_bom(request, BOMID):  
     bom = BOM.objects.get(BOMID=BOMID)
-    form = BOM01Form(request.POST, instance = bom)  
+    form = BOMForm(request.POST, instance = bom)  
     if form.is_valid():  
         form.save()
         return redirect("/marketing/bom")  
-    return render(request,'marketing_html/edit/edit_bom.html', {'bom': bom})
+    return render(request,'marketing_html/edit/edit_bom.html', {'bom': bom})  
 
 def destroy_bom(request, BOMID):  
     bom = BOM.objects.get(BOMID=BOMID)
     bom.delete()
     return redirect("/marketing/bom")  
-
 #---------------------------------------------------------------------------------------------------------------------
 
-#                re1=BOM.objects.all().aggregate(Sum('unit_price')).get('unit_price__sum')
-#                print(re1)   
-#                re2=BOM.objects.all().aggregate(Sum('amount')).get('amount__sum')
-#                print(re2)   
-#                re3=BOM.objects.all().aggregate(Sum('usage')).get('usage__sum')
-#                print(re3)  
-#                re4=BOM.objects.all().aggregate(Sum('usage')).get('usage__sum')
-#                print(re4) 
-#                #---------- P= M1(2)  + M2(4      M1=3  M2=5      
-#                #---------- P= M1(2X3)+ M2(4X5) =26  
-#                P = lambda re1,re2,re3,re4: re1*re2 + re3*re4
-#                print(P(re1,re2,re3,re4))
-#                form.save()
-#                BOM.objects.update(bom.total)
-   
+    
 
   

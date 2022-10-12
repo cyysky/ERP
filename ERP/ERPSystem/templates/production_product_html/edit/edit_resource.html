@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+{% include 'gg.html' %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/A2.css' %}" />
+</head>
+<body>
+    <div class="box">
+        <form method="POST" class="post-form" action="/production/update_resource/{{resource.ResourceID}}">
+            {% csrf_token %}
+            <div class="container">
+                <h3>Customer Update Details</h3>
+                <div class="form-group row">
+                    <label class="col-md-1 col-form-label"></label>
+                    <div class="col-md-4">
+                    </div>
+                </div>
+                <br>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Resource ID</span>
+                    <input type="text" class="form-control" name="ResourceID" id="id_ResourceID" required maxlength="150" value="{{ resource.ResourceID }}">
+                    <span class="input-group-text">reesource_name</span>
+                    <input type="text" class="form-control" name="reesource_name" id="id_reesource_name" required maxlength="150" value="{{ resource.reesource_name }}">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">remarks</span>
+                    <input type="text" class="form-control" name="remarks" id="id_remarks" required maxlength="150" value="{{ resource.remarks }}">
+                </div>
+                <br>
+                <button type="submit" class="btn btn-primary">Update</button>
+                <button href="customer" class="btn btn-success">return</button>
+
+            </div>
+
+        </form>
+    </div>
+</body>
+</html>  

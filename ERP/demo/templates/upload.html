@@ -12,15 +12,17 @@ h1,div,button,body{text-align:center;}
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Image Upload</title>
 </head>
-<body style="background-image: url('{% static '02.png' %}');"> 
+    <!--背景图片看起来有问题,但它是这样的操作的 -->
+<body style='background-image: url("{% static ' bg.jpg' %}");'>
     <div>
-		<form method="POST" enctype="multipart/form-data">
-			{% csrf_token %}
-			{{ form.as_p }}
-			<button type="submit" class="btn btn-primary"> Upload Image </button>
-		</form>
-    </div>     
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary"> Upload Image </button>
+        </form>
+    </div>
 </body>
-<a href="/order/sales" class="btn btn-danger"> To Sales</a>
-<a href="/index" class="btn btn-success"> To Image</a>
+
 </html>
+<a href="http://localhost:8000/" class="btn btn-danger"> To Master</a>
+<a href="/index" class="btn btn-success"> To Image</a>

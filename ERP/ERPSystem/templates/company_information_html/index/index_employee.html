@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+{% include 'gg.html' %}
+{% block title %}{% endblock %}
+{% block content %}
+{% if user.is_authenticated %}
+{% else %}
+{% include 'home.html' %} <!-- 登录和注册 -->
+{% endif %}
+{% endblock %}
+{% if user.is_authenticated %}
+{% load widget_tweaks %}<!-- 用在改 form (使用 |attr:"class:form-control" ) -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/A2.css' %}" />
+</head>
+<body>
+    <div class="box">
+        <form method="POST" class="post-form" action="emp_employee">
+            {% csrf_token %}
+            <div class="container">
+                <h3>Employee Enter Details</h3>
+                <div class="form-group row">
+                    <label class="col-md-1 col-form-label"></label>
+                    <div class="col-sm-4">
+                    </div>
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Employee ID</span>
+                    {{ form.EmployeeID |attr:"class:form-control"|attr:"cols:20" }}
+                    <span class="input-group-text">Employee Name</span>
+                    {{ form.employee_name |attr:"class:form-control"|attr:"cols:20" }}
+                </div>
+                <div class="input-group">
+                    <span class="input-group-text">Gender</span>
+                    {{ form.gender |attr:"class:form-control"|attr:"cols:20" |attr:"rows:4" }}
+                    <span class="input-group-text">ICor Passport No</span>
+                    {{ form.ICor_Passport_No |attr:"class:form-control"|attr:"cols:20" |attr:"rows:4" }}
+                </div>
+                <div class="input-group">
+                    <span class="input-group-text">Moblie Contact </span>
+                    {{ form.moblie_contact |attr:"class:form-control"|attr:"cols:20" |attr:"rows:4" }}
+                    <span class="input-group-text">Email</span>
+                    {{ form.email |attr:"class:form-control"|attr:"cols:20" }}
+                </div>
+                <div class="input-group">
+                    <span class="input-group-text">Date Birth</span>
+                    {{ form.date_birth |attr:"class:form-control"|attr:"cols:20" |attr:"rows:4" }}
+                    <span class="input-group-text">Date Join</span>
+                    {{ form.date_join |attr:"class:form-control"|attr:"cols:20" |attr:"rows:4" }}
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Hour Rate RM</span>
+                    {{ form.hour_rate_RM |attr:"class:form-control"|attr:"cols:20" }}
+                    <span class="input-group-text">Month rate RM</span>
+                    {{ form.month_rate_RM |attr:"class:form-control"|attr:"cols:20" }}
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Position</span>
+                    {{ form.position |attr:"class:form-control"|attr:"cols:20" }}
+                    <span class="input-group-text">Level</span>
+                    {{ form.level |attr:"class:form-control"|attr:"cols:20" }}
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Department</span>
+                    {{ form.department |attr:"class:form-control"|attr:"cols:20" }}
+                    <span class="input-group-text">Date Left</span>
+                    {{ form.date_left |attr:"class:form-control"|attr:"cols:20" }}
+                </div>
+                <center><button type="submit" class="btn btn-primary">Submit</button></center>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
+{% endif %} 

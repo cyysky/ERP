@@ -1,17 +1,14 @@
 {% extends "base.html" %}
 
 {% load i18n %}
-{% load widget_tweaks %}
+{% load widget_tweaks %}<!-- 用在改 form (使用 |attr:"class:form-control" ) -->{% include 'gg.html' %}
 
 {% block head_title %}{% trans "Signup" %}{% endblock %}
 
 {% block content %}
 <h1>{% trans "Sign Up" %}</h1>
 
-<p>{% blocktrans %}Already have an account? {% endblocktrans %}</p>
-<p>
-    已经有一个帐户？ 那么请  Log In(登入)
-</p>
+<p>{% blocktrans %}Already have an account?  已经有一个帐户？ 那么请 Log In(登入) {% endblocktrans %}</p>
 <form class="signup" id="signup_form" method="post">
     {% csrf_token %}
 
@@ -29,15 +26,20 @@
     </div>
     {% endfor %}
 
-
     {% if redirect_field_value %}
     <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
     {% endif %}
 
     <div class="form-group">
         <button type="submit" class="btn btn-success">{% trans "Sign Up" %}(注册)</button>
-        <a class="btn btn-primary" href="/accounts/login/">Log In(登入)</a>
+        <button type="button" class="text-white" onclick="Log()">Log In(登入)</></button>
     </div>
 </form>
+
+<script>
+    function Log() {
+        window.location.assign("{% url 'login' %}")
+    }
+</script>
 
 {% endblock %}

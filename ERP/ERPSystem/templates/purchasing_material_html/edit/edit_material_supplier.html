@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+{% include 'gg.html' %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/A2.css' %}" />
+</head>
+<body>
+    <div class="box">
+        <form method="POST" class="post-form" action="/purchasing_material/update_material_supplier/{{material_supplier.MaterialSupplierID}}">
+            {% csrf_token %}
+            <div class="container">
+                <h3>Material_Supplier Update Details</h3>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Material Supplier ID  </span>
+                    <input type="text" class="form-control" placeholder="MaterialSupplierID" aria-label="Username" name="MaterialSupplierID" id="id_part_no" required maxlength="100" value="{{ material_supplier.MaterialSupplierID }}">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text"> Supplier ID  </span>
+                    <input type="text" class="form-control" placeholder="SupplierID" aria-label="Username" name="SupplierID" id="id_SupplierID" required maxlength="100" value="{{ material_supplier.SupplierID }}">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Materia I </span>
+                    <input type="text" class="form-control" placeholder="MaterialID" name="MaterialID" id="id_MaterialID" required maxlength="100" value="{{ material_supplier.MaterialID }}">
+                    <span class="input-group-text">Material Nam </span>
+                    <input type="text" class="form-control" placeholder="material_name" name="material_name" id="id_material_name" required maxlength="100" value="{{ material_supplier.material_name }}">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">source</span>
+                    <input type="text" class="form-control" placeholder="source" name="source" id="id_source " required maxlength="100" value="{{ material_supplier.source }}">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">UOM</span>
+                    <input type="text" class="form-control" placeholder="UOM" name="UOM" id="id_UOM " required maxlength="100" value="{{ material_supplier.UOM }}">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">EOQ</span>
+                    <input type="text" class="form-control" placeholder="EOQ" name="EOQ" id="id_EOQ " required maxlength="100" value="{{ material_supplier.EOQ }}">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Unit Price</span>
+                    <input type="text" class="form-control" placeholder="unit_price" name="unit_price" id="id_unit_price " required maxlength="100" value="{{ material_supplier.unit_price }}">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">term</span>
+                    <input type="text" class="form-control" placeholder="term" name="remarks" id="id_term " required maxlength="100" value="{{ material_supplier.term }}">
+                </div>
+                <button type="submit" class="btn btn-primary">Update</button>
+                <button href="material_supplier" class="btn btn-success">return</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

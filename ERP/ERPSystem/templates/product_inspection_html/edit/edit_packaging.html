@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+{% include 'gg.html' %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/A2.css' %}" />
+</head>
+<body>
+    <div class="box">
+        <form method="POST" class="post-form" action="/production/update_packaging/{{packaging.PackagingID}}">
+            {% csrf_token %}
+            <div class="container">
+                <h3>Customer Update Details</h3>
+                <br>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Packaging ID </span>
+                    <input type="text" class="form-control" placeholder="PackagingID" aria-label="Username" name="PackagingID" id="id_PackagingID" required maxlength="254" value="{{ packaging.PackagingID }}">
+                    <span class="input-group-text">Packaging Name</span>
+                    <input type="text" class="form-control" placeholder="packaging_name" aria-label="Username" name="packaging_name" id="id_packaging_name" required maxlength="150" value="{{ packaging.packaging_name }}">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">packaging_unit</span>
+                    <input type="text" class="form-control" placeholder="packaging_type" aria-label="Username" name="packaging_unit" id="id_packaging_unit" required maxlength="150" value="{{ packaging.packaging_unit }}">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Buy Group</span>
+                    <input type="text" class="form-control" placeholder="buy_group" aria-label="Username" name="packaging_type" id="id_packaging_type" required maxlength="254" value="{{ packaging.packaging_type }}">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Size</span>
+                    <input type="text" class="form-control" placeholder="size" aria-label="Username" name="size" id="id_size" required maxlength="150" value="{{ packaging.size }}">
+                    <span class="input-group-text">Heigh</span>
+                    <input type="text" class="form-control" placeholder="heigh" name="heigh" id="id_heigh" required maxlength="100" value="{{ packaging.heigh }}">
+                    <span class="input-group-text">Width</span>
+                    <input type="text" class="form-control" placeholder="width" name="width" id="id_width" required maxlength="100" value="{{ packaging.width }}">
+                    <span class="input-group-text">Length</span>
+                    <input type="text" class="form-control" placeholder="length" name="length" id="id_length" required maxlength="100" value="{{ packaging.length }}">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Color</span>
+                    <input type="text" class="form-control" placeholder="CustomerID" aria-label="Username" name="color" id="id_color" required maxlength="150" value="{{ packaging.color }}">
+                    <span class="input-group-text">Model</span>
+                    <input type="text" class="form-control" placeholder="customer_name" name="model" id="id_model" required maxlength="100" value="{{ packaging.model }}">
+                </div>
+                <br>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Packaging Location </span>
+                    <input type="text" class="form-control" placeholder="level" aria-label="packaging_location" name="packaging_location" id="id_product_company" required maxlength="254" value="{{ packaging.packaging_location }}">
+                    <span class="input-group-text" id="basic-addon1">Quantity </span>
+                    <input type="text" class="form-control" placeholder="level" aria-label="quantity" name="quantity" id="id_quantity" required maxlength="254" value="{{ packaging.quantity }}">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Product Company</span>
+                    <input type="text" class="form-control" placeholder="level" aria-label="product_company" name="product_company" id="id_product_company" required maxlength="254" value="{{ packaging.product_company }}">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Defaul Stock Location</span>
+                    <input type="text" class="form-control" placeholder="level" aria-label="defaul_stock_location" name="defaul_stock_location" id="id_defaul_stock_location" required maxlength="254" value="{{ packaging.defaul_stock_location }}">
+                </div>
+                <button type="submit" class="btn btn-primary">Update</button>
+                <button href="customer" class="btn btn-success">return</button>
+
+
+            </div>
+        </form>
+    </div>
+</body>
+</html>  

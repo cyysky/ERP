@@ -1,0 +1,1 @@
+SELECT *, sum(cost) OVER (ORDER BY ProjectID_id,ProductID_id,ProcessID) AS total FROM Process ORDER BY ProjectID_id,ProductID_id,ProcessID

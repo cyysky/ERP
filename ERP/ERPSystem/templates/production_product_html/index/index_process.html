@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+{% include 'gg.html' %}
+{% block title %}{% endblock %}
+{% block content %}
+{% if user.is_authenticated %}
+{% else %}
+{% include 'home.html' %} <!-- 登录和注册 -->
+{% endif %}
+{% endblock %}
+{% if user.is_authenticated %}
+{% load widget_tweaks %}<!-- 用在改 form (使用 |attr:"class:form-control" ) -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/A2.css' %}" />
+</head>
+<body>
+    <div class="box">
+        <form method="POST" class="post-form" action="emp_process">
+            {% csrf_token %}
+            <div class="container">
+                <h3>Process Enter Details</h3>
+                <div class="form-group row">
+                    <label class="col-md-1 col-form-label"></label>
+                    <div class="col-sm-4">
+                    </div>
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Process ID</span>
+                    {{ form.ProcessID |attr:"class:form-control"|attr:"cols:20" }}
+                    <span class="input-group-text">Process Name</span>
+                    {{ form.process_name |attr:"class:form-control"|attr:"cols:20" }}
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Resource ID</span>
+                    {{ form.ResourceID |attr:"class:form-control"|attr:"cols:20" }}
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Project Sales Item ID</span>
+                    {{ form.ProjectSalesItemID |attr:"class:form-control"|attr:"cols:20" }}
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Product ID</span>
+                    {{ form.ProductID |attr:"class:form-control"|attr:"cols:20" }}
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Process Tooling</span>
+                    {{ form.process_tooling |attr:"class:form-control"|attr:"cols:20" }}
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Start Time</span>
+                    {{ form.start_time |attr:"class:form-control"|attr:"cols:20" |attr:"type:datetime-local"  }}
+                    <span class="input-group-text">Finish Time</span>
+                    {{ form.finish_time |attr:"class:form-control"|attr:"cols:20" |attr:"type:datetime-local"  }}
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">duration</span>
+                    {{ form.duration |attr:"class:form-control"|attr:"cols:20" }}
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">quanitiy</span>
+                    {{ form.quanitiy |attr:"class:form-control"|attr:"cols:20" }}
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Unit Price</span>
+                    {{ form.unit_price |attr:"class:form-control"|attr:"cols:20" }}
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Cost</span>
+                    {{ form.cost |attr:"class:form-control"|attr:"cols:20" }}
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">total</span>
+                    {{ form.total |attr:"class:form-control"|attr:"cols:20"}}
+                </div>
+                <center><button type="submit" class="btn btn-primary">Submit</button></center>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
+{% endif %} 

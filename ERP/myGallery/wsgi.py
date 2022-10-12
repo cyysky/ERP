@@ -1,5 +1,5 @@
 """
-WSGI config for myGallery project.
+WSGI config for myGallery project_sales_item.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+{% include 'gg.html' %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/A2.css' %}" />
+</head>
+<body>
+    <div class="box">
+        <form method="POST" class="post-form" action="/warehouse/update_material_stock/{{material_stock.MaterialStockID}}">
+            {% csrf_token %}
+            <div class="container">
+                <h3>Material Stock Update Details</h3>
+                <div class="form-group row">
+                    <label class="col-md-1 col-form-label"></label>
+                    <div class="col-md-4">
+                    </div>
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Material Stock ID</span>
+                    <input type="text" class="form-control" placeholder="MaterialStockID" name="MaterialStockID" id="id_MaterialStockID" required maxlength="150" value="{{ material_stock.MaterialStockID }}">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Material ID</span>
+                    <input type="text" class="form-control" placeholder="MaterialID" name="MaterialID" id="id_MaterialID" required maxlength="150" value="{{ material_stock.MaterialID }}">
+                    <span class="input-group-text">Material Name</span>
+                    <input type="text" class="form-control" placeholder="material_name" name="material_name" id="id_material_name" required maxlength="150" value="{{ material_stock.material_name }}">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Material Location ID</span>
+                    <input type="text" class="form-control" placeholder="material_location_id" name="material_location_id" id="id_material_location_id" required maxlength="150" value="{{ material_stock.material_location_id }}">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Shelf ID</span>
+                    <input type="text" class="form-control" placeholder="shelf_id" name="shelf_id" id="id_shelf_id" required maxlength="150" value="{{ material_stock.shelf_id }}">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Quantity</span>
+                    <input type="text" class="form-control" placeholder="quantity" name="quantity" id="id_quantity" required maxlength="150" value="{{ material_stock.quantity }}">
+                </div>
+                <button type="submit" class="btn btn-primary">Update</button>
+                <button href="customer" class="btn btn-success">return</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>  

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+{% include 'gg.html' %}
+{% block title %}{% endblock %}
+{% block content %}
+{% if user.is_authenticated %}
+{% else %}
+{% include 'home.html' %} <!-- 登录和注册 -->
+{% endif %}
+{% endblock %}
+{% if user.is_authenticated %}
+{% load widget_tweaks %}<!-- 用在改 form (使用 |attr:"class:form-control" ) -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/A2.css' %}" />
+</head>
+<body>
+    <div class="box">
+        <form method="POST" class="post-form" enctype="multipart/form-data"  action="emp_product">
+            {% csrf_token %}
+            <div class="container">
+                <h3>Product Enter Details</h3>
+                <div class="form-group row">
+                    <label class="col-md-1 col-form-label"></label>
+                    <div class="col-sm-4">
+                    </div>
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Product ID</span>
+                    {{ form.ProductID |attr:"class:form-control"|attr:"cols:20" }}
+                    <span class="input-group-text">Product Name</span>
+                    {{ form.product_name |attr:"class:form-control"|attr:"cols:20" }}
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Product Group</span>
+                    {{ form.product_group |attr:"class:form-control"|attr:"cols:20" }}
+                    <span class="input-group-text">Product Tooling</span>
+                    {{ form.product_tooling |attr:"class:form-control"|attr:"cols:20" }}
+                    <span class="input-group-text">Product Unit</span>
+                    {{ form.product_unit |attr:"class:form-control"|attr:"cols:20" }}
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">BOM Level </span>
+                    {{ form.BOM_Level |attr:"class:form-control"|attr:"cols:20" }}
+                    <span class="input-group-text">Date</span>
+                    {{ form.date |attr:"class:form-control"|attr:"cols:20"|attr:"type:datetime-local" }}
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Quantity</span>
+                    {{ form.quantity |attr:"class:form-control"|attr:"cols:20" }}
+                    <span class="input-group-text">quantity Type</span>
+                    {{ form.product_type |attr:"class:form-control"|attr:"cols:20" }}
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Unit Price </span>
+                    {{ form.unit_price |attr:"class:form-control"|attr:"cols:20" }}
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Picture(.png)</span>
+                    {{ form.title  }}
+                    {{ form.photo  }}
+                </div>
+                <br>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Start Time</span>
+                    {{ form.start_time |attr:"class:form-control"|attr:"cols:20"|attr:"type:datetime-local" }}
+                    <span class="input-group-text">Finish Time</span>
+                    {{ form.finish_time |attr:"class:form-control"|attr:"cols:20"|attr:"type:datetime-local"}}
+                </div>
+                <center><button type="submit" class="btn btn-primary">Submit</button></center>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
+{% endif %} 

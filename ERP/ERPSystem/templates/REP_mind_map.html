@@ -10,7 +10,7 @@
     <meta charset="UTF-8">
     <title>Employee Records</title>
     {% load static %}
-    <!-- <link rel="stylesheet" href="{% static 'css/style.css' %}"/>  !-->
+    <link rel="stylesheet" href="{% static 'css/testing.css' %}" /><link rel="stylesheet" href="{% static 'css/13.css' %}" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
@@ -25,15 +25,15 @@
                         <a class="nav-link p-3  bg-secondary text-white" aria-current="page" href="{% url 'logout' %}">Log Out</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link p-3 bg-primary text-white" href="/main_page">Main page</a>
+                        <a class="nav-link p-3 bg-primary text-white" href="/Progress_Table">Main page</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle p-3  bg-danger text-white " data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Marketing</a>
                         <ul class="dropdown-menu">
                             <li>
-                            <li><a class="dropdown-item" href="/marketing/sales">Sales</a></li>
+                            <li><a class="dropdown-item" href="/marketing/sales_order">Sales_Order</a></li>
                             <li><a class="dropdown-item" href="/marketing/customer">Customer </a></li>
-                            <li><a class="dropdown-item" href="/marketing/project">Project </a></li>
+                            <li><a class="dropdown-item" href="/marketing/project_sales_item">Project_Sales_Item </a></li>
                             <li><a class="dropdown-item" href="/marketing/bom">BOM </a></li>
                         </ul>
                     </li>
@@ -49,8 +49,8 @@
                         <a class="nav-link dropdown-toggle p-3  bg-success text-white" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Purchasing</a>
                         <ul class="dropdown-menu">
                             <li>
-                            <li><a class="dropdown-item" href="/purchasing/supplier">Supplier</a></li>
-                            <li><a class="dropdown-item" href="/purchasing/material_supplier">Material Supplier</a></li>
+                            <li><a class="dropdown-item" href="/purchasing_material/supplier">Supplier</a></li>
+                            <li><a class="dropdown-item" href="/purchasing_material/material_supplier">Material Supplier</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
@@ -91,16 +91,16 @@
                             <a class="nav-link active p-3 mb-2 bg-secondary text-white " href="/REP_mind_map">REP mind map</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active p-3 mb-2 bg-primary text-white" href="/main_page">Main page</a>
+                            <a class="nav-link active p-3 mb-2 bg-primary text-white" href="/Progress_Table">Main page</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle p-3 mb-2 bg-danger text-white" href="#" id="offcanvasNavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Marketing
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
-                                <li><a class="dropdown-item" href="/marketing/sales">Sales</a></li>
+                                <li><a class="dropdown-item" href="/marketing/sales_order">Sales_Order</a></li>
                                 <li><a class="dropdown-item" href="/marketing/customer">Customer </a></li>
-                                <li><a class="dropdown-item" href="/marketing/project">Project </a></li>
+                                <li><a class="dropdown-item" href="/marketing/project_sales_item">Project_Sales_Item </a></li>
                                 <li><a class="dropdown-item" href="/marketing/bom">BOM </a></li>
                             </ul>
                         </li>
@@ -118,8 +118,8 @@
                                 Purchasing
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
-                                <li><a class="dropdown-item" href="/purchasing/supplier">Supplier</a></li>
-                                <li><a class="dropdown-item" href="/purchasing/material_supplier">Material Supplier</a></li>
+                                <li><a class="dropdown-item" href="/purchasing_material/supplier">Supplier</a></li>
+                                <li><a class="dropdown-item" href="/purchasing_material/material_supplier">Material Supplier</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
@@ -185,21 +185,21 @@
         <tbody>
             <tr>
                 <td>1. Quotation (Transaction)</td>
-                <td> 1. Project (work order transaction)</td>
-                <td>1. Project (transaction)</td>
-                <td> 1. Project (Work order transaction)</td>
-                <td>1. Sales (transaction) </td>
+                <td> 1. Project_Sales_Item (work order transaction)</td>
+                <td>1. Project_Sales_Item (transaction)</td>
+                <td> 1. Project_Sales_Item (Work order transaction)</td>
+                <td>1. Sales_Order (transaction) </td>
             </tr>
             <tr>
-                <td>2. Sales (transaction)</td>
+                <td>2. Sales_Order (transaction)</td>
                 <td>2. Product (Finished Goods)</td>
                 <td>2. Material</td>
                 <td>2. Process (Job order transaction)</td>
-                <td>2. Project (transaction)</td>
+                <td>2. Project_Sales_Item (transaction)</td>
             </tr>
             <tr>
-                <td>2. Project (transaction)</td>
-                <td>2. Project (transaction)</td>
+                <td>2. Project_Sales_Item (transaction)</td>
+                <td>2. Project_Sales_Item (transaction)</td>
                 <td>3. Request (transaction)</td>
                 <td>3. Machine</td>
                 <td>3. Process (transaction) </td>
@@ -214,7 +214,7 @@
             <tr>
                 <td>4. BOM.</td>
                 <td>4. Material</td>
-                <td>5. Receive (transaction from Supplier to Warehouse)</td>
+                <td>5. Material_Receive (transaction from Supplier to Warehouse)</td>
                 <td>5. Material</td>
                 <td>5. Product Reject (transaction)</td>
             </tr>
@@ -232,7 +232,7 @@
             </tr>
             <tr>
                 <td></td>
-                <td>7. Receive (transaction)</td>
+                <td>7. Material_Receive (transaction)</td>
                 <td>8. Supplier</td>
                 <td>8. Quality (transaction)</td>
             </tr>
@@ -257,20 +257,20 @@
                 <td>1. Start</td>
                 <td>1. Check Product quantity from Warehouse stock</td>
                 <td>1. Create material Purchase order</td>
-                <td>1. Create one or many Process (job orders) for the Project (work order) </td>
+                <td>1. Create one or many Process (job orders) for the Project_Sales_Item (work order) </td>
                 <td>1. Build the Supplier list</td>
             </tr>
             <tr>
                 <td>2. Customer present drawings of Product.</td>
                 <td>1.1 if enough stock quantity go to Delivery</td>
-                <td>2. Wait for delivery to Receive</td>
-                <td>2. Keyin each Process (job orders) inherit Project (work order) and assign Resource_ID (machine ID) , labor, time,... </td>
+                <td>2. Wait for delivery to Material_Receive</td>
+                <td>2. Keyin each Process (job orders) inherit Project_Sales_Item (work order) and assign Resource_ID (machine ID) , labor, time,... </td>
                 <td>2. Build the Materials list</td>
             </tr>
             <tr>
                 <td>3. Engineering study the requirements. </td>
                 <td>1.2 else not enough stock quantity go to 2</td>
-                <td>3. Receive to Warehouse Material Location</td>
+                <td>3. Material_Receive to Warehouse Material Location</td>
                 <td>3. Execute Production (Prepare Stamping Tooling, Stamping…) processes. </td>
                 <td>3. Build the Customer list </td>
             </tr>
@@ -282,14 +282,14 @@
                 <td>4. Build the Product list</td>
             </tr>
             <tr>
-                <td>5. Customer accept Sales order</td>
-                <td>2.1 if enough material stock quantity then Issue to Production execute the Project (work order) </td>
-                <td>5. Issue request Material quantity to Project (work order) </td>
+                <td>5. Customer accept Sales_Order order</td>
+                <td>2.1 if enough material stock quantity then Issue to Production execute the Project_Sales_Item (work order) </td>
+                <td>5. Issue request Material quantity to Project_Sales_Item (work order) </td>
                 <td>5. Product good go to Packaging if no need assembly and Coating process. </td>
                 <td>5. Build the BOM list</td>
             </tr>
             <tr>
-                <td> 6. Create a project for Sales order</td>
+                <td> 6. Create a project_sales_item for Sales_Order order</td>
                 <td>2.2 else not enough material stock quantity need to Request (Material Requisition) go to Purchasing </td>
                 <td>6. go to Production </td>
                 <td>6. Else go to assembly process and Packaging if no need subcontract to supplier for coating process</td>
@@ -300,12 +300,12 @@
                 <td></td>
                 <td></td>
                 <td>7. Go to Supplier for Coating process and then to Packaging. </td>
-                <td>7. Build the om Product Good accumulate the quantity to Project work order</td>
+                <td>7. Build the om Product Good accumulate the quantity to Project_Sales_Item work order</td>
             </tr>
             <tr>
                 <td>
-                    A. One Sales order may have many
-                    Project
+                    A. One Sales_Order order may have many
+                    Project_Sales_Item
                 </td>
                 <td></td>
                 <td></td>
@@ -313,7 +313,7 @@
                 <td>A. Enquiry the Material quantity requirements (MRP) from Product quantity </td>
             </tr>
             <tr>
-                <td>B. One Project to one Product</td>
+                <td>B. One Project_Sales_Item to one Product</td>
                 <td></td>
                 <td></td>
                 <td>9, Complete Process (job order</td>
@@ -324,14 +324,14 @@
                 <td></td>
                 <td></td>
                 <td>10. Send to Warehouse stock</td>
-                <td>C. Enquiry the productivity of Sales or Project or Process</td>
+                <td>C. Enquiry the productivity of Sales_Order or Project_Sales_Item or Process</td>
             </tr>
             <tr>
                 <td></td>
                 <td></td>
                 <td></td>
-                <td>11. Complete Project (work order) </td>
-                <td>D. Enquiry the best option of Project or Process scheduling </td>
+                <td>11. Complete Project_Sales_Item (work order) </td>
+                <td>D. Enquiry the best option of Project_Sales_Item or Process scheduling </td>
             </tr>
             <tr>
                 <td></td>
@@ -343,7 +343,7 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td>13. Complete Sales (customer order) </td>
+                <td>13. Complete Sales_Order (customer order) </td>
             </tr>
             <tr>
                 <td></td>

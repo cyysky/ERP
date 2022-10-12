@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+{% include 'gg.html' %}
+{% block title %}{% endblock %}
+{% block content %}
+{% if user.is_authenticated %}
+{% else %}
+{% include 'home.html' %} <!-- 登录和注册 -->
+{% endif %}
+{% endblock %}
+{% if user.is_authenticated %}
+{% load widget_tweaks %}<!-- 用在改 form (使用 |attr:"class:form-control" ) -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/A2.css' %}" />
+</head>
+<body>
+    <div class="box">
+        <form method="POST" class="post-form" action="emp_material_stock">
+            {% csrf_token %}
+            <div class="container">
+                <h3>Material_Location Enter Details</h3>
+                <div class="form-group row">
+                    <label class="col-md-1 col-form-label"></label>
+                    <div class="col-sm-4">
+                    </div>
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Material Stock ID</span>
+                    {{ form.MaterialStockID |attr:"class:form-control"|attr:"cols:20" }}
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Material ID</span>
+                    {{ form.MaterialID |attr:"class:form-control"|attr:"cols:20" }}
+                    <span class="input-group-text">Material Name</span>
+                    {{ form.material_name |attr:"class:form-control"|attr:"cols:20" }}
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Material Location ID</span>
+                    {{ form.material_location_id |attr:"class:form-control"|attr:"cols:20" }}
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Shelf ID</span>
+                    {{ form.shelf_id |attr:"class:form-control"|attr:"cols:20" }}
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Quantity </span>
+                    {{ form.quantity |attr:"class:form-control"|attr:"cols:20" }}
+                </div>
+                <center><button type="submit" class="btn btn-primary">Submit</button></center>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
+{% endif %} 

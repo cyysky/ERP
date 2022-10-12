@@ -6,9 +6,25 @@
 {% block content %}
 {% if user.is_authenticated %}
   Hi {{ user.username }}!
+<button type="button" class="text-white" onclick="In()">In</button>
+
+<script>
+    function In() {
+        window.location.assign("http://localhost:8000/product_quotation_detail")
+    }
+</script>
 {% else %}
-<p>You are not logged in</p>
-<a type="button" class="btn btn-primary" href="{% url 'login' %}">Log In(登入)</a> |
-<a type="button" class="btn btn-success" href="{% url 'signup' %}">Sign Up(注册)</a>
-    {% endif %}
-    {% endblock %}
+<h3>You are not logged in</h3>
+<button type="button" class="text-white" onclick="Log()">Log In(登入)</button>
+<button type="button" class="text-white" onclick="Sign()">Sign Up(注册)</button>
+<script>
+    function Log() {
+        window.location.assign("{% url 'login' %}")
+    }
+
+    function Sign() {
+        window.location.assign("{% url 'signup' %}")
+    }
+</script>
+{% endif %}
+{% endblock %}

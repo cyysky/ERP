@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+{% include 'gg.html' %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/A2.css' %}" />
+</head>
+<body>
+    <div class="box">
+        <form method="POST" class="post-form" action="/purchasing_material/update_material_receive/{{material_receive.ReceiveID}}">
+            {% csrf_token %}
+            <div class="container">
+                <h3>Product Update Details</h3>
+                <div class="form-group row">
+                    <label class="col-md-1 col-form-label"></label>
+                    <div class="col-md-4">
+                    </div>
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Require ID </span>
+                    <input type="text" class="form-control" placeholder="RequireID" aria-label="Username" name="RequireID" id="id_RequireID" required maxlength="150" value="{{ material_receive.ReceiveID }}">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Material ID </span>
+                    <input type="text" class="form-control" placeholder="MaterialID" aria-label="Username" name="MaterialID" id="id_MaterialID" required maxlength="150" value="{{ material_receive.MaterialID }}">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Supplier ID</span>
+                    <input type="text" class="form-control" placeholder="SupplierID" aria-label="Username" name="SupplierID" id="id_SupplierID" required maxlength="150" value="{{ material_receive.SupplierID }}">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Grade</span>
+                    <input type="text" class="form-control" placeholder="grade" name="grade" id="id_grade" required maxlength="150" value="{{ material_receive.grade }}">
+                    <span class="input-group-text" id="basic-addon1">Size </span>
+                    <input type="text" class="form-control" placeholder="size" name="size" id="id_size" required maxlength="150" value="{{ material_receive.size }}">
+                    <span class="input-group-text" id="basic-addon1">Usage </span>
+                    <input type="text" class="form-control" name="usage" id="id_usage" required maxlength="150" value="{{ material_receive.usage }}">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Quantity</span>
+                    <input type="text" class="form-control" placeholder="quantity" name="quantity" id="id_quantity" required maxlength="150" value="{{ material_receive.quantity }}">
+                </div>
+  
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Remarks</span>
+                    <input type="text" class="form-control" placeholder="remarks" name="remarks" id="id_remarks" required maxlength="150" value="{{ material_receive.remarks }}">
+                </div>
+                <button type="submit" class="btn btn-primary">Update</button>
+                <button href="request" class="btn btn-success">return</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>  

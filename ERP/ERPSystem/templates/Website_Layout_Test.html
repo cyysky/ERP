@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+
+    <!-- 元视口标签使页面在所有屏幕尺寸（笔记本电脑、移动设备）上看起来都很好：-->
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    <title></title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/gg.css' %}" />
+</head>
+<body>
+    <h1 class="p-3 mb-2 bg-primary text-white">Main page</h1>
+    <div class="container">
+        <div class="a">
+            Material
+        </div>
+        <div class="b">
+            Material
+        </div>
+    </div>
+
+    <!-- Container -->
+    {% for material in materials %}
+    <div class="accordion">
+        <!-- Each accordion item -->
+        <div class="accordion__item">
+            <!-- Heading -->
+            <div class="accordion__header">
+                <!-- The toggle icon -->
+                <div class="accordion__toggle">Material ID</div>
+
+                <!-- The title -->
+                <div class="accordion__title">
+                    {{ material.MaterialID }}
+                </div>
+            </div>
+
+            <!-- The content -->
+            <div class="accordion__content">
+                {{ material.MaterialID }}
+
+            </div>
+        </div>
+
+        <!-- Repeat other item -->
+        {{ material.MaterialID }}
+
+    </div>
+    {% endfor %}
+</body>
+
+</html>
+
+<input type="button" value="打印此页面" onclick="printpage()" />   <!-- 可保存成 pdf档案  -->
+<script>
+    function printpage() {
+        window.print()
+    }
+</script>
+<div class="progress">
+    <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+</div>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+{% include 'gg.html' %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/A2.css' %}" />
+</head>
+<body>
+    <div class="box">
+        <form method="POST" class="post-form" action="/production_product/update_bom/{{bom.BOMID}}">
+            {% csrf_token %}
+            <div class="container">
+                <h3>BOM Update Details</h3>
+                <div class="form-group row">
+                    <label class="col-md-1 col-form-label"></label>
+                    <div class="col-md-4">
+                    </div>
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">BOMID</span>
+                    <input type="text" class="form-control" name="BOMID" id="id_BOMID" required maxlength="150" value="{{ bom.BOMID }}">
+                    <span class="input-group-text" id="basic-addon1">BOM_Level</span>
+                    <input type="text" class="form-control" name="BOM_Level" id="id_BOM_Level" required maxlength="150" value="{{ bom.BOM_Level }}">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">ProductID</span>
+                    <input type="text" class="form-control" name="ProductID" id="id_ProductID" required maxlength="150" value="{{ bom.ProductID }}">
+                    <span class="input-group-text">product_name</span>
+                    <input type="text" class="form-control" name="product_name" id="id_product_name" required maxlength="150" value="{{ bom.product_name }}">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">MaterialID</span>
+                    <input type="text" class="form-control" name="MaterialID" id="id_MaterialID" required maxlength="150" value="{{ bom.MaterialID }}">
+                    <span class="input-group-text">material_name</span>
+                    <input type="text" class="form-control" name="material_name" id="id_material_name" required maxlength="150" value="{{ bom.material_name }}">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">source</span>
+                    <input type="text" class="form-control" name="source" id="id_source" required maxlength="150" value="{{ bom.source }}">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">UOM</span>
+                    <textarea class="form-control" type="text" name="UOM" id="id_UOM" required maxlength="150" value="{{ bom.UOM }}">{{ bom.UOM }}</textarea>
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Usage</span>
+                    <input type="text" class="form-control" name="usage" id="id_usage" required maxlength="150" value="{{ bom.usage }}">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Unit Price</span>
+                    <input type="text" class="form-control" name="unit_price" id="id_unit_price" required maxlength="150" value="{{ bom.unit_price }}">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Remarks</span>
+                    <input type="text" class="form-control" name="remarks" id="id_remarks" required maxlength="150" value="{{ bom.remarks }}">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Amount</span>
+                    <input type="text" class="form-control" name="amount" id="id_amount" required maxlength="150" value="{{ bom.amount }}">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Total</span>
+                    <input type="text" class="form-control" name="total" id="id_total" required maxlength="150" value="{{ bom.total }}">
+                </div>
+                <br>
+                <button type="submit" class="btn btn-primary">Update</button>
+                <a href="/production_product/bom" class="btn btn-success">Return BOM</a>
+                <a href="/purchasing_material/require" class="btn btn-info text-white ">To Require </a>
+            </div>
+
+        </form>
+    </div>
+</body>
+</html>  

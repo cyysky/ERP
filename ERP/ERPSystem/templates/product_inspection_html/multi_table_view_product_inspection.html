@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+    {% include 'we.html' %}
+    {% block title %}{% endblock %}
+    {% block content %}
+    {% if user.is_authenticated %}
+    {% else %}
+    {% include 'home.html' %} <!-- 登录和注册 -->
+    {% endif %}
+    {% endblock %}
+    {% if user.is_authenticated %}
+<html lang="en">
+{% include 'Master.html' %}<!-- Navs/导航 -->
+{% include 'gg.html' %}
+<head>
+    <meta charset="UTF-8">
+    <title>Employee Records</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/testing.css' %}" /><link rel="stylesheet" href="{% static 'css/13.css' %}" />
+</head>
+<body>
+    <!--startprint-->
+    {% include 'gg.html' %}
+    <h1 class="p-3 mb-2 bg-danger text-white ">Packaging Material List</h1>
+    <!--   搜索功能   -->
+    <div style="float:right;width:300px">
+        <form methon="get">
+            <div class="input-group">
+                <input type="text" name="search" class="form-control" placeholder="Search for PackagingID" value="{{ search_data }}">
+                <span class="input-group-btn">
+                    <button class="btn btn-primary" type="submit">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"></path>
+                        </svg>
+                    </button>
+                </span>
+            </div>
+        </form>
+    </div><!-- /input-group -->
+    <table class="table table-striped table-bordered table-sm">
+        <thead class="thead-dark">
+            <tr>
+                <th>Packaging ID</th>
+                <th>Packaging Name </th>
+                <th>PackagingUnit</th>
+                <th>PackagingType</th>
+                <th>Size</th>
+                <th>Heigh</th>
+                <th>Width</th>
+                <th>Length</th>
+                <th>Color</th>
+                <th>Model</th>
+                <th>Packaging Location</th>
+                <th>Quantity</th>
+                <th>ProductCompany</th>
+                <th>Defaul Stock Location</th>
+                <th>Remarks</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for packaging in packagings %}
+            <tr>
+
+                <td>{{ packaging.PackagingID}}</td>
+                <td>{{ packaging.packaging_name}}</td>
+                <td>{{ packaging.packaging_unit}}</td>
+                <td>{{ packaging.packaging_type}}</td>
+                <td>{{ packaging.size}}</td>
+                <td>{{ packaging.heigh}}</td>
+                <td>{{ packaging.width}}</td>
+                <td>{{ packaging.length}}</td>
+                <td>{{ packaging.color}}</td>
+                <td>{{ packaging.model}}</td>
+                <td>{{ packaging.packaging_location}}</td>
+                <td>{{ packaging.quantity}}</td>
+                <td>{{ packaging.product_company}}</td>
+                <td>{{ packaging.defaul_stock_location}}</td>
+                <td>
+                    <a type="button" href="edit_packaging/{{ packaging.PackagingID }}">
+                        <span class="btn btn-primary">
+                            <!-- Alerts    图标-->
+                            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="信息：">
+                                <use xlink:href="#info-fill">
+                                </use>
+                            </svg>Edit
+                        </span>
+                    </a>
+                    <!-- Example single danger button -->
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="危险：">
+                                <use xlink:href="#exclamation-triangle-fill">
+                                </use>
+                            </svg>Delete
+                        </button>
+                        <ul1 class="dropdown-menu">
+                            <p>Are you sure you want to delete?</p>
+                            <p>(你确定要删除吗?)</p>
+                            <a href="delete_packaging/{{ packaging.PackagingID }}" class="btn btn-danger">
+                                <!-- Alerts    图标-->
+                                <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="危险：">
+                                    <use xlink:href="#exclamation-triangle-fill">
+                                    </use>
+                                </svg>Delete
+                            </a>
+                        </ul1>
+                    </div>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        <!--------------------------------------------------------------------------------------------------------->
+        <thead class="thead-dark">
+            <tr>
+                <th>Delivery ID</th>
+                <th>Sales ID</th>
+                <th>Sales Name</th>
+                <th>Custiomer ID</th>
+                <th>Product ID</th>
+                <th>Product Name</th>
+                <th>Quantity</th>
+                <th>Unitprice</th>
+                <th>Term</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for delivery in deliverys %}
+            <tr>
+                <td>{{ delivery.DeliveryID }}</td>
+                <td>{{ delivery.SalesID }}</td>
+                <td>{{ delivery.sales_name }}</td>
+                <td>{{ delivery.CustomerID }}</td>
+                <td>{{ delivery.ProductID }}</td>
+                <td>{{ delivery.product_name }}</td>
+                <td>{{ delivery.quantity }}</td>
+                <td>{{ delivery.unitprice }}</td>
+                <td>{{ delivery.term }}</td>
+                <td>
+                    <a type="button" href="edit_delivery/{{ delivery.DeliveryID }}">
+                        <span class="btn btn-primary">
+                            <!-- Alerts    图标-->
+                            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="信息：">
+                                <use xlink:href="#info-fill">
+                                </use>
+                            </svg>Edit
+                        </span>
+                    </a>
+                    <!-- Example single danger button -->
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="危险：">
+                                <use xlink:href="#exclamation-triangle-fill">
+                                </use>
+                            </svg>Delete
+                        </button>
+                        <ul1 class="dropdown-menu">
+                            <p>Are you sure you want to delete?</p>
+                            <p>(你确定要删除吗?)</p>
+                            <a href="delete_delivery/{{ delivery.DeliveryID }}" class="btn btn-danger">
+                                <!-- Alerts    图标-->
+                                <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="危险：">
+                                    <use xlink:href="#exclamation-triangle-fill">
+                                    </use>
+                                </svg>Delete
+                            </a>
+                        </ul1>
+                    </div>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <!--endprint-->
+    <br>
+    <br>
+    <footer><p id="time"></p><input type="button" class="form-control - btn-dark" value="Print This Page(打印此页面)" onclick="printpage()" /></footer>
+    <script>
+        function printpage() {
+            let oldStr = window.document.body.innerHTML; // 获取body的内容<!-- 可保存成 pdf档案  -->
+            let start = "<!--startprint-->"; // 开始打印标识, 17个字符
+            let end = "<!--endprint-->"; // 结束打印标识
+            let newStr = oldStr.substr(oldStr.indexOf(start) + 17); // 截取开始打印标识之后的内容
+            newStr = newStr.substring(0, newStr.indexOf(end)); // 截取开始打印标识和结束打印标识之间的内容
+            window.document.body.innerHTML = newStr; // 把需要打印的指定内容赋给body
+            window.print(); // 调用浏览器的打印功能打印指定区域
+            window.document.body.innerHTML = oldStr; // body替换为原来的内容
+        }
+    </script>
+</body>
+</html>
+{% endif %}

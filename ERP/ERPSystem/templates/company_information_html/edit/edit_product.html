@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+{% include 'gg.html' %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/A2.css' %}" />
+</head>
+<body>
+    <div class="box">
+        <div calss="left">
+            <form method="POST" class="post-form" action="/company_information/update_product/{{product.ProductID}}">
+                {% csrf_token %}
+                <div class="container">
+                    <h3>Product Update Details</h3>
+                    <br>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">Product ID</span>
+                        <input type="text" class="form-control" placeholder="ProductID" aria-label="Username" name="ProductID" id="id_ProductID" required maxlength="254" value="{{ product.ProductID }}">
+                        <span class="input-group-text" id="basic-addon1">Product Name</span>
+                        <input type="text" class="form-control" placeholder="product_name" aria-label="Username" name="product_name" id="id_product_name" required maxlength="254" value="{{ product.product_name }}">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">Product Group</span>
+                        <input type="text" class="form-control" placeholder="product_group" aria-label="Username" name="product_group" id="id_product_group" required maxlength="254" value="{{ product.product_group }}">
+                        <span class="input-group-text" id="basic-addon1">Product Tooling </span>
+                        <input type="text" class="form-control" placeholder="product_tooling" aria-label="Username" name="product_tooling" id="id_product_tooling" required maxlength="254" value="{{ product.product_tooling }}">
+                        <span class="input-group-text" id="basic-addon1">Product Unit </span>
+                        <input type="text" class="form-control" placeholder="product_unit" aria-label="Username" name="product_unit" id="id_product_unit" required maxlength="254" value="{{ product.product_unit }}">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">BOM Level </span>
+                        <input type="text" class="form-control" placeholder="BOM_Level" aria-label="Username" name="BOM_Level" id="id_BOM_Level" required maxlength="100" value="{{ product.BOM_Level }}">
+                        <span class="input-group-text">Date </span>
+                        <input type="text" class="form-control" placeholder="date" name="date" id="id_date" required maxlength="100" value="{{ product.date }}">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Quantity</span>
+                        <input type="text" class="form-control" placeholder="quantity" aria-label="Username" name="quantity" id="id_quantity" required maxlength="100" value="{{ product.quantity }}">
+                        <span class="input-group-text">Product Type  </span>
+                        <input type="text" class="form-control" placeholder="product_type" name="product_type" id="id_product_type" required maxlength="100" value="{{ product.product_type }}">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">Unit_price</span>
+                        <input type="text" class="form-control" placeholder="unit_price" name="unit_price" id="id_unit_price" required maxlength="150" value="{{ product.unit_price }}">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">Start Time</span>
+                        <input type="datetime-local" class="form-control" placeholder="start_time" name="start_time" id="id_start_time" required maxlength="150" value="{{ product.start_time }}">
+                        <span class="input-group-text" id="basic-addon1">finish_time</span>
+                        <input type="datetime-local" class="form-control" placeholder="finish_time" name="finish_time" id="id_finish_time" required maxlength="150" value="{{ product.finish_time }}">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Update</button>
+                    <button href="product" class="btn btn-success">return</button>
+                </div>
+            </form>
+        </div>
+        <!--图片显示功能 --> 
+        <div class="right">
+            <div class="thumbnail">
+                <a href="{{ product.photo.url }}">
+                    <img src="{{ product.photo.url }}" alt="Lights" style="width:80%">
+                    <div class="caption">
+                        <h2 class="center">{{ product.title }}</h2>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>  

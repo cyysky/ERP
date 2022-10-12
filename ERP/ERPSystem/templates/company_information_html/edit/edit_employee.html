@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+{% include 'gg.html' %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/A2.css' %}" />
+</head>
+<body>
+    <div class="box">
+        <form method="POST" class="post-form" action="/company_information/update_employee/{{employee.EmployeeID}}">
+            {% csrf_token %}
+            <div class="container">
+                <h3>Employee Update Details</h3>
+                <div class="form-group row">
+                    <label class="col-md-1 col-form-label"></label>
+                    <div class="col-md-4">
+                    </div>
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Employee ID</span>
+                    <input type="text" class="form-control" placeholder="EmployeeID" name="EmployeeID" id="id_EmployeeID" required maxlength="150" value="{{ employee.EmployeeID }}">
+                    <span class="input-group-text">Employee Name</span>
+                    <input type="text" class="form-control" placeholder="employee_name" name="employee_name" id="id_employee_name" required maxlength="100" value="{{ employee.employee_name }}">
+                </div>
+                <br>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Gender</span>
+                    <select type="text" class="form-control" name="gender" id="id_gender" list="appNamelist" required maxlength="150" value="{{ employee.gender }}">
+                        <option value="{{ employee.gender }}">{{ employee.gender }}</option>
+                        <option>male</option>
+                        <option>Female</option>
+                        <option>secret</option>
+                    </select>
+                    <span class="input-group-text">ICor Passport No</span>
+                    <input type="text" class="form-control" placeholder="ICor_Passport_No" name="ICor_Passport_No" id="id_ICor_Passport_No" required maxlength="254" value="{{ employee.ICor_Passport_No }}">
+                </div>
+                <br>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Moblie Contact</span>
+                    <input type="text" class="form-control" placeholder="moblie_contact" name="moblie_contact" id="id_moblie_contact" required maxlength="150" value="{{ employee.moblie_contact }}">
+                    <span class="input-group-text">Email</span>
+                    <input type="text" class="form-control" placeholder="email" name="email" id="id_email" required maxlength="150" value="{{ employee.email }}">
+                </div>
+                <br>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Date Birth</span>
+                    <input type="text" class="form-control" placeholder="date_birth" name="date_birth" id="id_date_birth" required maxlength="150" value="{{ employee.date_birth }}">
+                    <span class="input-group-text">Date Join</span>
+                    <input type="text" class="form-control" placeholder="date_join" name="date_join" id="id_date_join" required maxlength="150" value="{{ employee.date_join }}">
+                </div>
+                <br>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Hour Rate RM</span>
+                    <input type="text" class="form-control" placeholder="hour_rate_RM" name="hour_rate_RM" id="id_hour_rate_RM" required maxlength="150" value="{{ employee.hour_rate_RM }}">
+                    <span class="input-group-text">Month rate RM</span>
+                    <input type="text" class="form-control" placeholder="month_rate_RM" name="month_rate_RM" id="id_month_rate_RM" required maxlength="150" value="{{ employee.month_rate_RM }}">
+                </div>
+                <br>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Position</span>
+                    <input type="text" class="form-control" placeholder="position" name="position" id="id_position" required maxlength="150" value="{{ employee.position }}">
+                    <span class="input-group-text">Phone1</span>
+                    <input type="text" class="form-control" placeholder="level" name="level" id="id_level" required maxlength="150" value="{{ employee.level }}">
+                </div>
+                <br>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Department</span>
+                    <input type="text" class="form-control" placeholder="department" name="department" id="id_department" required maxlength="150" value="{{ employee.department }}">
+                    <span class="input-group-text">Date Left</span>
+                    <input type="text" class="form-control" placeholder="date_left" name="date_left" id="id_date_left" required maxlength="150" value="{{ employee.date_left }}">
+                </div>
+                <button type="submit" class="btn btn-primary">Update</button>
+                <button href="employee" class="btn btn-success">return</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>  

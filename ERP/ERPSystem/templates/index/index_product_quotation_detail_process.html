@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+{% include 'gg.html' %}
+{% block title %}{% endblock %}
+{% block content %}
+{% if user.is_authenticated %}
+{% else %}
+{% include 'home.html' %} <!-- 登录和注册 -->
+{% endif %}
+{% endblock %}
+{% if user.is_authenticated %}
+{% load widget_tweaks %}<!-- 用在改 form (使用 |attr:"class:form-control" ) -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/A2.css' %}" />
+</head>
+<body>
+    <div class="box">
+        <form method="POST" class="post-form" action="emp_product_quotation_detail_process">
+            {% csrf_token %}
+            <div class="container">
+                <h3>Product Quotation Detail Process Enter Details</h3>
+                <br>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Process ID</span>
+                    {{ form.ProcessID |attr:"class:form-control"|attr:"cols:20" }}
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Process  RM </span>
+                    {{ form.re8 |attr:"class:form-control"|attr:"cols:20" }}
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Job Start Time</span>
+                    {{ form.re9 |attr:"class:form-control"|attr:"cols:20" }}
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Job End Time</span>
+                    {{ form.re10 |attr:"class:form-control"|attr:"cols:20" }}
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Resources ID</span>
+                    {{ form.re11 |attr:"class:form-control"|attr:"cols:20" }}
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Person in Charge</span>
+                    {{ form.re12 |attr:"class:form-control"|attr:"cols:20" }}
+                </div>
+                <center><button type="submit" class="btn btn-primary">Submit</button></center>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
+{% endif %}

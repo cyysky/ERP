@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Employee Records</title>
     {% load static %}
-    <!-- <link rel="stylesheet" href="{% static 'css/style.css' %}"/>  !-->
+    <link rel="stylesheet" href="{% static 'css/testing.css' %}" /><link rel="stylesheet" href="{% static 'css/13.css' %}" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
@@ -31,14 +31,14 @@
                 <div class="offcanvas-body">
                     <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                         <li class="nav-item">
-                            <a class="nav-link active p-3 mb-2 bg-primary text-white" href="/order/main_page">Main page</a>
+                            <a class="nav-link active p-3 mb-2 bg-primary text-white" href="/order/Progress_Table">Main page</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle p-3 mb-2 bg-danger text-white" href="#" id="offcanvasNavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Order
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
-                                <li><a class="dropdown-item" href="/order/sales">Sales</a></li>
+                                <li><a class="dropdown-item" href="/order/sales_order">Sales_Order</a></li>
                                 <li><a class="dropdown-item" href="/order/customer">Customer </a></li>
                             </ul>
                         </li>
@@ -123,13 +123,13 @@
                 <a class="nav-link p-3 mb-2 bg-secondary text-white" aria-current="page" href="{% url 'logout' %}">Log Out</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link p-3 mb-2 bg-primary text-white" href="/main_page">Main page</a>
+                <a class="nav-link p-3 mb-2 bg-primary text-white" href="/Progress_Table">Main page</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle p-3 mb-2 bg-danger text-white " data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Order</a>
                 <ul class="dropdown-menu">
                     <li>
-                        <a class="dropdown-item" href="/order/sales">Sales</a>
+                        <a class="dropdown-item" href="/order/sales_order">Sales_Order</a>
                     </li>
                     <li>
                         <a class="dropdown-item" href="/order/customer">Customer </a>

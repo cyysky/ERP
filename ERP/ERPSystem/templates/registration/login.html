@@ -15,8 +15,14 @@ div {text-align:center;}
             {{ form.as_p }}
             <!--<a href="http://127.0.0.1:8000/" class="btn btn-secondary"  >Close</a> -->
             <button type="submit" class="btn btn-primary">Log In(登入)</button>
-            <a href="/accounts/signup/" class="btn btn-secondary text-white">Sign Up(注册)</a>
+            <button type="button"  onclick="Sign()">Sign Up(注册)</button>
         </form>
     </div>
 </div>
-{% endblock %}%}
+
+<script>
+    function Sign() {
+        window.location.assign("/accounts/signup/")
+    }
+</script>
+{% endblock %}

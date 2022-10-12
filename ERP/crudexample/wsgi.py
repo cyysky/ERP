@@ -1,5 +1,5 @@
 """
-WSGI config for crudexample project.
+WSGI config for crudexample project_sales_item.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 

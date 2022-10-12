@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+    {% include 'we.html' %}
+    {% block title %}{% endblock %}
+    {% block content %}
+    {% if user.is_authenticated %}
+    {% else %}
+    {% include 'home.html' %} <!-- 登录和注册 -->
+    {% endif %}
+    {% endblock %}
+    {% if user.is_authenticated %}
+<html lang="en">
+{% include 'Master.html' %}<!-- Navs/导航 -->
+{% include 'gg.html' %}
+<head>
+    <meta charset="UTF-8">
+    <title>Employee Records</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/testing.css' %}" />
+</head>
+<body>
+    <!--startprint-->
+    {% include 'gg.html' %}
+    <h1 class="p-3 mb-2 bg-warning text-white">Material </h1>
+    <!--   搜索功能   -->
+    <div style="float:right;width:300px">
+        <form methon="get">
+            <div class="input-group">
+                <input type="text" name="search" class="form-control" placeholder="Search for MaterialID" value="{{ search_data }}">
+                <span class="input-group-btn">
+                    <button class="btn btn-primary" type="submit">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"></path>
+                        </svg>
+                    </button>
+                </span>
+            </div>
+        </form>
+    </div><!-- /input-group -->
+    <table class="table table-striped table-bordered table-sm">
+        <thead class="thead-dark">
+            <tr>
+                <th>Material ID</th>
+                <th>Material Name</th>
+                <!--<th>MaterialSupplierID</th>
+                <th>Material Supplier Name</th>-->
+                <th>Measure Unit</th>
+                <th>Tybe</th>
+                <th>Form</th>
+                <th>Thickness</th>
+                <th>Width </th>
+                <th>Length</th>
+                <th>Pltch</th>
+                <th>Default Stock Locatiuon</th>
+                <th>Quantity</th>
+                <th>Unit Price</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for material in materials %}
+            <tr>
+                <td>{{ material.MaterialID }}</td>
+                <td>{{ material.material_name }}</td>
+                <td>{{ material.measure_unit }}</td>
+                <td>{{ material.tybe }}</td>
+                <td>{{ material.Form}}</td>
+                <td>{{ material.thickness}}</td>
+                <td>{{ material.usage}}</td>
+                <td>{{ material.width }}</td>
+                <td>{{ material.length }}</td>
+                <td>{{ material.pltch }}</td>
+                <td>{{ material.default_stock_locatiuon }}</td>
+                <td>{{ material.quantity}}</td>
+                <td>{{ material.unit_price}}</td>
+                <td>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="信息：">
+                                <use xlink:href="#info-fill">
+                                </use>
+                            </svg>Options
+                        </button>
+                        <ul1 class="dropdown-menu">
+                            <a type="button" href="edit_material/{{ material.MaterialID }}">
+                                <span class="btn btn-success">
+                                    <!-- Alerts    图标-->
+                                    <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="信息：">
+                                        <use xlink:href="#info-fill">
+                                        </use>
+                                    </svg>Edit Material
+                                </span>
+                            </a>
+                            <p>In MaterialID To Updat</p>
+                            <h6>QTY Stock</h6>
+                            <a href="update_require/{{ material.MaterialID }}" class="btn btn-info text-white ">
+                                Update Require
+                            </a>
+                        </ul1>
+                    </div>
+                    <!-- Example single danger button -->
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="危险：">
+                                <use xlink:href="#exclamation-triangle-fill">
+                                </use>
+                            </svg>Delete
+                        </button>
+                        <ul1 class="dropdown-menu">
+                            <p>Are you sure you want to delete?</p>
+                            <p>(你确定要删除吗?)</p>
+                            <a href="delete_material/{{ material.MaterialID }}" class="btn btn-danger">
+                                <!-- Alerts    图标-->
+                                <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="危险：">
+                                    <use xlink:href="#exclamation-triangle-fill">
+                                    </use>
+                                </svg>Delete
+                            </a>
+                        </ul1>
+                    </div>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <!--endprint-->
+    <br>
+    <br>
+    <center>
+        <a href="emp_material" class="btn btn-success">Add New Record</a>
+    </center>
+    <br>
+    <br>
+    <br>
+    {% if materials %}
+    <nav aria-label="Page navigation example">
+        {% for material in materials %}
+        {% endfor %}
+        <span class="current">
+            Page {{ materials.number }} of {{ materials.paginator.num_pages }}
+        </span>
+        <ul class="pagination">
+            {% if materials.has_previous %}
+            <li class="page-item"><a class="page-link" href="?page1={{ materials.previous_page_number }}"> previous </a></li>
+            {% endif %}
+            <li class="page-item"><a class="page-link" href="?page1=1">1</a></li>
+            <li class="page-item"><a class="page-link" href="?page1=2">2</a></li>
+            <li class="page-item"><a class="page-link" href="?page1=3">3</a></li>
+            <li class="page-item"><a class="page-link" href="?page1=4">4</a></li>
+            {% if materials.has_next %}
+            <li class="page-item"><a class="page-link" href="?page1={{ materials.next_page_number }}"> next </a></li>
+            {% endif %}
+        </ul>
+        <form method="get" style="width:110px">
+            <input type="text" name="page1" class="form-control" placeholder="页面(Page)" href="{{ materials.number }}">
+            <span class="input-group-btn">
+                <button class="form-control" type="submit">Go!</button>
+            </span>
+        </form>
+    </nav>
+    {% endif %}
+    <footer><p id="time"></p><input type="button" class="form-control - btn-dark" value="Print This Page(打印此页面)" onclick="printpage()" /></footer>
+    <script>
+        function printpage() {
+            let oldStr = window.document.body.innerHTML; // 获取body的内容<!-- 可保存成 pdf档案  -->
+            let start = "<!--startprint-->"; // 开始打印标识, 17个字符
+            let end = "<!--endprint-->"; // 结束打印标识
+            let newStr = oldStr.substr(oldStr.indexOf(start) + 17); // 截取开始打印标识之后的内容
+            newStr = newStr.substring(0, newStr.indexOf(end)); // 截取开始打印标识和结束打印标识之间的内容
+            window.document.body.innerHTML = newStr; // 把需要打印的指定内容赋给body
+            window.print(); // 调用浏览器的打印功能打印指定区域
+            window.document.body.innerHTML = oldStr; // body替换为原来的内容
+        }
+    </script>
+</body>
+</html>
+{% endif %}
+
+
+
+

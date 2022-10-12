@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+    {% include 'we.html' %}
+    {% block title %}{% endblock %}
+    {% block content %}
+    {% if user.is_authenticated %}
+    {% else %}
+    {% include 'home.html' %} <!-- 登录和注册 -->
+    {% endif %}
+    {% endblock %}
+    {% if user.is_authenticated %}
+<html lang="en">
+{% include 'Master.html' %}<!-- Navs/导航 -->
+{% include 'gg.html' %}
+<head>
+    <meta charset="UTF-8">
+    <title>Employee Records</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/testing.css' %}" />
+</head>
+<body>
+    <!--startprint-->
+    {% include 'gg.html' %}
+    <h1 class="p-3 mb-2 bg-success text-white">Require</h1>
+    <!--   搜索功能   -->
+    <div style="float:right;width:300px">
+        <form methon="get">
+            <div class="input-group">
+                <input type="text" name="search" class="form-control" placeholder="Search for RequireID" value="{{ search_data }}">
+                <span class="input-group-btn">
+                    <button class="btn btn-primary" type="submit">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"></path>
+                        </svg>
+                    </button>
+                </span>
+            </div>
+        </form>
+    </div><!-- /input-group -->
+    <table class="table table-striped table-bordered table-sm">
+        <thead class="thead-dark">
+            <tr>
+                <th>RequireID</th>
+                <th>BOMID</th>
+                <th>ProjectID</th>
+                <th>ProductID</th>
+                <th>MaterialID</th>
+                <th>Product Usage</th>
+                <th>QTY Project</th>
+                <th>QTY Need</th>
+                <th>QTY Stock</th>
+                <th>QTY Purchase</th>
+                <th>Remarks</th>
+                <th>Quantity</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for require in requires %}
+            <tr>
+                <td>{{ require.RequireID }}</td>
+                <td>{{ require.BOMID }}</td>
+                <td>{{ require.ProjectSalesItemID }}</td>
+                <td>{{ require.ProductID }}</td>
+                <td>{{ require.MaterialID }}</td>
+                <td>{{ require.product_usage }}</td>
+                <td>{{ require.QTY_project }}</td>
+                <td>{{ require.QTY_need }}</td>
+                <td>{{ require.QTY_stock }}</td>
+                <td>{{ require.QTY_purchase }}</td>
+                <td>{{ require.remarks }}</td>
+                <td>{{ require.quantity}}</td>
+                <td>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="信息：">
+                                <use xlink:href="#info-fill">
+                                </use>
+                            </svg>Options
+                        </button>
+                        <ul1 class="dropdown-menu">
+                            <a type="button" href="edit_require/{{ require.RequireID }}">
+                                <span class="btn btn-success">
+                                    <!-- Alerts    图标-->
+                                    <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="信息：">
+                                        <use xlink:href="#info-fill">
+                                        </use>
+                                    </svg>Edit Require
+                                </span>
+                            </a>
+                            <p></p>
+                            <a href="/marketing/edit_project/{{ require.ProjectID }}" class="btn btn-info text-white ">
+                                Project/{{ require.ProjectID }}
+                            </a>
+                            <p></p>
+                            <a href="/marketing/edit_bom/{{ require.BOMID }}" class="btn btn-info text-white ">
+                                BOM/{{ require.BOMID }}
+                            </a>
+                            <p></p>
+                            <a href="/warehouse/edit_material/{{ require.MaterialID }}" class="btn btn-info text-white ">
+                                Material/{{ require.MaterialID }}
+                            </a>
+                            <p></p>
+                            <a href="/update_to_require/{{ require.RequireID }}/{{ require.BOMID }}/{{ require.ProjectSalesItemID }}/{{ require.MaterialID }}" class="btn btn-success ">
+                                <h6>Update Require</h6>
+                            </a>
+                        </ul1>
+                    </div>
+                    <!-- Example single danger button -->
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="危险：">
+                                <use xlink:href="#exclamation-triangle-fill">
+                                </use>
+                            </svg>Delete
+                        </button>
+                        <ul1 class="dropdown-menu">
+                            <p>Are you sure you want to delete?</p>
+                            <p>(你确定要删除吗?)</p>
+                            <a href="delete_require/{{ require.RequireID }}" class="btn btn-danger">
+                                <!-- Alerts    图标-->
+                                <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="危险：">
+                                    <use xlink:href="#exclamation-triangle-fill">
+                                    </use>
+                                </svg>Delete
+                            </a>
+                        </ul1>
+                    </div>
+                    <!-- Example single danger button -->
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <!--endprint-->
+    <br>
+    <br>
+    <center>
+        <a href="emp_require" class="btn btn-success">Add New Record</a>
+    </center>
+    <br>
+    <br>
+    <br>
+    {% if requires %}
+    <nav aria-label="Page navigation example">
+        {% for require in requires %}
+        {% endfor %}
+        <span class="current">
+            Page {{ requires.number }} of {{ requires.paginator.num_pages }}
+        </span>
+        <ul class="pagination">
+            {% if requires.has_previous %}
+            <li class="page-item"><a class="page-link" href="?page1={{ requires.previous_page_number }}"> previous </a></li>
+            {% endif %}
+            <li class="page-item"><a class="page-link" href="?page1=1">1</a></li>
+            <li class="page-item"><a class="page-link" href="?page1=2">2</a></li>
+            <li class="page-item"><a class="page-link" href="?page1=3">3</a></li>
+            <li class="page-item"><a class="page-link" href="?page1=4">4</a></li>
+            {% if requires.has_next %}
+            <li class="page-item"><a class="page-link" href="?page1={{ requires.next_page_number }}"> next </a></li>
+            {% endif %}
+        </ul>
+        <form method="get" style="width:110px">
+            <input type="text" name="page1" class="form-control" placeholder="页面(Page)" href="{{ requires.number }}">
+            <span class="input-group-btn">
+                <button class="form-control" type="submit">Go!</button>
+            </span>
+        </form>
+    </nav>
+    {% endif %}
+    <input type="button" class="form-control - btn-dark" value="Print This Page(打印此页面)" onclick="printpage()" />
+    <script>
+        function printpage() {
+            let oldStr = window.document.body.innerHTML; // 获取body的内容<!-- 可保存成 pdf档案  -->
+            let start = "<!--startprint-->"; // 开始打印标识, 17个字符
+            let end = "<!--endprint-->"; // 结束打印标识
+            let newStr = oldStr.substr(oldStr.indexOf(start) + 17); // 截取开始打印标识之后的内容
+            newStr = newStr.substring(0, newStr.indexOf(end)); // 截取开始打印标识和结束打印标识之间的内容
+            window.document.body.innerHTML = newStr; // 把需要打印的指定内容赋给body
+            window.print(); // 调用浏览器的打印功能打印指定区域
+            window.document.body.innerHTML = oldStr; // body替换为原来的内容
+        }
+    </script>
+</body>
+</html>
+{% endif %}

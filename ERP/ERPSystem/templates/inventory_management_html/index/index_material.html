@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+{% include 'gg.html' %}
+{% block title %}{% endblock %}
+{% block content %}
+{% if user.is_authenticated %}
+{% else %}
+{% include 'home.html' %} <!-- 登录和注册 -->
+{% endif %}
+{% endblock %}
+{% if user.is_authenticated %}
+{% load widget_tweaks %}<!-- 用在改 form (使用 |attr:"class:form-control" ) -->
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/A2.css' %}" />
+</head>
+<body>
+    <div class="box">
+        <form method="POST" class="post-form" action="emp_material">
+            {% csrf_token %}
+            <h3>Material Enter Details</h3>
+            <div class="container">
+                <br>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Material ID</span>
+                    {{ form.MaterialID |attr:"class:form-control"|attr:"cols:20" }}
+                    <span class="input-group-text">Material Name</span>
+                    {{ form.material_name |attr:"class:form-control"|attr:"cols:20" }}
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Measure Unit</span>
+                    {{ form.measure_unit |attr:"class:form-control"|attr:"cols:20" }}
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Tybe</span>
+                    {{ form.tybe |attr:"class:form-control"|attr:"cols:20" }}
+                    <span class="input-group-text">Form</span>
+                    {{ form.Form |attr:"class:form-control"|attr:"cols:20" }}
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Thickness</span>
+                    {{ form.thickness |attr:"class:form-control"|attr:"cols:20" }}
+                    <span class="input-group-text">Width</span>
+                    {{ form.width |attr:"class:form-control"|attr:"cols:20" }}
+                    <span class="input-group-text">Length</span>
+                    {{ form.length |attr:"class:form-control"|attr:"cols:20" }}
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Pltch </span>
+                    {{ form.pltch |attr:"class:form-control"|attr:"cols:20" }}
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Default Stock Locatiuon</span>
+                    {{ form.default_stock_locatiuon |attr:"class:form-control"|attr:"cols:20" }}
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Quantity</span>
+                    {{ form.quantity |attr:"class:form-control"|attr:"cols:20" }}
+                    <span class="input-group-text">Uit Price</span>
+                    {{ form.unit_price |attr:"class:form-control"|attr:"cols:20" }}
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
+{% endif %} 

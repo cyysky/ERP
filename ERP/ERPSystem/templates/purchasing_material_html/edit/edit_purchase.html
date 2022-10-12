@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+{% include 'gg.html' %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/A2.css' %}" />
+</head>
+<body>
+    <div class="box">
+        <form method="POST" class="post-form" action="/purchasing_material/update_purchase/{{purchase.PurchaseID}}">
+            {% csrf_token %}
+            <div class="container">
+                <h3>Purchase Update Details</h3>
+                <div class="form-group row">
+                    <label class="col-md-1 col-form-label"></label>
+                    <div class="col-md-4">
+                    </div>
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Purchase ID</span>
+                    <input type="text" class="form-control" placeholder="PurchaseID" aria-label="Username" name="PurchaseID" id="id_PurchaseID" required maxlength="150" value="{{ purchase.PurchaseID }}">
+                    <span class="input-group-text">Purchase Name</span>
+                    <input type="text" class="form-control" name="purchase_name" id="id_purchase_name" required maxlength="100" value="{{ purchase.purchase_name }}">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">RequireID</span>
+                    <input type="text" class="form-control" aria-label="Username" name="RequireID" id="id_RequireID" required maxlength="254" value="{{ purchase.RequireID }}">
+                    <span class="input-group-text" id="basic-addon1">Require Name</span>
+                    <input type="text" class="form-control" aria-label="Username" name="require_name" id="id_require_name" required maxlength="254" value="{{ purchase.require_name }}">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">deliver_date</span>
+                    <input type="text" class="form-control" aria-label="Username" name="deliver_date" id="id_deliver_date" required maxlength="254" value="{{ purchase.deliver_date }}">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">MaterialID</span>
+                    <input type="text" class="form-control" placeholder="MaterialID" aria-label="Username" name="MaterialID" id="id_MaterialID" required maxlength="254" value="{{ purchase.MaterialID }}">
+                    <span class="input-group-text" id="basic-addon1">material_name</span>
+                    <input type="text" class="form-control" placeholder="material_name" aria-label="Username" name="material_name" id="id_material_name" required maxlength="254" value="{{ purchase.material_name }}">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Quantity</span>
+                    <input type="text" class="form-control" placeholder="quantity" aria-label="Username" name="quantity" id="id_quantity" required maxlength="254" value="{{ purchase.quantity }}">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Unit Price</span>
+                    <input type="text" class="form-control" placeholder="unit_price" aria-label="Username" name="unit_price" id="id_unit_price" required maxlength="150" value="{{ purchase.unit_price }}">
+                </div>
+                <br>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Discount</span>
+                    <input type="text" class="form-control" placeholder="discount" aria-label="Username" name="discount" id="id_discount" required maxlength="150" value="{{ purchase.discount }}">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Total MYR</span>
+                    <input type="text" class="form-control" placeholder="total_MYR" aria-label="Username" name="total_MYR" id="id_total_MYR" required maxlength="150" value="{{ purchase.total_MYR }}">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Remarks</span>
+                    <input type="text" class="form-control" placeholder="remarks" aria-label="Username" name="remarks" id="id_remarks" required maxlength="150" value="{{ purchase.remarks }}">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Material Supplier ID</span>
+                    <input type="text" class="form-control" placeholder="MaterialSupplierID" aria-label="Username" name="MaterialSupplierID" id="id_MaterialSupplierID" required maxlength="254" value="{{ purchase.MaterialSupplierID }}">
+                </div>
+                <button type="submit" class="btn btn-primary">Update</button>
+                <button href="purchase" class="btn btn-success">return</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>  

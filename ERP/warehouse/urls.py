@@ -1,6 +1,6 @@
 from django.urls import path
 
-from warehouse import views 
+from. import views 
 
 urlpatterns = [
 
@@ -10,6 +10,7 @@ urlpatterns = [
     path('emp_material', views.emp_material),
     path('update_material/<str:MaterialID>', views.update_material),
     path('delete_material/<str:MaterialID>', views.destroy_material),
+    path('update_material_to_require/<str:MaterialID>', views.update_material_to_require),
 #----------------------------------------------------material_stock    
     path('material_stock',views.material_stock),
     path('edit_material_stock/<str:MaterialStockID>', views.edit_material_stock),

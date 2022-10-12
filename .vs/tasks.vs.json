@@ -1,0 +1,15 @@
+{
+  "version": "0.2.1",
+  "tasks": [
+    {
+      "taskLabel": "任务-edit_ERP_of_mysql",
+      "appliesTo": "edit_ERP_of_mysql.bat",
+      "type": "launch"
+    },
+    {
+      "taskLabel": "任务-edit_ERP_of_mysql",
+      "appliesTo": "edit_ERP_of_mysql.bat",
+      "type": "launch"
+    }
+  ]
+}

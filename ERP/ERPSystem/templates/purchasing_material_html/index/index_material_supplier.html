@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+{% include 'gg.html' %}
+{% block title %}{% endblock %}
+{% block content %}
+{% if user.is_authenticated %}
+{% else %}
+{% include 'home.html' %} <!-- 登录和注册 -->
+{% endif %}
+{% endblock %}
+{% if user.is_authenticated %}
+{% load widget_tweaks %}<!-- 用在改 form (使用 |attr:"class:form-control" ) -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/A2.css' %}" />
+</head>
+<body>
+    <div class="box">
+        <form method="POST" class="post-form" action="emp_material_supplier">
+            {% csrf_token %}
+            <div class="container">
+                <h3>Material_Supplier Enter Details</h3>
+                <div class="form-group row">
+                    <label class="col-md-1 col-form-label"></label>
+                    <div class="col-sm-4">
+                    </div>
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Material Supplier ID</span>
+                    {{ form.MaterialSupplierID |attr:"class:form-control"|attr:"cols:20" }}
+                    <span class="input-group-text">Supplier ID</span>
+                    {{ form.SupplierID |attr:"class:form-control"|attr:"cols:20" }}
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Material ID </span>
+                        {{ form.MaterialID |attr:"class:form-control"|attr:"cols:20" }}
+                        <span class="input-group-text">material Name</span>
+                        {{ form.material_name |attr:"class:form-control"|attr:"cols:20" }}
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Source</span>
+                        {{ form.source |attr:"class:form-control"|attr:"cols:20" }}
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">UOM</span>
+                        {{ form.UOM |attr:"class:form-control"|attr:"cols:20" }}
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">EOQ</span>
+                        {{ form.EOQ |attr:"class:form-control"|attr:"cols:20" }}
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Unit Price</span>
+                        {{ form.unit_price |attr:"class:form-control"|attr:"cols:20" }}
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Term </span>
+                        {{ form.term |attr:"class:form-control"|attr:"cols:20" }}
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">remarks</span>
+                        {{ form.remarks |attr:"class:form-control"|attr:"cols:20" }}
+                    </div>
+
+                    <center><button type="submit" class="btn btn-primary">Submit</button></center>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
+{% endif %} 

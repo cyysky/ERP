@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+{% include 'gg.html' %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/A2.css' %}" />
+</head>
+<body>
+    <div class="box">
+        <div calss="left">
+            <form method="POST" class="post-form" action="/product_quotation_detail/update_sales_order/{{sales_order.SalesOrderID}}">
+                {% csrf_token %}
+                <div class="container">
+                    <h3>Sales_Order Update Details</h3>
+                    <div class="form-group row">
+                        <label class="col-md-1 col-form-label"></label>
+                        <div class="col-md-4">
+                        </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">Sales_ID</span>
+                        <input type="text" class="form-control" placeholder="SalesOrderID" aria-label="SalesOrderID" name="SalesOrderID" id="id_SalesID" required maxlength="254" value="{{ sales_order.SalesOrderID }}">
+                    </div>
+                    <br>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Customer ID</span>
+                        <input type="text" class="form-control" placeholder="CustomerID" aria-label="Username" name="CustomerID" id="id_CustomerID" required maxlength="150" value="{{ sales_order.CustomerID }}">
+                        <span class="input-group-text">Customer Name</span>
+                        <input type="text" class="form-control" placeholder="customer_name" name="customer_name" id="id_customer_name" required maxlength="100" value="{{ sales_order.customer_name }}">
+                    </div>
+                    <br>
+                    <div class="input-group">
+                        <span class="input-group-text">term</span>
+                        <textarea class="form-control" aria-label="With textarea" type="text" name="term" id="id_term" required maxlength="100" value="{{ sales_order.term }}">{{ sales_order.term }}</textarea>
+                    </div>
+                    <br>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Customer PO ID</span>
+                        <input type="text" class="form-control" placeholder="Id" aria-label="Username" name="customer_po_id" id="id_customer_po_id" required maxlength="100" value="{{ sales_order.customer_po_id }}">
+                        <span class="input-group-text">Product ID</span>
+                        <input type="text" class="form-control" placeholder="Name" name="ProductID" id="id_ProductID" required maxlength="100" value="{{ sales_order.ProductID }}">
+                    </div>
+                    <br>
+                    <div class="input-group">
+                        <span class="input-group-text">Description</span>
+                        <textarea class="form-control" aria-label="With textarea" type="text" name="description" id="id_description" required maxlength="100" value="{{ sales_order.description }}">{{ sales_order.description }}</textarea>
+                    </div>
+                    <br>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">quantity</span>
+                        <input type="text" class="form-control" placeholder="quantity" name="quantity" id="id_quantity" required maxlength="150" value="{{ sales_order.quantity }}">
+                    </div>
+                    <br>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">unit_price</span>
+                        <input type="text" class="form-control" placeholder="unit_price" name="unit_price" id="id_unit_price" required maxlength="150" value="{{ sales_order.unit_price }}">
+                    </div>
+                    <br>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">Date</span>
+                        <input type="text" class="form-control" placeholder="date" aria-label="date" name="date" id="id_date" required maxlength="254" value="{{ sales_order.date }}">
+                    </div>
+                    <br>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">Date</span>
+                        <input type="datetime-local" class="form-control" placeholder="start_time" name="start_time" id="id_start_time" required maxlength="100" value="{{ sales_order.start_time }}">
+                        <span class="input-group-text" id="basic-addon1">Date</span>
+                        <input type="datetime-local" class="form-control" placeholder="finish_time" name="finish_time" id="id_finish_time" required maxlength="100" value="{{ sales_order.finish_time }}">
+                    </div>
+                    <br>
+                    <button type="submit" class="btn btn-primary">Update</button>
+                    <button href="/marketing/sales_order" class="btn btn-success">return</button>
+                </div>
+            </form>
+        </div>
+        <!--图片显示功能 -->
+        <div class="right">
+            <div class="thumbnail">
+                <a href="{{ sales_order.photo.url }}">
+                    <img src="{{ sales_order.photo.url }}" alt="Lights" style="width:80%">
+                    <div class="caption">
+                       <h2 class="center">{{ sales_order.title }}</h2>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>  

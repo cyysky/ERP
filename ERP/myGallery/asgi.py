@@ -1,5 +1,5 @@
 """
-ASGI config for myGallery project.
+ASGI config for myGallery project_sales_item.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 

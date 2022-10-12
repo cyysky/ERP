@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+{% include 'gg.html' %}
+{% block title %}{% endblock %}
+{% block content %}
+{% if user.is_authenticated %}
+{% else %}
+{% include 'home.html' %} <!-- 登录和注册 -->
+{% endif %}
+{% endblock %}
+{% if user.is_authenticated %}
+{% load widget_tweaks %}<!-- 用在改 form (使用 |attr:"class:form-control" ) -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/A2.css' %}" />
+</head>
+<body>
+    <div class="box">
+        <form method="POST" class="post-form" action="emp_supplier">
+            {% csrf_token %}
+            <div class="container">
+                <h3>Supplier Enter Details</h3>
+                <div class="form-group row">
+                    <label class="col-md-1 col-form-label"></label>
+                    <div class="col-sm-4">
+                    </div>
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Supplier ID</span>
+                    {{ form.SupplierID |attr:"class:form-control"|attr:"cols:20" }}
+                    <span class="input-group-text">Supplier Name</span>
+                    {{ form.supplier_name |attr:"class:form-control"|attr:"cols:20" }}
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Supplier Type</span>
+                    {{ form.supplier_type |attr:"class:form-control"|attr:"cols:20" }}
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Address</span>
+                    {{ form.address |attr:"class:form-control"|attr:"cols:20" |attr:"rows:4" }}
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Trem</span>
+                    {{ form.term |attr:"class:form-control"|attr:"cols:20" |attr:"rows:4" }}
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Email</span>
+                    {{ form.email |attr:"class:form-control"|attr:"cols:20" }}
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Phone1</span>
+                    {{ form.phone1 |attr:"class:form-control"|attr:"cols:20" }}
+                    <span class="input-group-text">Phone2</span>
+                    {{ form.phone2 |attr:"class:form-control"|attr:"cols:20" }}
+                </div>
+                <center><button type="submit" class="btn btn-primary">Submit</button></center>
+            </div>
+        </form>
+    </div>
+
+</body>
+</html>
+{% endif %} 

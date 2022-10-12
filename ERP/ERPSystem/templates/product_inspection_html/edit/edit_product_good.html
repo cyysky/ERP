@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+{% include 'gg.html' %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/A2.css' %}" />
+</head>
+<body>
+    <div class="box">
+        <form method="POST" class="post-form" action="/production/update_product_good/{{product_good.GoodbatchID}}">
+            {% csrf_token %}
+            <div class="container">
+                <h3>Product_Good Update Details</h3>
+                <br>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Goodbatch ID</span>
+                    <input type="text" class="form-control" placeholder="GoodbatchID" aria-label="Username" name="GoodbatchID" id="id_GoodbatchID" required maxlength="254" value="{{ product_good.GoodbatchID }}">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Product ID</span>
+                    <input type="text" class="form-control" placeholder="ProductID" aria-label="Username" name="ProductID" id="id_ProductID" required maxlength="100" value="{{ product_good.ProductID }}">
+                    <span class="input-group-text">Product Name </span>
+                    <input type="text" class="form-control" placeholder="product_name" name="product_name" id="id_product_name" required maxlength="100" value="{{ product_good.product_name }}">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Customer ID</span>
+                    <input type="text" class="form-control" placeholder="CustomerID" name="CustomerID" id="id_CustomerID" required maxlength="150" value="{{ product_good.CustomerID }}">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Material ID</span>
+                    <input type="text" class="form-control" placeholder="MaterialID" name="MaterialID" id="id_MaterialID" required maxlength="150" value="{{ product_good.MaterialID }}">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Type</span>
+                    <input type="text" class="form-control" placeholder="type" name="type" id="id_type" required maxlength="150" value="{{ product_good.type }}">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Quantity</span>
+                    <input type="text" class="form-control" placeholder="quantity" aria-label="Username" name="quantity" id="id_quantity" required maxlength="100" value="{{ product_good.quantity }}">
+                    <span class="input-group-text">term   </span>
+                    <input type="text" class="form-control" placeholder="term" name="term" id="id_term" required maxlength="100" value="{{ product_good.term }}">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Date</span>
+                    <input type="text" class="form-control" placeholder="date" name="date" id="id_date" required maxlength="150" value="{{ product_good.date }}">
+                </div>
+                <button type="submit" class="btn btn-primary">Update</button>
+                <button href="product_good" class="btn btn-success">return</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html> 
